@@ -12,80 +12,72 @@
 </nav>
 
 <div class="container">
-  <div class="mt-4">
-    <h4>Donations:</h4>
-    <table class="table table-dark table-hover table-bordered" id="donationsTable">
-      <caption>List of donations that need action</caption>
-      <thead>
-        <tr>
-          <th id="donorName">Donor Name</th>
-          <th id="bloodGroup">Blood Group</th>
-          <th id="donationStatus">Donation status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let donation of donations | slice: start : end" (click)="selectDonation(donation)">
-          <td>{{donation.donorName}}</td>
-          <td>{{donation.bloodGroup}}</td>
-          <td>{{donation.donationStatus}}</td>
-        </tr>
-      </tbody>
-      <tfoot>
-        <tr>
-          <td colspan="5">
-
-            <nav aria-label="Page navigation example">
-              <ul class="pagination justify-content-end">
-                <li class="page-item" *ngIf="start > 0">
-                  <button class="page-link" (click)="previous()">Previous</button>
-                </li>
-                <li class="page-item" *ngIf="end < donations.length">
-                  <button class="page-link" (click)="next()">Next</button>
-                </li>
-              </ul>
-            </nav>
-          </td>
-        </tr>
-      </tfoot>
-    </table>
-  </div>
-
-  <h4>Donation Details:</h4>
-  <form [formGroup]="donorDetailsForm" *ngIf="showDetails">
-    <div class="card">
-      <div class="card-header bg-primary text-center">
-        Donor Details & History
+  <div class="row">
+    <div class="col-4">
+      <div class="mt-4">
+        <h4>Donations:</h4>
+        <table class="table table-dark table-hover table-bordered" id="donationsTable"
+          *ngIf="this.donations !== undefined">
+          <caption>List of donations that need action</caption>
+          <thead>
+            <tr>
+              <th id="donorName">Donor Name</th>
+              <th id="bloodGroup">Blood Group</th>
+              <th id="donationStatus">Donation status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let donation of donations | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize"
+              (click)="selectDonation(donation)">
+              <td>{{donation.donorName}}</td>
+              <td>{{donation.bloodGroup}}</td>
+              <td>{{donation.donationStatus}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <ngb-pagination [collectionSize]="noOfDonations" [(page)]="page" [maxSize]="5" [rotate]="true"
+          [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
       </div>
-      <div class="card-body">
-        <div class="row">
-          <div class="col-3"> <label>Aadhar Number:</label> </div>
-          <div class="col-3"> <input type="text" formControlName="donorAadhar" disabled> </div>
-          <div class="col-3"> <label>Donor Name: </label> </div>
-          <div class="col-3"> <input type="text" formControlName="donorName" disabled> </div>
-        </div>
-        <div class="row">
-          <div class="col-3"> <label>Blood Group: </label> </div>
-          <div class="col-3"> <input type="text" formControlName="bloodGroup" disabled> </div>
-          <div class="col-3"> <label>Donation Date: </label> </div>
-          <div class="col-3"> <input type="text" formControlName="donationDate" disabled> </div>
-        </div>
-        <div class="row">
-          <div class="col-3"> <label>Donor Status:</label> </div>
-          <div class="col-3"> <input type="text" formControlName="donorStatus" disabled> </div>
-          <div class="col-3"> <label>Mobile Number: </label> </div>
-          <div class="col-3"> <input type="text" formControlName="donorMobileNumber" disabled> </div>
-        </div>
-        <div class="row">
-          <div class="col-3"> <label>Email Id: </label> </div>
-          <div class="col-9"> <input type="text" formControlName="donorEmail" disabled> </div>
-        </div>
-      </div>
-      <div class="card-footer bg-primary">
-        <div class="float-right">
-          <button class="btn btn-success mr-2" (click)="approve()">Approve</button>
-          <button class="btn btn-warning" (click)="reject()">Reject</button>
+    </div>
+    <div class="col-8 mt-4">
+      <h4>Donation Details:</h4>
+      <div *ngIf="showDetails">
+        <div class="card">
+          <div class="card-header bg-primary text-center">
+            Donor Details & History
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-3"> <label>Aadhar Number:</label> </div>
+              <div class="col-3"> <span>{{donation.donorAadhar}}</span> </div>
+              <div class="col-3"> <label>Donor Name: </label> </div>
+              <div class="col-3"> <span>{{donation.donorName}}</span> </div>
+            </div>
+            <div class="row">
+              <div class="col-3"> <label>Blood Group: </label> </div>
+              <div class="col-3"> <span>{{donation.bloodGroup}}</span> </div>
+              <div class="col-3"> <label>Donation Date: </label> </div>
+              <div class="col-3"> <span>{{donation.donationDate}}</span> </div>
+            </div>
+            <div class="row">
+              <div class="col-3"> <label>Donor Status:</label> </div>
+              <div class="col-3"> <span>{{donation.donorStatus}}</span> </div>
+              <div class="col-3"> <label>Mobile Number: </label> </div>
+              <div class="col-3"> <span>{{donation.donorMobileNumber}}</span> </div>
+            </div>
+            <div class="row">
+              <div class="col-3"> <label>Email Id: </label> </div>
+              <div class="col-9"> <span>{{donation.donorEmail}}</span> </div>
+            </div>
+          </div>
+          <div class="card-footer bg-primary">
+            <div class="float-right">
+              <button class="btn btn-success mr-2" (click)="approve()">Approve</button>
+              <button class="btn btn-warning" (click)="reject()">Reject</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </form>
+  </div>
 </div>
