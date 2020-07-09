@@ -1,18 +1,13 @@
-# Community collaboration in the context of COVID-19
+# Community collaboration in the context of pandemic (recently COVID-19) or post disaster (like cyclone, major earthquake) 
 
-This solution starter was created by technologists from IBM.
+This solution starter was created by technologists from Infosys.
 
 ## Authors
 
-- Henry Nash
-- Va Barbosa
-- Javier Torres
-- Omer Arad
-- JJ Asghar
-- Jody Burks
-- Robert Loredo
-- Debbie Kestin Schildkraut
-- Bruce Weed
+- Koushik Shah
+- Ansuman Parija
+- Sudarshan Debnath
+
 
 ## Contents
 
