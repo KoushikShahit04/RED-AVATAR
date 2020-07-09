@@ -25,13 +25,13 @@ This solution starter was created by technologists from Infosys.
 
 ### What's the problem?
 
-There is a growing interest in enabling communities to cooperate among themselves to solve these problems, whether it be to advertise where supplies are held, offer assistance for collections, or other local services like volunteer deliveries.
+In any pandemic (recently COVID) or post disaster (like cyclone, major earthquake), Blood become an essential and vital demand to fight the crisis. 
 
-In times of crisis, such as the 2020 SARS-COV-2 (COVID-19 or "Novel Coronavirus") crisis, while federal and local governments may be rolling out broad programs, cooperation at the local level is usually the most effective way of getting help to where it is most needed as quickly as possible. Traditional social media is one way of communicating within a community, but this is (by its very design) not locally focused, and often not sufficiently structured to enable rapid discovery of help needed.
+In normal time the blood deficit is common problem across global. India require approx. 12 million unit but available 9 million unit every year, and during crisis, the demand to supply needs become worse.
 
-In the COVID-19 crisis, we have already seen shortages of local food, medical equipment, and other supplies. In addition, the recommended (or required) self-isolation and social distancing measures can compound the problem by preventing people from easily getting to locations with the best stocks of supplies.
+In the COVID-19 crisis for Plasma treatement or during the recent super cycle in WB, Odissa many people have suffered due to lack of Blood Donor or stock inforamtion due to often not sufficiently structured to enable rapid discovery of help needed. 
 
-What is needed is a solution that empowers communities to easily connect and provide this information to each other.
+What is needed is a solution that empowers citized to easily connect and provide this information for need of Blood.
 
 ### How can technology help?
 
