@@ -1,11 +1,18 @@
 import React from 'react';
-import { StyleSheet, FlatList, View, Text, TouchableOpacity, Alert } from 'react-native';
+import {
+  StyleSheet,
+  FlatList,
+  View,
+  Text,
+  TouchableOpacity,
+  Alert,
+} from 'react-native';
 
-import { search, userID } from '../lib/utils'
+import {search, userID} from '../lib/utils';
 
 const styles = StyleSheet.create({
   flatListView: {
-    backgroundColor: '#FFF'
+    backgroundColor: '#FFF',
   },
   itemTouchable: {
     flexDirection: 'column',
@@ -13,11 +20,11 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'stretch',
     borderBottomColor: '#dddddd',
-    borderBottomWidth: 0.25
+    borderBottomWidth: 0.25,
   },
   itemView: {
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
   itemName: {
     fontSize: 24,
@@ -26,44 +33,51 @@ const styles = StyleSheet.create({
   itemDescription: {
     fontSize: 14,
     fontFamily: 'IBMPlexSans-Medium',
-    color: 'gray'
+    color: 'gray',
   },
   itemQuantity: {
     fontSize: 14,
     fontFamily: 'IBMPlexSans-Medium',
-    color: 'gray'
+    color: 'gray',
   },
   emptyListView: {
     backgroundColor: '#FFFFFF',
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   emptyListText: {
     fontFamily: 'IBMPlexSans-Bold',
     color: '#999999',
-    fontSize: 16
-  }
+    fontSize: 16,
+  },
 });
 
-const MyResources = function ({ navigation }) {
+const MyResources = function({navigation}) {
   const [items, setItems] = React.useState([]);
 
   React.useEffect(() => {
     navigation.addListener('focus', () => {
-      search({ userID: userID() })
+      search({userID: userID()})
         .then(setItems)
         .catch(err => {
           console.log(err);
-          Alert.alert('ERROR', 'Please try again. If the problem persists contact an administrator.', [{text: 'OK'}]);
+          Alert.alert(
+            'ERROR',
+            'Please try again. If the problem persists contact an administrator.',
+            [{text: 'OK'}],
+          );
         });
-    })
+    });
   }, []);
 
-  const Item = (props) => {
+  const Item = props => {
     return (
-      <TouchableOpacity style={styles.itemTouchable}
-          onPress={() => { navigation.navigate('Edit Donation', { item: props }); }}>
+      <TouchableOpacity
+        style={styles.itemTouchable}
+        onPress={() => {
+          navigation.navigate('Edit Donation', {item: props});
+        }}>
         <View style={styles.itemView}>
           <Text style={styles.itemName}>{props.name}</Text>
           <Text style={styles.itemQuantity}> ( {props.quantity} ) </Text>
@@ -72,21 +86,24 @@ const MyResources = function ({ navigation }) {
       </TouchableOpacity>
     );
   };
-  
+
   if (items.length > 0) {
     return (
-      <FlatList style={styles.flatListView}
+      <FlatList
+        style={styles.flatListView}
         data={items}
-        renderItem={({ item }) => <Item {...item} />}
+        renderItem={({item}) => <Item {...item} />}
         keyExtractor={item => item.id || item['_id']}
       />
-    )
+    );
   } else {
     return (
       <View style={styles.emptyListView}>
-        <Text style={styles.emptyListText}>You currently have no donations listed</Text>
+        <Text style={styles.emptyListText}>
+          You currently have no donations listed
+        </Text>
       </View>
-    )
+    );
   }
 };
 

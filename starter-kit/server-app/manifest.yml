@@ -1,5 +1,5 @@
 applications:
-- name: Blood-and-plasma-cooperation
+- name: Blaster
   command: npm start
   path: .
   memory: 128M
