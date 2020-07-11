@@ -72,8 +72,11 @@ The IBM Cloud service (Watson Assistant , HERE , Blockchain) can benefit below -
 
 ## The idea
 
-The goal is to provide a mobile application, along with server-side components, that serves as the basis for developers to build out a community cooperation application that addresses local needs for food, equipment, and resources.
-It would allow both "Suppliers" (such as a store or a community member who has produce they can sell or distribute) to make people aware of what the have; and consumers ("Recipients") to locate where these supplies are, and, if necessary, guide them to the appropriate locations to pick them up.
+The goal is - 
+1. To provide a mobile application for Blood Donor to donate & Receiver to find blood available in hospital in your nearest locality and guide them to the appropriate locations.
+2. Build a common and shared blood bank blockchian network which will be used by Blood bank , Hospital , Donor , Receiver , NGO , Red cross.
+3. Centralized Report for government to track the stock of the blood and analysis and focused blood donation schemes
+4. The increase the blood donation by different initiative and Donor incentivize. 
 
 ## How it works
 
