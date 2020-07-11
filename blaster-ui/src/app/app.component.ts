@@ -3,6 +3,7 @@ import { Donation } from "./model/donation";
 import { FormControl, FormGroup } from "@angular/forms";
 import { DonationStatus } from "./model/enums";
 import { CloudantService } from "./cloudant.service";
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: "app-root",
@@ -20,16 +21,18 @@ export class AppComponent {
   noOfDonations = 0;
 
   constructor(private cloudantService: CloudantService) {
-    this.cloudantService.getDocs().subscribe((response: any) => {
-      console.log(response.rows[0].doc);
-      this.noOfDonations = response.rows.length;
-      this.donations = [];
+    this.cloudantService
+      .getDocs(environment.BLASTER_DB)
+      .subscribe((response: any) => {
+        console.log(response.rows[0].doc);
+        this.noOfDonations = response.rows.length;
+        this.donations = [];
 
-      response.rows.forEach((row) => {
-        this.donations.push(row.doc as Donation);
-        this.donation = this.donations[0];
+        response.rows.forEach((row) => {
+          this.donations.push(row.doc as Donation);
+          this.donation = this.donations[0];
+        });
       });
-    });
   }
 
   selectDonation(donation: Donation) {

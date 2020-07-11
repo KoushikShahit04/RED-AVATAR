@@ -24,8 +24,8 @@ export class CloudantService {
    * Create a new database in the cloudant instance
    * @param db database name
    */
-  createDB(): Observable<{}> {
-    const url = `${environment.CLOUDANT_URL}/${environment.CLOUDANT_DB}`;
+  createDB(db: string): Observable<{}> {
+    const url = `${environment.CLOUDANT_URL}/${db}`;
     return this.http.put(url, "", this.httpOptions);
   }
 
@@ -35,9 +35,9 @@ export class CloudantService {
    * @param docId document id
    * @param doc document to create
    */
-  createDoc(doc: string): Observable<HttpResponse<string>> {
+  createDoc(db: string, doc: string): Observable<HttpResponse<string>> {
     console.log("Creating doc: " + doc);
-    const url = `${environment.CLOUDANT_URL}/${environment.CLOUDANT_DB}`;
+    const url = `${environment.CLOUDANT_URL}/${db}`;
     console.log(url);
     return this.http.post<HttpResponse<string>>(url, doc, this.httpOptions);
   }
@@ -47,8 +47,8 @@ export class CloudantService {
    * @param db database name
    * @param docId document id
    */
-  getDocs(): Observable<HttpResponse<string>> {
-    const url = `${environment.CLOUDANT_URL}/${environment.CLOUDANT_DB}/_all_docs?include_docs=true`;
+  getDocs(db: string): Observable<HttpResponse<string>> {
+    const url = `${environment.CLOUDANT_URL}/${db}/_all_docs?include_docs=true`;
     return this.http.get<HttpResponse<string>>(url, this.httpOptions);
   }
 
@@ -57,8 +57,8 @@ export class CloudantService {
    * @param db database name
    * @param docId document id
    */
-  getDoc(docId: string): Observable<HttpResponse<string>> {
-    const url = `${environment.CLOUDANT_URL}/${environment.CLOUDANT_DB}/${docId}`;
+  getDoc(db: string, docId: string): Observable<HttpResponse<string>> {
+    const url = `${environment.CLOUDANT_URL}/${db}/${docId}`;
     return this.http.get<HttpResponse<string>>(url, this.httpOptions);
   }
 
@@ -68,8 +68,12 @@ export class CloudantService {
    * @param docId document id
    * @param doc document to update
    */
-  updateDoc(docId: string, doc: string): Observable<HttpResponse<string>> {
-    const url = `${environment.CLOUDANT_URL}/${environment.CLOUDANT_DB}/${docId}`;
+  updateDoc(
+    db: string,
+    docId: string,
+    doc: string
+  ): Observable<HttpResponse<string>> {
+    const url = `${environment.CLOUDANT_URL}/${db}/${docId}`;
     return this.http.post<HttpResponse<string>>(url, doc, this.httpOptions);
   }
 
@@ -79,7 +83,7 @@ export class CloudantService {
    * @param docId document id
    */
   deleteDoc(docId: string): Observable<HttpResponse<string>> {
-    const url = `${environment.CLOUDANT_URL}/${environment.CLOUDANT_DB}/${docId}`;
+    const url = `${environment.CLOUDANT_URL}/${environment.BLASTER_DB}/${docId}`;
     return this.http.delete<HttpResponse<string>>(url, this.httpOptions);
   }
 }
