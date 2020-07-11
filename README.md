@@ -42,7 +42,7 @@ The Mobile, Web, Blockchain network and cloud service can help in addressing the
 4.	Lack of accessibility of data of blood stock
 
 The IBM Cloud service (Watson Assistant , HERE , Blockchain) can benefit below -
-#### Benefit to Donor
+###### Benefit to Donor
 1.	Unified blood donation history across blood banks for Donors.
 2.	With digitization, donors can avail donation benefits without having to register and donate under multiple organizations.
 3.	Donor can register to get alerts and reminders for upcoming blood donation drive.
