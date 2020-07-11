@@ -54,6 +54,8 @@ It would allow both "Suppliers" (such as a store or a community member who has p
 
 ## Diagrams
 
+### The architecture
+
 ![Cooperation architecture diagram](/images/architecture-diagram.png)
 
 1.	Blood Donor/Receiver use the mobile app for voluntary blood donation, receiver can finding donor, hospital for blood availability. 
@@ -62,7 +64,9 @@ It would allow both "Suppliers" (such as a store or a community member who has p
 4.	All Hospital and Blood Bank will maintain the bloodstock, Donor, Receiver detail in block chain.
 5.	Blood Bank & Hospital detail available across country.
 
+### The Block Chian network
 
+![Cooperation architecture diagram](/images/blockChain-diagram.png)
 
 ## Documents
 
