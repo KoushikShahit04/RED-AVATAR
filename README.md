@@ -35,9 +35,40 @@ What is needed is a solution that empowers citized to easily connect and provide
 
 ### How can technology help?
 
-Mobile, web, and cloud services enable rapid deployment of applications that can empower cooperation in the community. [Watson Assistant](https://www.ibm.com/cloud/watson-assistant/) is a service on [IBM Cloud](https://cloud.ibm.com) that allows you to build, train, and deploy conversational interactions into any application, device, or channel.
+The Mobile, Web, Blockchain network and cloud service can help in addressing the currently Blood donation challenges -
+1.	Lack of collaboration among 2,708 blood banks
+2.	Lack of Transparency among the Donors , Receivers & banks.
+3.	Lack of common shared IT network among the blood banks
+4.	Lack of accessibility of data of blood stock
 
-Creating a chatbot using Watson Assistant can help you address the issues that your users may face while trying to gather the necessary information. Embedding location/routing services (like [HERE](https://developer.here.com/products/routing)) can enhance such applications, giving optimum guidance so that they are outside of their isolation location for the minimum amount of time.
+The IBM Cloud service (Watson Assistant , HERE , Blockchain) can benefit below –
+####Benefit to Donor
+1.	Unified blood donation history across blood banks for Donors.
+2.	With digitization, donors can avail donation benefits without having to register and donate under multiple organizations.
+3.	Donor can register to get alerts and reminders for upcoming blood donation drive.
+Benefit to Recipient
+1.	Instant identification of blood bank with available blood stock.
+2.	Use of contaminated or unauthorized blood bag prevented.
+Benefit to Hospitals
+1.	Easy access to available blood stock by Hospitals, Nursing Homes, etc.
+2.	Blood stock can be managed across Blood Banks.
+3.	Inter-district and inter-state surplus blood stock transfer possible instead of getting expired.
+Benefit to Govt and NGOs
+1.	Govt., NGOs can use the data for planning drives and reward/appreciation for donors.
+2.	Contaminated blood can be traced to the originating blood bank. Regular offenders can be blacklisted.
+3.	Reports can be used by Govt. for any corrective action and/or sanction.
+Block Chain benefits
+1.	Bring Transparency in available Blood stock across Blood Banks, Red cross.
+2.	Bring trust among the Blood Bank , Donor and Receiver.
+3.	Block Chain provides immutable records – which means blood related transactions cannot be altered. 
+     Fraudulent activities can be eliminated.
+    	Unauthorized blood bags and spurious blood can be detected easily.
+    	Contamination can be traced to the source due to the immutable audit trail.
+Affiliate benefits
+1.	Donors can Search and book for blood test in case of identification of blood related disease from donation history.
+2.	During family emergency, users can donate in City A and avail benefit in City B.
+3.	Reward points for blood donation that can be redeemed through affiliate services like blood tests and medical check ups
+
 
 ## The idea
 
