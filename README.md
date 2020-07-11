@@ -56,12 +56,13 @@ It would allow both "Suppliers" (such as a store or a community member who has p
 
 ![Cooperation architecture diagram](/images/architecture-diagram.png)
 
-This solution starter idea combines a chat interface (Watson Assistant), data storage to hold the status of supplies available, and location services with real-time information to get users the information they need.
+1.	Blood Donor/Receiver use the mobile app for voluntary blood donation, receiver can finding donor, hospital for blood availability. 
+2.	User can ask questions to Watson Assistant and get answers on blood and voluntary donor availability questions.
+3.	Authorized Hospital or Blood Bank can obtain geolocation data to plot routes to collect (or drop off) supplies using HERE Location Services.
+4.	All Hospital and Blood Bank will maintain the bloodstock, Donor, Receiver detail in block chain.
+5.	Blood Bank & Hospital detail available across country.
 
-1. The Recipient launches the mobile app and can access information across multiple services.
-1. The Recipient can ask questions to Watson Assistant and get answers on food/service availability questions.
-1. The Supplier can post the availability of stock or services they can provide, as well as locate the items they need.
-1. The Recipient can obtain geolocation data to plot routes to collect (or drop off) supplies using HERE Location Services.
+
 
 ## Documents
 
