@@ -41,6 +41,14 @@ The Mobile, Web, Blockchain network and cloud service can help in addressing the
 3.	Lack of common shared IT network among the blood banks
 4.	Lack of accessibility of data of blood stock
 
+## The idea
+
+The goal is - 
+1. To provide a mobile application for Blood Donor to donate & Receiver to find blood available in hospital in your nearest locality and guide them to the appropriate locations.
+2. Build a common and shared blood bank blockchian network which will be used by Blood bank , Hospital , Donor , Receiver , NGO , Red cross.
+3. Centralized Report for government to track the stock of the blood and analysis and focused blood donation schemes
+4. The increase the blood donation by different initiative and Donor incentivize. 
+### Benefits
 The IBM Cloud service (Watson Assistant , HERE , Blockchain) can benefit below -
 ###### Benefit to Donor
 1.	Unified blood donation history across blood banks for Donors.
@@ -68,15 +76,6 @@ The IBM Cloud service (Watson Assistant , HERE , Blockchain) can benefit below -
 1.	Donors can Search and book for blood test in case of identification of blood related disease from donation history.
 2.	During family emergency, users can donate in City A and avail benefit in City B.
 3.	Reward points for blood donation that can be redeemed through affiliate services like blood tests and medical check ups
-
-
-## The idea
-
-The goal is - 
-1. To provide a mobile application for Blood Donor to donate & Receiver to find blood available in hospital in your nearest locality and guide them to the appropriate locations.
-2. Build a common and shared blood bank blockchian network which will be used by Blood bank , Hospital , Donor , Receiver , NGO , Red cross.
-3. Centralized Report for government to track the stock of the blood and analysis and focused blood donation schemes
-4. The increase the blood donation by different initiative and Donor incentivize. 
 
 ## How it works
 
