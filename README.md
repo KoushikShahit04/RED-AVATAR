@@ -46,9 +46,11 @@ It would allow both "Suppliers" (such as a store or a community member who has p
 
 ## How it works
 
-A Supplier (who may be a regular resident, a small business, a voluntary organization, etc.) that has food, supplies, resources, or other essentials they can provide opens the mobile application and fills out a brief form that indicates what they have. This information is then stored in a database in the IBM Cloud.
+1. The Blood Donor, who want to Donate blood or want to register for blood donation open the User Mobile application and fills out the brief form and submit the detail. This information is stored in the database in the IBM Cloud. The Donor can fill the nearest Blood donation center where he want to donate the blood. 
 
-A Recipient, who is in need of food, supplies, resources, or other essentials, opens the mobile application and can use the chat interface to locate supplies near them. For instance, they might type "Where can I find bread?" or "Can someone collect my shopping for me?" The mobile application then accesses the database (after first understanding the question via Watson Assistant) and then displays a map showing locally where they can find what they are looking for.
+2. The Blood Bank/Hospital can access the Donor detail and contact them for collecting the blood. After the testing of the blood completed the Blood bag detail and the Donor detail in stored in Blockchain network.
+
+3. The Blood Recipient, who need the blood , open the mobile application and use the chat interface to locate the Blood Bank/Hospital where the blood is available. Incase the blood is not available, They can submit Emergency blood need form via the Hospital approval application. The Donor will be mail/SMS and if the Donor agree to donate blood the Recipient and Donor can locate each other for blood donation.
 
 ## Diagrams
 
