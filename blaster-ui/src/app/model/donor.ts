@@ -1,11 +1,18 @@
-import { BloodGroup } from "./enums";
+import { BloodGroup, DonorStatus, DonorCategory } from "./enums";
 import { Donation } from "./donation";
+import { DonorAwards } from "./donor.awards";
 
 export class Donor {
   public _id: string;
   public _rev: string;
-  public donorAadhar: string;
+  public donorId: string;
   public donorName: string;
   public bloodGroup: BloodGroup;
-  public donations: Donation[];
+  public donorMobileNumber: string;
+  public donorEmail: string;
+  public donorStatus: DonorStatus;
+  public donorCategory: DonorCategory;
+  public rewardPoint: number;
+  public donationDetails: Donation[];
+  public donorAwards: DonorAwards[];
 }

@@ -1,9 +1,9 @@
-import { Component, OnInit } from "@angular/core";
-import { Donor } from "./model/donor";
-import { FormControl, FormGroup } from "@angular/forms";
-import { DonationStatus } from "./model/enums";
-import { CloudantService } from "./cloudant.service";
+import { Component } from "@angular/core";
+import { FormGroup } from "@angular/forms";
 import { environment } from "src/environments/environment";
+import { CloudantService } from "./cloudant.service";
+import { Donor } from "./model/donor";
+import { BagStatus } from "./model/enums";
 
 @Component({
   selector: "app-root",
@@ -12,7 +12,7 @@ import { environment } from "src/environments/environment";
 })
 export class AppComponent {
   donors: Donor[];
-  donor: Donor;
+  selectedDonor: Donor;
   donorDetailsForm: FormGroup;
   showDetails: boolean = false;
 
@@ -28,25 +28,44 @@ export class AppComponent {
         this.noOfDonations = response.rows.length;
         this.donors = [];
 
-        response.rows.forEach((row) => {
-          this.donors.push(row.doc as Donor);
-          this.donor = this.donors[0];
+        response.rows.forEach((row: any) => {
+          var donor = row.doc as Donor;
+          if (
+            donor.donationDetails != null &&
+            donor.donationDetails.length > 0
+          ) {
+            donor.donationDetails = donor.donationDetails.filter(
+              (donation) =>
+                donation.bagStatus == BagStatus.COLLECTED ||
+                donation.bagStatus == BagStatus.TESTED
+            );
+            if (
+              donor.donationDetails != null &&
+              donor.donationDetails.length > 0
+            ) {
+              this.donors.push(donor);
+            }
+          }
         });
       });
   }
 
-  selectDonation(donation: Donor) {
-    this.donor = donation;
+  selectDonor(donor: Donor) {
+    this.selectedDonor = donor;
     this.showDetails = true;
   }
 
-  approve() {
-    this.donor.donationStatus = DonationStatus.APPROVED;
-    console.log("Updated donation: " + JSON.stringify(this.donor));
+  approve(bagId: string) {
+    this.selectedDonor.donationDetails.find(
+      (donation) => donation.bagId == bagId
+    ).bagStatus = BagStatus.APPROVED;
+    console.log("Updated donation: " + JSON.stringify(this.selectedDonor));
   }
 
-  reject() {
-    this.donor.donationStatus = DonationStatus.REJECTED;
-    console.log("Updated donation: " + JSON.stringify(this.donor));
+  reject(bagId: string) {
+    this.selectedDonor.donationDetails.find(
+      (donation) => donation.bagId == bagId
+    ).bagStatus = BagStatus.REJECTED;
+    console.log("Updated donation: " + JSON.stringify(this.selectDonor));
   }
 }

@@ -1,8 +1,7 @@
-import { DonorStatus, DonationStatus } from "./enums";
+import { BagStatus } from "./enums";
 export class Donation {
+  public bagId: string;
   public donationDate: Date;
-  public donorStatus: DonorStatus;
-  public donorMobileNumber: string;
-  public donorEmail: string;
-  public donationStatus: DonationStatus;
+  public bagStatus: BagStatus;
+  public collectedInstitute: string;
 }

@@ -9,15 +9,24 @@ export enum BloodGroup {
   O_NEGATIVE = "O-",
 }
 
-export enum DonationStatus {
-  INITIAL = "REGISTERED",
+export enum BagStatus {
+  REGISTERED = "REGISTERED",
   COLLECTED = "COLLECTED",
   TESTED = "TESTED",
   APPROVED = "APPROVED",
   REJECTED = "REJECTED",
+  ISSUED = "ISSUED",
+  USED = "USED",
 }
 
 export enum DonorStatus {
   BLOCKED = "BLOCKED",
   ACTIVE = "ACTIVE",
+}
+
+export enum DonorCategory {
+  PLATINUM = "PLATINUM",
+  GOLD = "GOLD",
+  SILVER = "SILVER",
+  BRONZE = "BRONZE",
 }
