@@ -27,7 +27,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let donation of donations | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize"
+            <tr *ngFor="let donation of donors | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize"
               (click)="selectDonation(donation)">
               <td>{{donation.donorName}}</td>
               <td>{{donation.bloodGroup}}</td>
@@ -67,7 +67,9 @@
             </div>
             <div class="row">
               <div class="col-3"> <label>Email Id: </label> </div>
-              <div class="col-9"> <span>{{donation.donorEmail}}</span> </div>
+              <div class="col-3"> <span>{{donation.donorEmail}}</span> </div>
+              <div class="col-3"> <label>Stage: </label></div>
+              <div class="col-3"> <span>Registered</span></div>
             </div>
           </div>
           <div class="card-footer bg-primary">

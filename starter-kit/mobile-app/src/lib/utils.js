@@ -48,6 +48,7 @@ export const add = item => {
     body: JSON.stringify(item),
   }).then(response => {
     if (!response.ok) {
+      console.log(response.text);
       throw new Error(
         response.statusText || response.message || response.status,
       );

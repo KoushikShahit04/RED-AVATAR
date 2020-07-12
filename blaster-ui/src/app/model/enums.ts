@@ -10,11 +10,14 @@ export enum BloodGroup {
 }
 
 export enum DonationStatus {
-  INITIAL = "INITIAL",
+  INITIAL = "REGISTERED",
+  COLLECTED = "COLLECTED",
+  TESTED = "TESTED",
   APPROVED = "APPROVED",
   REJECTED = "REJECTED",
 }
 
 export enum DonorStatus {
   BLOCKED = "BLOCKED",
+  ACTIVE = "ACTIVE",
 }
