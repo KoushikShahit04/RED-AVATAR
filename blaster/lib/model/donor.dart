@@ -1,33 +1,59 @@
-class Donor {
-  String donorAadhar;
-  String donorName;
-  String donorEmail;
-  String bloodGroup;
-  String donationDate;
-  String donorMobileNumber;
+import 'package:blaster/helper/helper.dart';
+import 'package:blaster/model/award.dart';
+import 'package:blaster/model/donation.dart';
+import 'package:blaster/model/enums.dart';
 
-  Donor.create()
-      : donorAadhar = null,
+class Donor {
+  String donorId;
+  String donorName;
+  String bloodGroup;
+  DonorStatus donorStatus;
+  String donorMobileNumber;
+  String donorEmail;
+  DonorCategory donorCategory;
+  String rewardPoint;
+  List<Donation> donationDetails;
+  List<Award> donorAwards;
+
+  Donor(String id)
+      : donorId = id,
         donorName = null,
-        donorEmail = null,
         bloodGroup = null,
-        donationDate = null,
-        donorMobileNumber = null;
+        donorStatus = null,
+        donorMobileNumber = null,
+        donorEmail = null,
+        donorCategory = null,
+        rewardPoint = null,
+        donationDetails = null,
+        donorAwards = null;
 
   Donor.fromJson(Map<String, dynamic> json)
-      : donorAadhar = json['donorAadhar'],
+      : donorId = json['donorId'],
         donorName = json['donorName'],
-        donorEmail = json['donorEmail'],
         bloodGroup = json['bloodGroup'],
-        donationDate = json['donationDate'],
-        donorMobileNumber = json['donorMobileNumber'];
+        donorStatus = enumFromString(json['donorStatus'], DonorStatus.values),
+        donorMobileNumber = json['donorMobileNumber'],
+        donorEmail = json['donorEmail'],
+        donorCategory =
+            enumFromString(json['donorCategory'], DonorCategory.values),
+        rewardPoint = json['rewardPoint'],
+        donationDetails = (json['donationDetails'] as List<dynamic>)
+            .map((e) => Donation.fromJson(e as Map<String, dynamic>))
+            .toList(),
+        donorAwards = (json['donorAwards'] as List<dynamic>)
+            .map((e) => Award.fromJson(e as Map<String, dynamic>))
+            .toList();
 
   Map<String, dynamic> toJson() => {
-        'donorAadhar': donorAadhar,
+        'donorId': donorId,
         'donorName': donorName,
-        'donorEmail': donorEmail,
         'bloodGroup': bloodGroup,
-        'donationDate': donationDate,
-        'donorMobileNumber': donorMobileNumber
+        'donorStatus': enumToString(donorStatus),
+        'donorMobileNumber': donorMobileNumber,
+        'donorEmail': donorEmail,
+        'donorCategory': enumToString(donorCategory),
+        'rewardPoint': rewardPoint,
+        'donationDetails': donationDetails.map((e) => e.toJson()).toList(),
+        'donorAwards': donorAwards.map((e) => e.toJson()).toList()
       };
 }

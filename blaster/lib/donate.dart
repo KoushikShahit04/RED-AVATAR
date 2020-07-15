@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:developer' as developer;
 import 'dart:io';
 
+import 'package:blaster/model/donation.dart';
 import 'package:blaster/model/donor.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:flutter/material.dart';
@@ -9,49 +10,61 @@ import 'package:intl/intl.dart';
 import 'package:http/http.dart' as http;
 
 class DonatePage extends StatefulWidget {
+  final String donorId;
+  const DonatePage({this.donorId});
+
   @override
-  State<StatefulWidget> createState() => _DonatePageState();
+  State<StatefulWidget> createState() => _DonatePageState(this.donorId);
 }
 
 class _DonatePageState extends State<DonatePage> {
-  final String serverAppUrl = 'http://127.0.0.1:3000/app';
+  String donorId;
+  Donor _donor;
+  String serverAppUrl = 'http://10.0.2.2:3000';
   final _donateBloodFormKey = GlobalKey<FormState>();
   String _selectedBloodGroup = 'A+';
-  Donor _donor = Donor.create();
+
+  _DonatePageState(this.donorId) {
+    _donor = Donor(donorId);
+    _getDonorDetails(this.donorId).then((Donor value) => {
+          _donor = value,
+          _donor.donationDetails.add(Donation()),
+        });
+  }
 
   void _donateBlood() async {
     if (_donateBloodFormKey.currentState.validate()) {
       Scaffold.of(context).showSnackBar(SnackBar(
         content: Text('Saving...'),
       ));
-      _donateBloodFormKey.currentState.save();
-      developer.log('Updated Donor values: ' + _donor.toJson().toString(),
-          level: DiagnosticLevel.debug.index,
-          name: 'blaster.donate.category',
-          time: DateTime.now());
-
-      Map<String, String> headers = {
-        'content-type': 'application/json',
-      };
-
       await _saveData();
     }
   }
 
   Future _saveData() async {
-    HttpClient httpClient = new HttpClient();
-    HttpClientRequest request =
-        await httpClient.postUrl(Uri.parse(serverAppUrl));
-    request.headers.set('content-type', 'application/json');
-    request.add(utf8.encode(json.encode(_donor)));
-    HttpClientResponse response = await request.close();
-    // todo - you should check the response.statusCode
-    String reply = await response.transform(utf8.decoder).join();
-    developer.log("Resposne from server: " + reply,
+    _donateBloodFormKey.currentState.save();
+    developer.log('Updated Donor values: ' + _donor.toJson().toString(),
         level: DiagnosticLevel.debug.index,
         name: 'blaster.donate.category',
         time: DateTime.now());
-    httpClient.close();
+
+    // HttpClient httpClient = new HttpClient();
+    // HttpClientRequest request = await httpClient
+    //     .patchUrl(Uri.parse(serverAppUrl + "/blaster/donor/" + _donor.donorId));
+    // request.headers.set('content-type', 'application/json');
+    // request.add(utf8.encode(_donor.toJson().toString()));
+    // HttpClientResponse response = await request.close();
+    // // todo - you should check the response.statusCode
+    // String reply = await response.transform(utf8.decoder).join();
+    http
+        .patch(serverAppUrl + "/blaster/donor/" + _donor.donorId,
+            headers: {"Content-Type": "text/plain"},
+            body: jsonEncode(_donor.toJson()))
+        .then((http.Response response) => developer.log(
+            "Resposne from server: " + response.body,
+            level: DiagnosticLevel.debug.index,
+            name: 'blaster.donate.category',
+            time: DateTime.now()));
   }
 
   @override
@@ -64,9 +77,10 @@ class _DonatePageState extends State<DonatePage> {
           Container(
             padding: EdgeInsets.all(10.0),
             child: TextFormField(
-              decoration: InputDecoration(labelText: 'Aadhar Number'),
+              initialValue: _donor.donorId,
+              decoration: InputDecoration(labelText: 'Donor Id'),
               keyboardType: TextInputType.number,
-              onSaved: (String value) => _donor.donorAadhar = value,
+              enabled: false,
             ),
           ),
           Container(
@@ -111,8 +125,8 @@ class _DonatePageState extends State<DonatePage> {
                     initialDate: currentValue ?? DateTime.now(),
                     lastDate: DateTime(2100));
               },
-              onSaved: (DateTime value) =>
-                  _donor.donationDate = DateFormat('yyyy-MM-dd').format(value),
+              onSaved: (DateTime value) => _donor.donationDetails[0]
+                  .donationDate = DateFormat('yyyy-MM-dd').format(value),
             ),
           ),
           Container(
@@ -139,5 +153,21 @@ class _DonatePageState extends State<DonatePage> {
         ],
       ),
     );
+  }
+
+  Future<Donor> _getDonorDetails(String donorId) async {
+    HttpClient httpClient = new HttpClient();
+    HttpClientRequest request = await httpClient
+        .getUrl(Uri.parse(serverAppUrl + "/blaster/donor/" + donorId));
+    HttpClientResponse response = await request.close();
+    // todo - you should check the response.statusCode
+    String reply = await response.transform(utf8.decoder).join();
+    developer.log("Donor details : " + reply,
+        level: DiagnosticLevel.debug.index,
+        name: 'blaster.donate.category',
+        time: DateTime.now());
+    httpClient.close();
+
+    return Donor.fromJson((jsonDecode(reply) as List<dynamic>).elementAt(0));
   }
 }

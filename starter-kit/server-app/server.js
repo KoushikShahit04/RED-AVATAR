@@ -7,6 +7,7 @@ const assistant = require("./lib/assistant.js");
 const port = process.env.PORT || 3000;
 
 const cloudant = require("./lib/cloudant.js");
+const cloudant_blaster = require("./lib/cloudant-blaster");
 
 const app = express();
 app.use(bodyParser.json());
@@ -142,12 +143,27 @@ app.post("/api/message", (req, res) => {
  *
  * A list of resource objects will be returned (which can be an empty list)
  */
-app.get("/api/resource", (req, res) => {
-  const type = req.query.type;
-  const name = req.query.name;
-  const userID = req.query.userID;
-  cloudant
-    .find(type, name, userID)
+// app.get("/api/resource", (req, res) => {
+//   const type = req.query.type;
+//   const name = req.query.name;
+//   const userID = req.query.userID;
+//   cloudant
+//     .find(type, name, userID)
+//     .then((data) => {
+//       if (data.statusCode != 200) {
+//         res.sendStatus(data.statusCode);
+//       } else {
+//         res.send(data.data);
+//       }
+//     })
+//     .catch((err) => handleError(res, err));
+// });
+
+app.get("/blaster/donor/:id", (req, res) => {
+  const donorId = req.params.id;
+
+  cloudant_blaster
+    .find(donorId)
     .then((data) => {
       if (data.statusCode != 200) {
         res.sendStatus(data.statusCode);
@@ -158,6 +174,24 @@ app.get("/api/resource", (req, res) => {
     .catch((err) => handleError(res, err));
 });
 
+app.patch("/blaster/donor/:id", (req, res) => {
+  let donor = JSON.parse(req.body);
+  if (!donor._id) {
+    return res
+      .status(422)
+      .json({ errors: "Document id must be provided for update" });
+  }
+  cloudant_blaster
+    .update(donor)
+    .then((data) => {
+      if (data.statusCode != 200) {
+        res.sendStatus(data.statusCode);
+      } else {
+        res.send(data.data);
+      }
+    })
+    .catch((err) => handleError(res, err));
+});
 /**
  * Create a new resource
  *
@@ -177,6 +211,7 @@ app.get("/api/resource", (req, res) => {
  */
 let types = ["Food", "Other", "Help"];
 app.post("/api/resource", (req, res) => {
+  console.log(JSON.stringify(req.body));
   if (!req.body.type) {
     return res.status(422).json({ errors: "Type of item must be provided" });
   }

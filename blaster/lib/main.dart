@@ -13,8 +13,9 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
             primarySwatch: Colors.blue,
             textTheme: TextTheme(
-                body1: TextStyle(fontSize: 20.0),
-                body2: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0))),
+                bodyText1: TextStyle(fontSize: 20.0),
+                bodyText2:
+                    TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0))),
         home: NavApp());
   }
 }
@@ -26,10 +27,13 @@ class NavApp extends StatefulWidget {
 
 class _NavAppState extends State<NavApp> {
   int _selectedPage = 0;
+  static String donorId = 'D1234';
 
   static List<Widget> _widgetOptions = <Widget>[
     HomePage(),
-    DonatePage(),
+    DonatePage(
+      donorId: donorId,
+    ),
     Text('Search Page'),
     Text('Alerts Page'),
   ];

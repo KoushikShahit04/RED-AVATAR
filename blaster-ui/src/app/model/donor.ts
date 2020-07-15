@@ -1,6 +1,6 @@
 import { BloodGroup, DonorStatus, DonorCategory } from "./enums";
 import { Donation } from "./donation";
-import { DonorAwards } from "./donor.awards";
+import { Award } from "./donor.awards";
 
 export class Donor {
   public _id: string;
@@ -14,5 +14,5 @@ export class Donor {
   public donorCategory: DonorCategory;
   public rewardPoint: number;
   public donationDetails: Donation[];
-  public donorAwards: DonorAwards[];
+  public donorAwards: Award[];
 }
