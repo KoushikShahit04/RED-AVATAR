@@ -133,6 +133,27 @@ function find(donorId) {
   });
 }
 
+function findBlood(bloodGroup) {
+  console.log("inside findBlood");
+  return new Promise((resolve, reject) => {
+    let selector = {};
+    if (bloodGroup) {
+      selector["bloodGroup"] = bloodGroup;
+    }
+    selector["donationDetails"] = { $elemMatch: { bagStatus: "APPROVED" } };
+    console.log("Selector in findBlood: " + JSON.stringify(selector));
+
+    db.find({ selector: selector }, (err, documents) => {
+      console.log("Return from DB");
+      if (err) {
+        reject(err);
+      } else {
+        resolve({ data: JSON.stringify(documents.docs), statusCode: 200 });
+      }
+    });
+  });
+}
+
 /**
  * Create a resource with the specified attributes
  *
@@ -192,5 +213,6 @@ module.exports = {
   create: create,
   update: update,
   find: find,
+  findBlood: findBlood,
   info: info,
 };
