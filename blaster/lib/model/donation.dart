@@ -1,23 +1,24 @@
 import 'package:blaster/helper/helper.dart';
 import 'package:blaster/model/enums.dart';
+import 'package:intl/intl.dart';
 
 class Donation {
   String bagId;
-  String donationDate;
+  DateTime donationDate;
   BagStatus bagStatus;
   String collectedInstitute;
 
-  Donation();
+  Donation({this.bagId, this.bagStatus});
 
   Donation.fromJson(Map<String, dynamic> json)
       : bagId = json['bagId'],
-        donationDate = json['donationDate'],
+        donationDate = DateFormat('yyyy-MM-dd').parse(json['donationDate']),
         bagStatus = enumFromString(json['bagStatus'], BagStatus.values),
         collectedInstitute = json['collectedInstitute'];
 
   Map<String, dynamic> toJson() => {
         'bagId': bagId,
-        'donationDate': donationDate.toString(),
+        'donationDate': DateFormat('yyyy-MM-dd').format(donationDate),
         'bagStatus': enumToString(bagStatus),
         'collectedInstitute': collectedInstitute
       };

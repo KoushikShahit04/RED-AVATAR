@@ -4,6 +4,8 @@ import 'package:blaster/model/donation.dart';
 import 'package:blaster/model/enums.dart';
 
 class Donor {
+  String _id;
+  String _rev;
   String donorId;
   String donorName;
   String bloodGroup;
@@ -15,20 +17,16 @@ class Donor {
   List<Donation> donationDetails;
   List<Award> donorAwards;
 
-  Donor(String id)
-      : donorId = id,
-        donorName = null,
-        bloodGroup = null,
-        donorStatus = null,
-        donorMobileNumber = null,
-        donorEmail = null,
-        donorCategory = null,
-        rewardPoint = null,
-        donationDetails = null,
-        donorAwards = null;
+  Donor();
+
+  String get rev => _rev;
+
+  String get id => _id;
 
   Donor.fromJson(Map<String, dynamic> json)
-      : donorId = json['donorId'],
+      : _id = json['_id'],
+        _rev = json['_rev'],
+        donorId = json['donorId'],
         donorName = json['donorName'],
         bloodGroup = json['bloodGroup'],
         donorStatus = enumFromString(json['donorStatus'], DonorStatus.values),
@@ -45,6 +43,8 @@ class Donor {
             .toList();
 
   Map<String, dynamic> toJson() => {
+        '_id': _id,
+        '_rev': _rev,
         'donorId': donorId,
         'donorName': donorName,
         'bloodGroup': bloodGroup,

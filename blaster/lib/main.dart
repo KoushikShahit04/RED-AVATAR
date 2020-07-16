@@ -1,6 +1,7 @@
-import 'package:blaster/donate.dart';
+import 'package:blaster/pages/donate.dart';
+import 'package:blaster/pages/search.dart';
 import 'package:flutter/material.dart';
-import 'home.dart';
+import 'package:blaster/pages/home.dart';
 
 void main() => runApp(MyApp());
 
@@ -27,14 +28,11 @@ class NavApp extends StatefulWidget {
 
 class _NavAppState extends State<NavApp> {
   int _selectedPage = 0;
-  static String donorId = 'D1234';
 
   static List<Widget> _widgetOptions = <Widget>[
     HomePage(),
-    DonatePage(
-      donorId: donorId,
-    ),
-    Text('Search Page'),
+    DonatePage(),
+    SearchPage(),
     Text('Alerts Page'),
   ];
 

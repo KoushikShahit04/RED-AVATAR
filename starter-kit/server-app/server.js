@@ -7,7 +7,7 @@ const assistant = require("./lib/assistant.js");
 const port = process.env.PORT || 3000;
 
 const cloudant = require("./lib/cloudant.js");
-const cloudant_blaster = require("./lib/cloudant-blaster");
+const blaster_db = require("./lib/blaster_db");
 
 const app = express();
 app.use(bodyParser.json());
@@ -162,7 +162,7 @@ app.post("/api/message", (req, res) => {
 app.get("/blaster/donor/:id", (req, res) => {
   const donorId = req.params.id;
 
-  cloudant_blaster
+  blaster_db
     .find(donorId)
     .then((data) => {
       if (data.statusCode != 200) {
@@ -175,15 +175,22 @@ app.get("/blaster/donor/:id", (req, res) => {
 });
 
 app.patch("/blaster/donor/:id", (req, res) => {
-  let donor = JSON.parse(req.body);
-  if (!donor._id) {
+  console.log(req.body);
+  let donor = req.body;
+  if (!donor.donorId) {
     return res
       .status(422)
-      .json({ errors: "Document id must be provided for update" });
+      .json({ errors: "Donor id must be provided for update" });
   }
-  cloudant_blaster
+  if (!donor._rev) {
+    return res
+      .status(422)
+      .json({ errors: "_rev must be provided for updates" });
+  }
+  blaster_db
     .update(donor)
     .then((data) => {
+      console.log("Data from update: " + data);
       if (data.statusCode != 200) {
         res.sendStatus(data.statusCode);
       } else {

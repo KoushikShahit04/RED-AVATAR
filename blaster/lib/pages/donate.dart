@@ -4,32 +4,47 @@ import 'dart:io';
 
 import 'package:blaster/model/donation.dart';
 import 'package:blaster/model/donor.dart';
+import 'package:blaster/model/enums.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:http/http.dart' as http;
 
 class DonatePage extends StatefulWidget {
-  final String donorId;
-  const DonatePage({this.donorId});
-
   @override
-  State<StatefulWidget> createState() => _DonatePageState(this.donorId);
+  State<StatefulWidget> createState() => _DonatePageState();
 }
 
 class _DonatePageState extends State<DonatePage> {
-  String donorId;
-  Donor _donor;
+  String _donorId = "D1234";
+  var donor = new Donor();
+  var donation = new Donation();
   String serverAppUrl = 'http://10.0.2.2:3000';
   final _donateBloodFormKey = GlobalKey<FormState>();
   String _selectedBloodGroup = 'A+';
 
-  _DonatePageState(this.donorId) {
-    _donor = Donor(donorId);
-    _getDonorDetails(this.donorId).then((Donor value) => {
-          _donor = value,
-          _donor.donationDetails.add(Donation()),
-        });
+  // Text controllers
+  var donorIdTextController = new TextEditingController(text: "D1234");
+  var donorNameTextController = new TextEditingController();
+  var mobileTextController = new TextEditingController();
+  var emailTextController = new TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+
+    _getDonorDetails(_donorId).then((value) {
+      setState(() {
+        donor = value;
+        donation =
+            new Donation(bagId: "B1238", bagStatus: BagStatus.REGISTERED);
+        donor.donationDetails.add(donation);
+        donorIdTextController.text = donor.donorId;
+        donorNameTextController.text = donor.donorName;
+        mobileTextController.text = donor.donorMobileNumber;
+        emailTextController.text = donor.donorEmail;
+      });
+    });
   }
 
   void _donateBlood() async {
@@ -43,7 +58,7 @@ class _DonatePageState extends State<DonatePage> {
 
   Future _saveData() async {
     _donateBloodFormKey.currentState.save();
-    developer.log('Updated Donor values: ' + _donor.toJson().toString(),
+    developer.log('Updated Donor values: ' + donor.toJson().toString(),
         level: DiagnosticLevel.debug.index,
         name: 'blaster.donate.category',
         time: DateTime.now());
@@ -57,14 +72,18 @@ class _DonatePageState extends State<DonatePage> {
     // // todo - you should check the response.statusCode
     // String reply = await response.transform(utf8.decoder).join();
     http
-        .patch(serverAppUrl + "/blaster/donor/" + _donor.donorId,
-            headers: {"Content-Type": "text/plain"},
-            body: jsonEncode(_donor.toJson()))
-        .then((http.Response response) => developer.log(
-            "Resposne from server: " + response.body,
-            level: DiagnosticLevel.debug.index,
-            name: 'blaster.donate.category',
-            time: DateTime.now()));
+        .patch(serverAppUrl + "/blaster/donor/" + donor.donorId,
+            headers: {
+              "Content-Type": "application/json",
+              "Accept": "application/json"
+            },
+            body: json.encode(donor.toJson()))
+        .then((http.Response response) => {
+              developer.log("Resposne from server: " + response.body,
+                  level: DiagnosticLevel.debug.index,
+                  name: 'blaster.donate.category',
+                  time: DateTime.now())
+            });
   }
 
   @override
@@ -77,7 +96,7 @@ class _DonatePageState extends State<DonatePage> {
           Container(
             padding: EdgeInsets.all(10.0),
             child: TextFormField(
-              initialValue: _donor.donorId,
+              controller: donorIdTextController,
               decoration: InputDecoration(labelText: 'Donor Id'),
               keyboardType: TextInputType.number,
               enabled: false,
@@ -86,8 +105,9 @@ class _DonatePageState extends State<DonatePage> {
           Container(
             padding: EdgeInsets.all(10.0),
             child: TextFormField(
+              controller: donorNameTextController,
               decoration: InputDecoration(labelText: 'Name'),
-              onSaved: (String value) => _donor.donorName = value,
+              onSaved: (String value) => donor.donorName = value,
             ),
           ),
           Container(
@@ -110,12 +130,13 @@ class _DonatePageState extends State<DonatePage> {
                   _selectedBloodGroup = newValue;
                 });
               },
-              onSaved: (String value) => _donor.bloodGroup = value,
+              onSaved: (String value) => donor.bloodGroup = value,
             ),
           ),
           Container(
             padding: EdgeInsets.all(10.0),
             child: DateTimeField(
+              initialValue: DateTime.now(),
               decoration: InputDecoration(labelText: 'Donation Date'),
               format: DateFormat("dd-MMM-yyyy"),
               onShowPicker: (context, currentValue) {
@@ -125,24 +146,25 @@ class _DonatePageState extends State<DonatePage> {
                     initialDate: currentValue ?? DateTime.now(),
                     lastDate: DateTime(2100));
               },
-              onSaved: (DateTime value) => _donor.donationDetails[0]
-                  .donationDate = DateFormat('yyyy-MM-dd').format(value),
+              onSaved: (DateTime value) => donation.donationDate = value,
             ),
           ),
           Container(
             padding: EdgeInsets.all(10.0),
             child: TextFormField(
+              controller: mobileTextController,
               decoration: InputDecoration(labelText: 'Mobile Number'),
               keyboardType: TextInputType.number,
-              onSaved: (String value) => _donor.donorMobileNumber = value,
+              onSaved: (String value) => donor.donorMobileNumber = value,
             ),
           ),
           Container(
             padding: EdgeInsets.all(10.0),
             child: TextFormField(
+              controller: emailTextController,
               decoration: InputDecoration(labelText: 'Email'),
               keyboardType: TextInputType.emailAddress,
-              onSaved: (String value) => _donor.donorEmail = value,
+              onSaved: (String value) => donor.donorEmail = value,
             ),
           ),
           RaisedButton(
