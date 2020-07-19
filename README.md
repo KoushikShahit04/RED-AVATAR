@@ -244,7 +244,7 @@ To run the mobile application (using the Xcode iOS Simulator or Android Studio E
 
 With the application running in the simulator/emulator, you should be able to navigate through the various screens:
 
-![Intro Screen](/images/0-screen-home.png) ![Intro Screen](/images/0-new-screen-home.png)
+![Intro Screen](/images/0-new-screen-home.png)
 ![Donate Screen](/images/1-screen-donate.png)
 ![Search Screen](/images/2-screen-search.png)
 ![Chat Screen](/images/5-screen-chat.png)
