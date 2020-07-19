@@ -6,6 +6,7 @@ import 'package:blaster/model/donation.dart';
 import 'package:blaster/model/donor.dart';
 import 'package:blaster/model/enums.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart' as urlLauncher;
 import 'package:http/http.dart' as http;
 
 class SearchPage extends StatefulWidget {
@@ -105,40 +106,57 @@ class _SearchPageState extends State<SearchPage> {
       child: Container(
         decoration: BoxDecoration(color: Colors.blue),
         child: ListTile(
-          contentPadding:
-              EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-          leading: Container(
-            padding: EdgeInsets.only(right: 12.0),
-            decoration: BoxDecoration(
-              border: Border(
-                right: BorderSide(width: 1.0, color: Colors.white24),
+            contentPadding:
+                EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+            leading: Container(
+              padding: EdgeInsets.only(right: 12.0),
+              decoration: BoxDecoration(
+                border: Border(
+                  right: BorderSide(width: 1.0, color: Colors.white24),
+                ),
+              ),
+              child: Text(
+                results[index].bloodGroup,
+                style: TextStyle(color: Colors.white),
               ),
             ),
-            child: Text(
-              results[index].bloodGroup,
-              style: TextStyle(color: Colors.white),
+            title: Text(
+              _getInstituteName(results[index].instituteId),
+              style:
+                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center,
             ),
-          ),
-          title: Text(
-            _getInstituteName(results[index].instituteId),
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-            textAlign: TextAlign.center,
-          ),
-          subtitle: Row(
-            children: <Widget>[
-              Icon(Icons.pin_drop, color: Colors.blueAccent),
-              Text(
-                  results[index].latLong.latitute.toString() +
-                      ", " +
-                      results[index].latLong.longitude.toString(),
-                  style: TextStyle(color: Colors.white, fontSize: 15.0))
-            ],
-          ),
-          trailing:
-              Icon(Icons.keyboard_arrow_right, color: Colors.white, size: 30.0),
-        ),
+            subtitle: Row(
+              children: <Widget>[
+                Icon(Icons.pin_drop, color: Colors.blueAccent),
+                Text(
+                    results[index].latLong.latitute.toString() +
+                        ", " +
+                        results[index].latLong.longitude.toString(),
+                    style: TextStyle(color: Colors.white, fontSize: 15.0))
+              ],
+            ),
+            trailing: IconButton(
+                icon: Icon(Icons.keyboard_arrow_right,
+                    color: Colors.white, size: 30.0),
+                onPressed: () => _openMap(results[index].latLong))),
       ),
     );
+  }
+
+  void _openMap(LatLong latLong) async {
+    double latitude = latLong.latitute;
+    double longitude = latLong.longitude;
+    String googleUrl =
+        'https://www.google.com/maps/search/?api=1&query=$latitude,$longitude';
+
+    if (await urlLauncher.canLaunch(googleUrl)) {
+      await urlLauncher.launch(googleUrl);
+    } else {
+      Scaffold.of(context).showSnackBar(SnackBar(
+        content: Text('Could not find any maching blood'),
+      ));
+    }
   }
 
   String _getInstituteName(String instId) {

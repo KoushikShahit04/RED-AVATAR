@@ -42,7 +42,7 @@ class _NavAppState extends State<NavApp> {
     return Scaffold(
       appBar: AppBar(
         title: Align(
-          child: Text('Blaster'),
+          child: Text('Red Avatar'),
           alignment: Alignment.topCenter,
         ),
       ),
