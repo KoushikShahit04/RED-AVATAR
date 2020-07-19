@@ -53,7 +53,7 @@ The goal is -
 
 ### Demo video (TODO : After Manas create the video , uplaod to youtube and give the link)
 
-[![Watch the video](https://github.com/Code-and-Response/Liquid-Prep/blob/master/images/IBM-interview-video-image.png)](https://youtu.be/vOgCOoy_Bx0)
+[![Watch the video]](https://youtu.be/vOgCOoy_Bx0)
 
 ### Benefits
 
