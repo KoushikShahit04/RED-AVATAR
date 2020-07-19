@@ -6,6 +6,7 @@ This solution starter was created by technologists from Infosys.
 
 - Koushik Shah
 - Ansuman Parija
+- Manas Tripathy 
 - Sudarshan Debnath
 
 
