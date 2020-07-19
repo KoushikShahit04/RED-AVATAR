@@ -215,15 +215,6 @@ With the application running in the simulator/emulator, you should be able to na
 ![Map1 Screen](/images/3-screen-map.png)
 ![Map2 Screen](/images/4-screen-map.png)
 
-## Resources
-
-- [IBM Cloud](https://www.ibm.com/cloud)
-- [Watson Assistant](https://cloud.ibm.com/docs/assistant?topic=assistant-getting-started)
-- [IBM Cloudant](https://cloud.ibm.com/docs/Cloudant?topic=cloudant-overview)
-- [HERE Location Services](https://developer.here.com/documentation)
-- [Node.js](https://nodejs.org)
-- [React Native](https://reactnative.dev/)
-- [IBM Blockchain for Developers](https://developer.ibm.com/technologies/blockchain/)
 
 ## License
 
