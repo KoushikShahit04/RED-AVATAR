@@ -155,10 +155,9 @@ Log in to IBM Cloud and provision a Watson Assistant instance.
 Log into the IBM Cloud and provision a [CouchDB instance using Cloudant](https://www.ibm.com/cloud/cloudant).
 
 1. From the catalog, select Databases and then the Cloudant panel.
-1. Once selected, you can choose your Cloudant plan -- there is a free tier for simple testing that is sufficient to run this CIR example. You should choose an appropriate region, give the service a name, and it is recommended you choose **Use only IAM** under **Available authentication methods**. You can leave the other settings with their defaults. Click the blue **Create** button when ready.We have created blaster_cloudant instance for our usecase.
-1. Once your Cloudant instance has been created, you need to create a service credential that the CIR API Server can use to communicate with it. By selecting your running Cloudant instance, you can choose **Service credentials** from the left-hand menu. Create a new service credential and give it a name (it doesn't matter what you call it).
-We have created blaster-cloudant-creds for our usecase.
-1. Once created, you can display the credentials by selecting **view service credentials**, and then copy the credential, so you are ready to paste it into the code of the API server in Step 4.
+1. Once selected, Click the blue **Create** button. We have created **blaster_cloudant** instance for our usecase.
+1. Next create a service credential that the CIR API Server can use to communicate with it. We have created **blaster-cloudant-creds** for our usecase.
+1. Once created, Select **view service credentials**, and then copy the credential, which will be used by API server in Step 4.
 
 ### 3. Run the Blood Bank Web Application.
 
@@ -202,6 +201,9 @@ To Set up Blockchain network on Kubernetes
 1. Connect the network using CLient SDK <https://github.com/IBM/blockchain-network-on-kubernetes#7-connect-the-network-using-client-sdk>.
 1. Deploy the chaincode onto the blockchain network.
 
+## Live demo
+
+You can find a running system to test at [callforcode.mybluemix.net](http://callforcode.mybluemix.net/)
 
 
 With the application running in the simulator/emulator, you should be able to navigate through the various screens:
