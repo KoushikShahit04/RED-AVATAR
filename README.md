@@ -116,7 +116,7 @@ Trusted sources for COVID-19 Information:
 ## Technology
 
 ### IBM Cloud Services
-- [IBM Cloudant](https://cloud.ibm.com/catalog?search=cloudant#search_results)
+- [IBM Cloudant](https://cloud.ibm.com/catalog?search=cloudant#search_results) - The NoSQL database used
 - [Bot Asset Exchange](https://developer.ibm.com/code/exchanges/bots/)
 - [IBM Watson Assistant](https://www.ibm.com/cloud/watson-assistant/)
 - [Making Programmatic Calls from Watson Assistant](https://cloud.ibm.com/docs/assistant?topic=assistant-dialog-webhooks)
