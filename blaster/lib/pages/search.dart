@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'dart:developer' as developer;
 
+import 'package:blaster/model/blockchain.donor.dart';
+import 'package:blaster/model/donation.dart';
 import 'package:blaster/model/donor.dart';
 import 'package:blaster/model/enums.dart';
 import 'package:flutter/material.dart';
@@ -140,28 +142,57 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   void _findBlood() {
+    results = [];
     http.get(serverAppUrl + "/blaster/blood/" + selectedBloodGroup,
         headers: {"Accept": "application/json"}).then((http.Response response) {
       List<Donor> donors =
           List<Map<String, dynamic>>.from(json.decode(response.body))
               .map((Map<String, dynamic> e) => Donor.fromJson(e))
               .toList();
-      List<SearchResult> searchResults = [];
       donors.forEach((donor) {
         if (DonationRequestStatus.REQUESTED == donor.donationRequest.status) {
           SearchResult result = SearchResult(
               bloodGroup: donor.bloodGroup,
               instituteId: donor.donationRequest.donationCenter,
               latLong: LatLong(latitute: 20.305951, longitude: 85.831746));
-          searchResults.add(result);
+          results.add(result);
         }
+      });
+      setState(() {
+        results = results;
+        searched = true;
+      });
+    }).catchError((onError) {
+      Scaffold.of(context).showSnackBar(SnackBar(
+        content: Text('Could not find any maching blood'),
+      ));
+    });
 
-        setState(() {
-          results = searchResults;
-          searched = true;
+    http.get(serverAppUrl + "/blaster/blockchain/" + selectedBloodGroup,
+        headers: {"Accept": "application/json"}).then((http.Response response) {
+      List<BlockchainDonor> donors =
+          List<Map<String, dynamic>>.from(json.decode(response.body))
+              .map((e) => BlockchainDonor.fromJson(e))
+              .toList();
+
+      donors.forEach((donor) {
+        donor.donationDetails
+            .where((donation) => donation.bagStatus == BagStatus.APPROVED)
+            .forEach((donation) {
+          SearchResult searchResult = SearchResult(
+              bloodGroup: donor.bloodGroup,
+              instituteId: donation.collectedInstitute,
+              latLong: LatLong(latitute: 20.305951, longitude: 85.831746));
+          results.add(searchResult);
         });
       });
-      if (donors.isEmpty || searchResults.isEmpty) {
+
+      setState(() {
+        results = results;
+        searched = true;
+      });
+
+      if (results.isEmpty) {
         Scaffold.of(context).showSnackBar(SnackBar(
           content: Text('Could not find any maching blood'),
         ));

@@ -6,8 +6,9 @@ const bodyParser = require("body-parser");
 const assistant = require("./lib/assistant.js");
 const port = process.env.PORT || 3000;
 
-const cloudant = require("./lib/cloudant.js");
-const blaster_db = require("./lib/blaster_db");
+// const cloudant = require("./lib/cloudant.js");
+const blaster_db = require("./lib/blaster_db.js");
+const blockchain_db = require("./lib/blockchain_db.js");
 
 const app = express();
 app.use(bodyParser.json());
@@ -217,6 +218,27 @@ app.get("/blaster/blood/:group", (req, res) => {
     })
     .catch((err) => handleError(res, err));
 });
+
+app.get("/blaster/blockchain/:group", (req, res) => {
+  console.log("Searching blood in blockchain");
+  if (!req.params.group) {
+    return res.status(422).json({ errors: "Blood group must be provided" });
+  }
+
+  const bloodGroup = req.params.group;
+
+  blockchain_db
+    .findBlood(bloodGroup)
+    .then((data) => {
+      if (data.statusCode != 200) {
+        res.sendStatus(data.statusCode);
+      } else {
+        res.send(data.data);
+      }
+    })
+    .catch((err) => handleError(res, err));
+});
+
 /**
  * Create a new resource
  *
