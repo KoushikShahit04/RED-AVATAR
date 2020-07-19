@@ -142,8 +142,7 @@ Trusted sources for Blood Donation crisis:
 
 1. [Set up an instance of Watson Assistant](#1-set-up-an-instance-of-watson-assistant).
 1. [Provision a CouchDB instance using Cloudant](#2-Provision-a-CouchDB-instance-using-Cloudant).
-1. [Generate an API Key from the HERE Developer Portal](#3-generate-an-api-key-from-the-here-developer-portal).
-1. [Run the server](#4-run-the-server).
+1. [Run the Blood Bank Web application](#4-Run-the-Blood-Bank-Web-Application.).
 1. [Run the mobile application](#5-run-the-mobile-application).
 
 ### 1. Set up an instance of Watson Assistant
@@ -174,7 +173,7 @@ The application uses HERE Location Services for maps, searching, and routing.
 
 To access these services, you'll need an API key. Follow the instructions outlined in the [HERE Developer Portal](https://developer.here.com/ref/IBM_starterkit_Covid?create=Freemium-Basic) to [generate a JavaScript API key](https://developer.here.com/documentation/authentication/dev_guide/topics/api-key-credentials.html).
 
-### 4. Run the server
+### 4. Run the Blood Bank Web Application.
 
 To set up and launch the server application:
 
