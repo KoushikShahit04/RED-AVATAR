@@ -135,8 +135,10 @@ Trusted sources for Blood Donation crisis:
 
 1. [Set up an instance of Watson Assistant](#1-set-up-an-instance-of-watson-assistant).
 1. [Provision a CouchDB instance using Cloudant](#2-Provision-a-CouchDB-instance-using-Cloudant).
-1. [Run the Blood Bank Web application](#4-Run-the-Blood-Bank-Web-Application).
-1. [Run the mobile application](#5-run-the-mobile-application).
+1. [Run the Blood Bank Web application](#3-Run-the-Blood-Bank-Web-Application).
+1. [Run the mobile application](#4-run-the-mobile-application).
+1. [Provision Blockchain network using IKS](#5-provision-blockchain-network-using-iks).
+
 
 ### 1. Set up an instance of Watson Assistant
 
@@ -160,7 +162,7 @@ Log into the IBM Cloud and provision a [CouchDB instance using Cloudant](https:/
 1. Once your Cloudant instance has been created, you need to create a service credential that the CIR API Server can use to communicate with it. By selecting your running Cloudant instance, you can choose **Service credentials** from the left-hand menu. Create a new service credential and give it a name (it doesn't matter what you call it).
 1. Once created, you can display the credentials by selecting **view service credentials**, and then copy the credential, so you are ready to paste it into the code of the API server in Step 4.
 
-### 4. Run the Blood Bank Web Application.
+### 3. Run the Blood Bank Web Application.
 
  - To deploy to IBM Cloud:
     1. Log in to your IBM Cloud account using the IBM Cloud CLI: `ibmcloud login`.
@@ -171,7 +173,7 @@ Log into the IBM Cloud and provision a [CouchDB instance using Cloudant](https:/
     1. Create a Build and Deploy stage  with custom job to build Angular app.
     1. The server can be accessed using the URL  <https://blast-ui.eu-gb.mybluemix.net>.
 
-### 5. Run the mobile application
+### 4. Run the mobile application
 
 To run the mobile application (using the Xcode iOS Simulator or Android Studio Emulator):
 
@@ -192,6 +194,12 @@ To run the mobile application (using the Xcode iOS Simulator or Android Studio E
             > **Note**: You should be running at least iOS 13.0. The first time you launch the simulator, you should ensure that you set a Location in the Features menu.
         - **Android only**: `npm run android`
             > **Note**: Your Android Studio needs to have the `Android 9 (Pie)` SDK and a `Pie API Level 28` virtual device
+            
+### 5. Provision Blockchain network using IKS
+    1. Set up Kubernetes cluster on IBM Cloud <https://cloud.ibm.com/kubernetes/clusters>.
+    1. Deploy Hyperledger Fabric Network into Kubernetes Cluster <https://github.com/IBM/blockchain-network-on-kubernetes#2-setting-up-clis>.
+    1. Connect the network using CLient SDK <https://github.com/IBM/blockchain-network-on-kubernetes#7-connect-the-network-using-client-sdk>.
+
 
 With the application running in the simulator/emulator, you should be able to navigate through the various screens:
 
