@@ -123,8 +123,7 @@ Trusted sources for COVID-19 Information:
 - [Build a Chatbot For Your Mobile App](https://developer.ibm.com/technologies/mobile/patterns/building-a-chatbot-with-kubernetes-watson-assistant-and-elastic-search)
 - Flutter link
 - [Building successful mobile apps article series](https://developer.ibm.com/series/building-successful-mobile-apps/)
-- [blockchain network on kubernetes](https://github.com/IBM/blockchain-network-on-kubernetes#2-setting-up-clis)
-- [IBM Block Chain Services](https://www.ibm.com/in-en/blockchain)
+- [IBM blockchain network on kubernetes](https://github.com/IBM/blockchain-network-on-kubernetes#2-setting-up-clis)
 - [IBM DEVOPS TOOLCHAIN ](https://www.ibm.com/cloud/devops)
 
 ### HERE Technologies
