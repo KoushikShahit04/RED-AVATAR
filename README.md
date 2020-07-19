@@ -107,22 +107,28 @@ The IBM Cloud service (Watson Assistant , HERE , Blockchain) can benefit below -
 
 ## Documents
 
-Trusted sources for COVID-19 Information:
-- [CDC COVID-19 FAQ](https://www.cdc.gov/coronavirus/2019-ncov/faq.html)
-- [WHO COVID-19 page](https://www.who.int/health-topics/coronavirus)
-- [Johns Hopkins University Coronavirus (includes tracking map)](https://coronavirus.jhu.edu)
-- [National Foundation for Infectious Diseases](https://www.nfid.org/infectious-diseases/frequently-asked-questions-about-novel-coronavirus-2019-ncov/)
+Trusted sources for Blood Donation crisis:
+- [Covid 19 blood shortage burden](https://health.economictimes.indiatimes.com/news/industry/covid-19-blood-shortage-adding-to-the-healthcare-burden/75461947)
+- [Pandemic leaves Delhi blood banks parched, hospitals rely on in-house donations](https://indianexpress.com/article/cities/delhi/delhi-coronavirus-updates-blood-banks-hospitals-6490864/)
+- [Assam will give preferential treatment in govt jobs and schemes to plasma donors](https://economictimes.indiatimes.com/news/politics-and-nation/assam-will-give-preferential-treatment-in-govt-jobs-and-schemes-to-plasma-donors/articleshow/77005450.cms)
+- [Maharashtra Government Warns People Of Possible Plasma Racket](https://www.ndtv.com/india-news/coronavirus-maharashtra-government-warns-people-of-possible-plasma-racket-2263536)
+- [Blood Sortage Data In India](https://en.wikipedia.org/wiki/Blood_donation_in_India)
+- [Blood banks waste 2.8 million units](https://timesofindia.indiatimes.com/city/mumbai/blood-banks-waste-2-8m-units-in-5-yrs/articleshow/58333394.cms)
 
 ## Technology
 
 ### IBM Cloud Services
- 
+- [IBM Cloudant](https://cloud.ibm.com/catalog?search=cloudant#search_results) - The NoSQL database used
 - [Bot Asset Exchange](https://developer.ibm.com/code/exchanges/bots/)
 - [IBM Watson Assistant](https://www.ibm.com/cloud/watson-assistant/)
 - [Making Programmatic Calls from Watson Assistant](https://cloud.ibm.com/docs/assistant?topic=assistant-dialog-webhooks)
 - [Build a Chatbot For Your Mobile App](https://developer.ibm.com/technologies/mobile/patterns/building-a-chatbot-with-kubernetes-watson-assistant-and-elastic-search)
-- Flutter link
-- [Building successful mobile apps article series](https://developer.ibm.com/series/building-successful-mobile-apps/)
+- [IBM blockchain network on kubernetes](https://github.com/IBM/blockchain-network-on-kubernetes#2-setting-up-clis)
+- [IBM DEVOPS TOOLCHAIN ](https://www.ibm.com/cloud/devops)
+
+### Framework for Mobile App
+- Flutter
+
 ### HERE Technologies
 
 - [HERE.com API Key](https://developer.here.com/ref/IBM_starterkit_Covid?create=Freemium-Basic)
