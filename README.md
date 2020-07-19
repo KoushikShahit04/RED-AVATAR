@@ -129,13 +129,6 @@ Trusted sources for Blood Donation crisis:
 ### Framework for Mobile App
 - Flutter
 
-### HERE Technologies
-
-- [HERE.com API Key](https://developer.here.com/ref/IBM_starterkit_Covid?create=Freemium-Basic)
-- [HERE Maps](https://developer.here.com/products/maps)
-- [HERE Routing](https://developer.here.com/products/routing)
-- [Integrate interactive maps and location features into your application](https://developer.here.com/documentation/)
-
 ## Getting started
 
 ### Steps
@@ -176,13 +169,13 @@ To access these services, you'll need an API key. Follow the instructions outlin
 ### 4. Run the Blood Bank Web Application.
 
  - To deploy to IBM Cloud:
-            1. Log in to your IBM Cloud account using the IBM Cloud CLI: `ibmcloud login`.
-            1. Target a Cloud Foundry org and space: `ibmcloud target --cf`.
-            1. Create a Devops service.
-            1. Create a Toolchain application with BYOP facility.
-            1. Add Github as the Code Repo,complete required authorization for IBM to connect to Git.
-            1. Create a Build and Deploy stage  with custom job to build Angular app.
-            1. The server can be accessed using the URL  <https://blast-ui.eu-gb.mybluemix.net>.
+    1. Log in to your IBM Cloud account using the IBM Cloud CLI: `ibmcloud login`.
+    1. Target a Cloud Foundry org and space: `ibmcloud target --cf`.
+    1. Create a Devops service.
+    1. Create a Toolchain application with BYOP facility.
+    1. Add Github as the Code Repo,complete required authorization for IBM to connect to Git.
+    1. Create a Build and Deploy stage  with custom job to build Angular app.
+    1. The server can be accessed using the URL  <https://blast-ui.eu-gb.mybluemix.net>.
 
 ### 5. Run the mobile application
 
