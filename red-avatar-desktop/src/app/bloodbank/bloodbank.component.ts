@@ -20,7 +20,7 @@ export class BloodbankComponent implements OnInit {
   selectedDonation: Donation;
   showDetails: boolean = false;
   page = 1;
-  pageSize = 10;
+  pageSize = 5;
   noOfDonations = 0;
   bagStatusList: BagStatus[] = [
     BagStatus.COLLECTED,

@@ -23,7 +23,7 @@ export class RequestComponent implements OnInit {
   instituteName: string = environment.INST_NAME;
 
   page = 1;
-  pageSize = 10;
+  pageSize = 5;
   noOfDonations = 0;
   modalRef: NgbModalRef;
 
