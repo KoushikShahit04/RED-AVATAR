@@ -49,7 +49,7 @@ The goal is -
 2. Build a common and shared blood bank blockchian network which will be used by Blood bank , Hospital , Donor , Receiver , NGO , Red cross.
 3. Centralized Report for government to track the stock of the blood and analysis and focused blood donation schemes
 4. The increase the blood donation by different initiative and Donor incentivize. 
-### Demo video
+### Demo video (TODO : After Manas create the video , uplaod to youtube and give the link)
 [![Watch the video](https://github.com/Code-and-Response/Liquid-Prep/blob/master/images/IBM-interview-video-image.png)](https://youtu.be/vOgCOoy_Bx0)
 
 ### Benefits
