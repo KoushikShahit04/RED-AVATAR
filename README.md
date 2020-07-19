@@ -121,10 +121,11 @@ Trusted sources for COVID-19 Information:
 - [IBM Watson Assistant](https://www.ibm.com/cloud/watson-assistant/)
 - [Making Programmatic Calls from Watson Assistant](https://cloud.ibm.com/docs/assistant?topic=assistant-dialog-webhooks)
 - [Build a Chatbot For Your Mobile App](https://developer.ibm.com/technologies/mobile/patterns/building-a-chatbot-with-kubernetes-watson-assistant-and-elastic-search)
-- Flutter link
-- [Building successful mobile apps article series](https://developer.ibm.com/series/building-successful-mobile-apps/)
 - [IBM blockchain network on kubernetes](https://github.com/IBM/blockchain-network-on-kubernetes#2-setting-up-clis)
 - [IBM DEVOPS TOOLCHAIN ](https://www.ibm.com/cloud/devops)
+
+### Framework for Mobile App
+- Flutter link
 
 ### HERE Technologies
 
