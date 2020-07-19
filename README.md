@@ -125,7 +125,7 @@ Trusted sources for COVID-19 Information:
 - [IBM DEVOPS TOOLCHAIN ](https://www.ibm.com/cloud/devops)
 
 ### Framework for Mobile App
-- Flutter link
+- Flutter
 
 ### HERE Technologies
 
