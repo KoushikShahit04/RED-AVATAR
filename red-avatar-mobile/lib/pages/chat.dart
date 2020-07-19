@@ -7,7 +7,6 @@ class ChatPage extends StatefulWidget {
 }
 
 class _ChatPageState extends State<ChatPage> with TickerProviderStateMixin {
-  String _donorId = "D1234";
   TextEditingController _controller = TextEditingController();
   List<Msg> _messages = <Msg>[];
   bool _isWriting = false;

@@ -1,6 +1,5 @@
 import 'package:blaster/helper/helper.dart';
 import 'package:blaster/model/award.dart';
-import 'package:blaster/model/donation.dart';
 import 'package:blaster/model/donation.request.dart';
 import 'package:blaster/model/enums.dart';
 

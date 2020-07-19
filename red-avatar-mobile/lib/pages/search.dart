@@ -2,12 +2,11 @@ import 'dart:convert';
 import 'dart:developer' as developer;
 
 import 'package:blaster/model/blockchain.donor.dart';
-import 'package:blaster/model/donation.dart';
 import 'package:blaster/model/donor.dart';
 import 'package:blaster/model/enums.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart' as urlLauncher;
 import 'package:http/http.dart' as http;
+import 'package:url_launcher/url_launcher.dart' as urlLauncher;
 
 class SearchPage extends StatefulWidget {
   @override
