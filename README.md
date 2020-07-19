@@ -196,9 +196,13 @@ To run the mobile application (using the Xcode iOS Simulator or Android Studio E
             > **Note**: Your Android Studio needs to have the `Android 9 (Pie)` SDK and a `Pie API Level 28` virtual device
             
 ### 5. Provision Blockchain network using IKS
+
+ To Set up Blockchain network on Kubernetes
+ 
     1. Set up Kubernetes cluster on IBM Cloud <https://cloud.ibm.com/kubernetes/clusters>.
     1. Deploy Hyperledger Fabric Network into Kubernetes Cluster <https://github.com/IBM/blockchain-network-on-kubernetes#2-setting-up-clis>.
     1. Connect the network using CLient SDK <https://github.com/IBM/blockchain-network-on-kubernetes#7-connect-the-network-using-client-sdk>.
+
 
 
 With the application running in the simulator/emulator, you should be able to navigate through the various screens:
