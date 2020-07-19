@@ -53,7 +53,7 @@ The goal is -
 
 ### Demo video (TODO : After Manas create the video , uplaod to youtube and give the link)
 
-[![Watch the video]](https://youtu.be/vOgCOoy_Bx0)
+[![Watch the video](/images/demo-video.png)](https://youtu.be/vOgCOoy_Bx0)
 
 ### Benefits
 
