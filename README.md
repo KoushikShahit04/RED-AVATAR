@@ -211,8 +211,10 @@ To Set up Blockchain network on Kubernetes
 
 ## Live demo
 
-You can find a running system to test at [callforcode.RedAvatar.Blood Bank Web App](https://blast-ui.eu-gb.mybluemix.net/)
+#### 1.The Blood Bank Web Application
+You can find a running system to test at [RedAvatar Blood Bank Web App](https://blast-ui.eu-gb.mybluemix.net/)
 
+#### 2.The Modile Application
 With the application running in the simulator/emulator, you should be able to navigate through the various screens:
 
 ![Intro Screen](/images/0-new-screen-home.png)
