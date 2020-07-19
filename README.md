@@ -146,21 +146,18 @@ Log in to IBM Cloud and provision a Watson Assistant instance.
 
 1. Provision an instance of **Watson Assistant** from the [IBM Cloud catalog](https://cloud.ibm.com/catalog/services/watson-assistant).
 1. Launch the Watson Assistant service.
-1. [Create an **Assistant**](https://cloud.ibm.com/docs/assistant?topic=assistant-assistant-add).
-1. [Add a dialog skill](https://cloud.ibm.com/docs/assistant?topic=assistant-skill-dialog-add) to the **Assistant** by importing the [`starter-kit-cooperation-dialog-skill.json`](./starter-kit/assistant/starter-kit-cooperation-dialog-skill.json) file.
-1. Go back to All Assistants page, open **Settings** from the action menu ( **`⋮`** ) and click on **API Details**.
-1. Note the **Assistant ID**, **API Key**, and **Assistant URL**. For **Assistant URL**, make note of the base URL/domain (e.g., `https://api.us-south.assistant.watson.cloud.ibm.com` or `https://api.eu-gb.assistant.watson.cloud.ibm.com`) and not the full directory/path. You will need all three of these values in Step 4 below.
-
-1. Go to **Preview Link** to get a link to test and verify the dialog skill.
+1. [Created an **Assistant**](https://cloud.ibm.com/docs/assistant?topic=assistant-assistant-add). We added **Find Blood** for ours usecase.
+1. [Add a dialog skill](https://cloud.ibm.com/docs/assistant?topic=assistant-skill-dialog-add) to the **Assistant**. We add **search_blood** for ours usecase..
+1. Note the **Assistant ID**, **API Key**, and **Assistant URL**. For **Assistant URL**, make note of the base URL/domain. You will need all three of these values in Step 4 below.
 
 ### 2: Provision a CouchDB instance using Cloudant
 
 Log into the IBM Cloud and provision a [CouchDB instance using Cloudant](https://www.ibm.com/cloud/cloudant).
 
 1. From the catalog, select Databases and then the Cloudant panel.
-1. Once selected, you can choose your Cloudant plan -- there is a free tier for simple testing that is sufficient to run this CIR example. You should choose an appropriate region, give the service a name, and it is recommended you choose **Use only IAM** under **Available authentication methods**. You can leave the other settings with their defaults. Click the blue **Create** button when ready.
-1. Once your Cloudant instance has been created, you need to create a service credential that the CIR API Server can use to communicate with it. By selecting your running Cloudant instance, you can choose **Service credentials** from the left-hand menu. Create a new service credential and give it a name (it doesn't matter what you call it).
-1. Once created, you can display the credentials by selecting **view service credentials**, and then copy the credential, so you are ready to paste it into the code of the API server in Step 4.
+1. Once selected, Click the blue **Create** button. We have created **blaster_cloudant** instance for our usecase.
+1. Next create a service credential that the CIR API Server can use to communicate with it. We have created **blaster-cloudant-creds** for our usecase.
+1. Once created, Select **view service credentials**, and then copy the credential, which will be used by API server in Step 4.
 
 ### 3. Run the Blood Bank Web Application.
 
@@ -196,9 +193,17 @@ To run the mobile application (using the Xcode iOS Simulator or Android Studio E
             > **Note**: Your Android Studio needs to have the `Android 9 (Pie)` SDK and a `Pie API Level 28` virtual device
             
 ### 5. Provision Blockchain network using IKS
-    1. Set up Kubernetes cluster on IBM Cloud <https://cloud.ibm.com/kubernetes/clusters>.
-    1. Deploy Hyperledger Fabric Network into Kubernetes Cluster <https://github.com/IBM/blockchain-network-on-kubernetes#2-setting-up-clis>.
-    1. Connect the network using CLient SDK <https://github.com/IBM/blockchain-network-on-kubernetes#7-connect-the-network-using-client-sdk>.
+
+To Set up Blockchain network on Kubernetes
+
+1. Set up Kubernetes cluster on IBM Cloud <https://cloud.ibm.com/kubernetes/clusters>.
+1. Deploy Hyperledger Fabric Network into Kubernetes Cluster <https://github.com/IBM/blockchain-network-on-kubernetes#2-setting-up-clis>.
+1. Connect the network using CLient SDK <https://github.com/IBM/blockchain-network-on-kubernetes#7-connect-the-network-using-client-sdk>.
+1. Deploy the chaincode onto the blockchain network.
+
+## Live demo
+
+You can find a running system to test at [callforcode.RedAvatar.Blood Bank Web App](https://blast-ui.eu-gb.mybluemix.net/)
 
 
 With the application running in the simulator/emulator, you should be able to navigate through the various screens:
@@ -210,15 +215,6 @@ With the application running in the simulator/emulator, you should be able to na
 ![Map1 Screen](/images/3-screen-map.png)
 ![Map2 Screen](/images/4-screen-map.png)
 
-## Resources
-
-- [IBM Cloud](https://www.ibm.com/cloud)
-- [Watson Assistant](https://cloud.ibm.com/docs/assistant?topic=assistant-getting-started)
-- [IBM Cloudant](https://cloud.ibm.com/docs/Cloudant?topic=cloudant-overview)
-- [HERE Location Services](https://developer.here.com/documentation)
-- [Node.js](https://nodejs.org)
-- [React Native](https://reactnative.dev/)
-- [IBM Blockchain for Developers](https://developer.ibm.com/technologies/blockchain/)
 
 ## License
 
