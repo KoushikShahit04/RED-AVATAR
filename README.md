@@ -51,9 +51,9 @@ The goal is -
 3. Centralized Report for government to track the stock of the blood and analysis and focused blood donation schemes
 4. The increase the blood donation by different initiative and Donor incentivize.
 
-### Demo video (TODO : After Manas create the video , uplaod to youtube and give the link)
+### Demo video
 
-[![Watch the video](/images/demo-video-2.png)](https://youtu.be/vOgCOoy_Bx0)
+[![Watch the video](/images/demo-video-2.png)](https://youtu.be122/vOgCOoy_Bx0)
 
 ### Benefits
 
