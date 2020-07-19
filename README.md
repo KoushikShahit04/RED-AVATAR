@@ -221,15 +221,19 @@ With the application running in the simulator/emulator, you should be able to na
 ![Intro Screen](/images/0-donor-profile.png)
 
 1. **Citizen can register to donate blood**
+
 ![Donate Screen](/images/1-donor-registration.png)
 
 1. **Citizen can find aviable blood stock in blood bank**
+
 ![Search Screen](/images/2-find-blood-avilable.png)
 
 1. **User can use chatbot to blood related queries**
+
 ![Chat Screen](/images/3-screen-chat.png)
 
 1. **User can locate the blood bank**
+
 ![Map1 Screen](/images/3-screen-map.png)
 
 
