@@ -50,7 +50,7 @@ The goal is -
 3. Centralized Report for government to track the stock of the blood and analysis and focused blood donation schemes
 4. The increase the blood donation by different initiative and Donor incentivize. 
 ### Demo video
-https://www.youtube.com/watch?v=vOgCOoy_Bx0&feature=youtu.be
+[![Watch the video](https://github.com/Code-and-Response/Liquid-Prep/blob/master/images/IBM-interview-video-image.png)](https://youtu.be/vOgCOoy_Bx0)
 
 ### Benefits
 The IBM Cloud service (Watson Assistant , HERE , Blockchain) can benefit below -
