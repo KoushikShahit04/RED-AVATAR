@@ -116,25 +116,13 @@ Trusted sources for COVID-19 Information:
 ## Technology
 
 ### IBM Cloud Services
-
+ 
 - [Bot Asset Exchange](https://developer.ibm.com/code/exchanges/bots/)
 - [IBM Watson Assistant](https://www.ibm.com/cloud/watson-assistant/)
-- [How-to guides for chatbots](https://www.ibm.com/watson/how-to-build-a-chatbot)
-- [Create a machine learning powered web app to answer questions](https://developer.ibm.com/patterns/create-a-machine-learning-powered-web-app-to-answer-questions-from-a-book/)
-- [Learning path: Getting started with Watson Assistant](https://developer.ibm.com/series/learning-path-watson-assistant/)
-- [Train a speech-to-text model](https://developer.ibm.com/patterns/customize-and-continuously-train-your-own-watson-speech-service/)
-- [Enhance customer helpdesks with Smart Document Understanding using webhooks in Watson Assistant](https://developer.ibm.com/patterns/enhance-customer-help-desk-with-smart-document-understanding/)
-- [Watson Voice Agent](https://cloud.ibm.com/catalog/services/voice-agent-with-watson)
-- [Getting Started with Watson Voice Agent](https://cloud.ibm.com/docs/services/voice-agent?topic=voice-agent-getting-started)
 - [Making Programmatic Calls from Watson Assistant](https://cloud.ibm.com/docs/assistant?topic=assistant-dialog-webhooks)
-- [IBM Cloud Voice Agent with Twilio](https://developer.ibm.com/recipes/tutorials/ibms-voice-agent-with-watson-and-twilio/)
 - [Build a Chatbot For Your Mobile App](https://developer.ibm.com/technologies/mobile/patterns/building-a-chatbot-with-kubernetes-watson-assistant-and-elastic-search)
-- [Build a cross-platform mobile app using React Native](https://developer.ibm.com/technologies/mobile/patterns/build-a-cross-platform-mobile-app-to-search-company-news-and-gain-insights)
+- Flutter link
 - [Building successful mobile apps article series](https://developer.ibm.com/series/building-successful-mobile-apps/)
-- [Chat Bot Slack Integration](https://developer.ibm.com/technologies/artificial-intelligence/videos/integrating-watson-assistant-with-slack-using-built-in-integrations/#)
-- [Chat Bot Slack deployment](https://cloud.ibm.com/docs/assistant?topic=assistant-deploy-slack)
-- [Node-RED Slack integration](https://www.ibm.com/cloud/blog/create-a-chatbot-on-ibm-cloud-and-integrate-with-slack-part-1)
-
 ### HERE Technologies
 
 - [HERE.com API Key](https://developer.here.com/ref/IBM_starterkit_Covid?create=Freemium-Basic)
@@ -150,11 +138,6 @@ Trusted sources for COVID-19 Information:
 - Install and configure [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started#overview).
 - Register for a [HERE](https://developer.here.com/ref/IBM_starterkit_Covid?create=Freemium-Basic) account.
 - Install [React Native CLI dependencies](https://reactnative.dev/docs/getting-started.html). See the [React Native documentation](https://reactnative.dev/docs/environment-setup) for the exact steps and requirements based on your Operating System and Target OS. For example:
-    - **iOS on macOS**
-        - [Node.js](https://nodejs.org/en/)
-        - [Watchman](https://facebook.github.io/watchman/docs/install)
-        - [Xcode](https://itunes.apple.com/us/app/xcode/id497799835?mt=12)
-        - [CocoaPods](https://guides.cocoapods.org/using/getting-started.html)
     - **Android on Windows**
         - [Node.js](https://nodejs.org/en/)
         - [Python 2](https://www.python.org/downloads/)
@@ -244,7 +227,7 @@ To run the mobile application (using the Xcode iOS Simulator or Android Studio E
 
 With the application running in the simulator/emulator, you should be able to navigate through the various screens:
 
-![Intro Screen](/images/0-screen-home.png) ![Intro Screen](/images/0-new-screen-home.png)
+![Intro Screen](/images/0-new-screen-home.png)
 ![Donate Screen](/images/1-screen-donate.png)
 ![Search Screen](/images/2-screen-search.png)
 ![Chat Screen](/images/5-screen-chat.png)
