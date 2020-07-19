@@ -216,15 +216,20 @@ You can find a running system to test at [RedAvatar Blood Bank Web App](https://
 
 #### 2.The Mobile Application
 With the application running in the simulator/emulator, you should be able to navigate through the various screens:
-1. Donor Profile (Award and Incentives)
+1. **Donor Profile (Award and Incentives)**
+
 ![Intro Screen](/images/0-donor-profile.png)
-1. Citizen can register to donate blood
+
+1. **Citizen can register to donate blood**
 ![Donate Screen](/images/1-donor-registration.png)
-1. Citizen can find aviable blood stock in blood bank
+
+1. **Citizen can find aviable blood stock in blood bank**
 ![Search Screen](/images/2-find-blood-avilable.png)
-1. User can use chatbot to blood related queries 
+
+1. **User can use chatbot to blood related queries**
 ![Chat Screen](/images/3-screen-chat.png)
-1. User can locate the blood bank 
+
+1. **User can locate the blood bank**
 ![Map1 Screen](/images/3-screen-map.png)
 
 
