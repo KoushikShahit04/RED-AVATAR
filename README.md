@@ -142,7 +142,7 @@ Trusted sources for Blood Donation crisis:
 
 1. [Set up an instance of Watson Assistant](#1-set-up-an-instance-of-watson-assistant).
 1. [Provision a CouchDB instance using Cloudant](#2-Provision-a-CouchDB-instance-using-Cloudant).
-1. [Run the Blood Bank Web application](#4-Run-the-Blood-Bank-Web-Application.).
+1. [Run the Blood Bank Web application](#4-Run-the-Blood-Bank-Web-Application).
 1. [Run the mobile application](#5-run-the-mobile-application).
 
 ### 1. Set up an instance of Watson Assistant
