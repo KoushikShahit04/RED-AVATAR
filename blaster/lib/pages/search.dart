@@ -1,10 +1,9 @@
 import 'dart:convert';
+import 'dart:developer' as developer;
 
-import 'package:blaster/model/donation.dart';
 import 'package:blaster/model/donor.dart';
 import 'package:blaster/model/enums.dart';
 import 'package:flutter/material.dart';
-import 'dart:developer' as developer;
 import 'package:http/http.dart' as http;
 
 class SearchPage extends StatefulWidget {
@@ -149,15 +148,13 @@ class _SearchPageState extends State<SearchPage> {
               .toList();
       List<SearchResult> searchResults = [];
       donors.forEach((donor) {
-        donor.donationDetails.forEach((donation) {
-          if (BagStatus.APPROVED == donation.bagStatus) {
-            SearchResult result = SearchResult(
-                bloodGroup: donor.bloodGroup,
-                instituteId: donation.collectedInstitute,
-                latLong: LatLong(latitute: 20.305951, longitude: 85.831746));
-            searchResults.add(result);
-          }
-        });
+        if (DonationRequestStatus.REQUESTED == donor.donationRequest.status) {
+          SearchResult result = SearchResult(
+              bloodGroup: donor.bloodGroup,
+              instituteId: donor.donationRequest.donationCenter,
+              latLong: LatLong(latitute: 20.305951, longitude: 85.831746));
+          searchResults.add(result);
+        }
 
         setState(() {
           results = searchResults;
@@ -181,6 +178,7 @@ class SearchResult {
   String bloodGroup;
   String instituteId;
   LatLong latLong;
+  int count = 0;
 
   SearchResult({this.bloodGroup, this.instituteId, this.latLong});
 }

@@ -3,6 +3,7 @@ import 'dart:developer' as developer;
 import 'dart:io';
 
 import 'package:blaster/model/donation.dart';
+import 'package:blaster/model/donation.request.dart';
 import 'package:blaster/model/donor.dart';
 import 'package:blaster/model/enums.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
@@ -18,7 +19,7 @@ class DonatePage extends StatefulWidget {
 class _DonatePageState extends State<DonatePage> {
   String _donorId = "D1234";
   var donor = new Donor();
-  var donation = new Donation();
+  var donationRequest = new DonationRequest();
   String serverAppUrl = 'http://10.0.2.2:3000';
   final _donateBloodFormKey = GlobalKey<FormState>();
   String _selectedBloodGroup = 'A+';
@@ -36,9 +37,8 @@ class _DonatePageState extends State<DonatePage> {
     _getDonorDetails(_donorId).then((value) {
       setState(() {
         donor = value;
-        donation =
-            new Donation(bagId: "B1238", bagStatus: BagStatus.REGISTERED);
-        donor.donationDetails.add(donation);
+        donor.donationRequest = donationRequest;
+        donor.donationRequest.status = DonationRequestStatus.REQUESTED;
         donorIdTextController.text = donor.donorId;
         donorNameTextController.text = donor.donorName;
         mobileTextController.text = donor.donorMobileNumber;
@@ -82,7 +82,8 @@ class _DonatePageState extends State<DonatePage> {
               developer.log("Resposne from server: " + response.body,
                   level: DiagnosticLevel.debug.index,
                   name: 'blaster.donate.category',
-                  time: DateTime.now())
+                  time: DateTime.now()),
+              donor.rev = json.decode(response.body)['rev'],
             });
   }
 
@@ -93,15 +94,6 @@ class _DonatePageState extends State<DonatePage> {
       child: ListView(
         padding: EdgeInsets.all(10.0),
         children: <Widget>[
-          Container(
-            padding: EdgeInsets.all(10.0),
-            child: TextFormField(
-              controller: donorIdTextController,
-              decoration: InputDecoration(labelText: 'Donor Id'),
-              keyboardType: TextInputType.number,
-              enabled: false,
-            ),
-          ),
           Container(
             padding: EdgeInsets.all(10.0),
             child: TextFormField(
@@ -146,7 +138,19 @@ class _DonatePageState extends State<DonatePage> {
                     initialDate: currentValue ?? DateTime.now(),
                     lastDate: DateTime(2100));
               },
-              onSaved: (DateTime value) => donation.donationDate = value,
+              onSaved: (DateTime value) => donationRequest.donationDate = value,
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.all(10.0),
+            child: DropdownButtonFormField(
+              items: _getCenterDropdown(),
+              value: donationRequest.donationCenter,
+              onChanged: (value) {
+                setState(() {
+                  donationRequest.donationCenter = value;
+                });
+              },
             ),
           ),
           Container(
@@ -175,6 +179,21 @@ class _DonatePageState extends State<DonatePage> {
         ],
       ),
     );
+  }
+
+  List<DropdownMenuItem<String>> _getCenterDropdown() {
+    List<Map<String, String>> centers = [
+      {'value': 'I1234', 'text': 'Apollo Hospital'},
+      {'value': 'I1235', 'text': 'Kalinga Hospital'},
+    ];
+    donationRequest.donationCenter = "I1234";
+
+    return centers
+        .map((e) => DropdownMenuItem(
+              value: e['value'],
+              child: Text(e['text']),
+            ))
+        .toList();
   }
 
   Future<Donor> _getDonorDetails(String donorId) async {

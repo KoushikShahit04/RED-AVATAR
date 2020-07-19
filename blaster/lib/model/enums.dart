@@ -14,3 +14,8 @@ enum BagStatus {
   ISSUED,
   USED,
 }
+
+enum DonationRequestStatus {
+  REQUESTED,
+  DONATED,
+}

@@ -140,7 +140,7 @@ function findBlood(bloodGroup) {
     if (bloodGroup) {
       selector["bloodGroup"] = bloodGroup;
     }
-    selector["donationDetails"] = { $elemMatch: { bagStatus: "APPROVED" } };
+    selector["donationRequest"] = { status: "REQUESTED" };
     console.log("Selector in findBlood: " + JSON.stringify(selector));
 
     db.find({ selector: selector }, (err, documents) => {

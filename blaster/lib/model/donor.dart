@@ -1,6 +1,7 @@
 import 'package:blaster/helper/helper.dart';
 import 'package:blaster/model/award.dart';
 import 'package:blaster/model/donation.dart';
+import 'package:blaster/model/donation.request.dart';
 import 'package:blaster/model/enums.dart';
 
 class Donor {
@@ -14,12 +15,13 @@ class Donor {
   String donorEmail;
   DonorCategory donorCategory;
   String rewardPoint;
-  List<Donation> donationDetails;
+  DonationRequest donationRequest;
   List<Award> donorAwards;
 
   Donor();
 
   String get rev => _rev;
+  set rev(String rev) => {this._rev = rev};
 
   String get id => _id;
 
@@ -35,9 +37,7 @@ class Donor {
         donorCategory =
             enumFromString(json['donorCategory'], DonorCategory.values),
         rewardPoint = json['rewardPoint'],
-        donationDetails = (json['donationDetails'] as List<dynamic>)
-            .map((e) => Donation.fromJson(e as Map<String, dynamic>))
-            .toList(),
+        donationRequest = DonationRequest.fromJson(json['donationRequest']),
         donorAwards = (json['donorAwards'] as List<dynamic>)
             .map((e) => Award.fromJson(e as Map<String, dynamic>))
             .toList();
@@ -53,7 +53,7 @@ class Donor {
         'donorEmail': donorEmail,
         'donorCategory': enumToString(donorCategory),
         'rewardPoint': rewardPoint,
-        'donationDetails': donationDetails.map((e) => e.toJson()).toList(),
+        'donationRequest': donationRequest.toJson(),
         'donorAwards': donorAwards.map((e) => e.toJson()).toList()
       };
 }
