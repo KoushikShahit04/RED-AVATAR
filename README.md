@@ -160,18 +160,12 @@ Log into the IBM Cloud and provision a [CouchDB instance using Cloudant](https:/
 1. Once your Cloudant instance has been created, you need to create a service credential that the CIR API Server can use to communicate with it. By selecting your running Cloudant instance, you can choose **Service credentials** from the left-hand menu. Create a new service credential and give it a name (it doesn't matter what you call it).
 1. Once created, you can display the credentials by selecting **view service credentials**, and then copy the credential, so you are ready to paste it into the code of the API server in Step 4.
 
-### 3. Generate an API Key from the HERE Developer Portal
-
-The application uses HERE Location Services for maps, searching, and routing.
-
-To access these services, you'll need an API key. Follow the instructions outlined in the [HERE Developer Portal](https://developer.here.com/ref/IBM_starterkit_Covid?create=Freemium-Basic) to [generate a JavaScript API key](https://developer.here.com/documentation/authentication/dev_guide/topics/api-key-credentials.html).
-
 ### 4. Run the Blood Bank Web Application.
 
  - To deploy to IBM Cloud:
     1. Log in to your IBM Cloud account using the IBM Cloud CLI: `ibmcloud login`.
     1. Target a Cloud Foundry org and space: `ibmcloud target --cf`.
-    1. Create a Devops service.
+    1. Create a Devops service <https://cloud.ibm.com/devops/toolchains?env_id=ibm:yp:jp-tok>.
     1. Create a Toolchain application with BYOP facility.
     1. Add Github as the Code Repo,complete required authorization for IBM to connect to Git.
     1. Create a Build and Deploy stage  with custom job to build Angular app.
