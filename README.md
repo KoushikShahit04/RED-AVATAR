@@ -37,7 +37,7 @@ What is needed is a solution that empowers citized to easily connect and provide
 ### How can technology help?
 
 The Mobile, Web, Blockchain network and cloud service can help in addressing the currently Blood donation challenges -
-1.	Lack of collaboration among 2,708 blood banks
+1.	Lack of collaboration among blood banks
 2.	Lack of Transparency among the Donors , Receivers & banks.
 3.	Lack of common shared IT network among the blood banks
 4.	Lack of accessibility of data of blood stock
@@ -138,26 +138,11 @@ Trusted sources for Blood Donation crisis:
 
 ## Getting started
 
-### Prerequisites
-
-- Register for an [IBM Cloud](https://www.ibm.com/account/reg/us-en/signup?formid=urx-42793&eventid=cfc-2020?cm_mmc=OSocial_Blog-_-Audience+Developer_Developer+Conversation-_-WW_WW-_-cfc-2020-ghub-starterkit-cooperation_ov75914&cm_mmca1=000039JL&cm_mmca2=10008917) account.
-- Install and configure [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started#overview).
-- Register for a [HERE](https://developer.here.com/ref/IBM_starterkit_Covid?create=Freemium-Basic) account.
-- Install [React Native CLI dependencies](https://reactnative.dev/docs/getting-started.html). See the [React Native documentation](https://reactnative.dev/docs/environment-setup) for the exact steps and requirements based on your Operating System and Target OS. For example:
-    - **Android on Windows**
-        - [Node.js](https://nodejs.org/en/)
-        - [Python 2](https://www.python.org/downloads/)
-        - [Java Development Kit](https://www.oracle.com/java/technologies/javase-jdk8-downloads.html)
-        - [Android Studio](https://developer.android.com/studio/index.html) - add Android 9 (Pie) SDK & configure `ANDROID_HOME`
-        - [Create an Android Virtual Device (AVD)](https://developer.android.com/studio/run/managing-avds.html) - with Pie image (API Level 28)
-- Clone the [repository](https://github.com/Call-for-Code/Solution-Starter-Kit-Cooperation-2020).
-
 ### Steps
 
 1. [Set up an instance of Watson Assistant](#1-set-up-an-instance-of-watson-assistant).
 1. [Provision a CouchDB instance using Cloudant](#2-Provision-a-CouchDB-instance-using-Cloudant).
-1. [Generate an API Key from the HERE Developer Portal](#3-generate-an-api-key-from-the-here-developer-portal).
-1. [Run the server](#4-run-the-server).
+1. [Run the Blood Bank Web application](#4-Run-the-Blood-Bank-Web-Application).
 1. [Run the mobile application](#5-run-the-mobile-application).
 
 ### 1. Set up an instance of Watson Assistant
@@ -188,7 +173,7 @@ The application uses HERE Location Services for maps, searching, and routing.
 
 To access these services, you'll need an API key. Follow the instructions outlined in the [HERE Developer Portal](https://developer.here.com/ref/IBM_starterkit_Covid?create=Freemium-Basic) to [generate a JavaScript API key](https://developer.here.com/documentation/authentication/dev_guide/topics/api-key-credentials.html).
 
-### 4. Run the server
+### 4. Run the Blood Bank Web Application.
 
 To set up and launch the server application:
 
