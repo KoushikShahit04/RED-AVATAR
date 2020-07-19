@@ -37,7 +37,7 @@ What is needed is a solution that empowers citized to easily connect and provide
 ### How can technology help?
 
 The Mobile, Web, Blockchain network and cloud service can help in addressing the currently Blood donation challenges -
-1.	Lack of collaboration among 2,708 blood banks
+1.	Lack of collaboration among blood banks
 2.	Lack of Transparency among the Donors , Receivers & banks.
 3.	Lack of common shared IT network among the blood banks
 4.	Lack of accessibility of data of blood stock
