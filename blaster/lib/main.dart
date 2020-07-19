@@ -1,3 +1,4 @@
+import 'package:blaster/pages/chat.dart';
 import 'package:blaster/pages/donate.dart';
 import 'package:blaster/pages/search.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +34,7 @@ class _NavAppState extends State<NavApp> {
     HomePage(),
     DonatePage(),
     SearchPage(),
-    Text('Alerts Page'),
+    ChatPage(),
   ];
 
   @override
@@ -54,8 +55,7 @@ class _NavAppState extends State<NavApp> {
               icon: Icon(Icons.shopping_basket), title: Text('Donate')),
           BottomNavigationBarItem(
               icon: Icon(Icons.search), title: Text('search')),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.notifications), title: Text('Alerts')),
+          BottomNavigationBarItem(icon: Icon(Icons.chat), title: Text('Chat')),
         ],
         currentIndex: _selectedPage,
         onTap: _changeTab,

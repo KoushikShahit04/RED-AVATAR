@@ -120,7 +120,7 @@ class _SearchPageState extends State<SearchPage> {
             ),
           ),
           title: Text(
-            results[index].instituteId,
+            _getInstituteName(results[index].instituteId),
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
             textAlign: TextAlign.center,
           ),
@@ -139,6 +139,14 @@ class _SearchPageState extends State<SearchPage> {
         ),
       ),
     );
+  }
+
+  String _getInstituteName(String instId) {
+    List<Map<String, String>> centers = [
+      {'value': 'I1234', 'text': 'Apollo Hospital'},
+      {'value': 'I1235', 'text': 'Kalinga Hospital'},
+    ];
+    return centers.firstWhere((element) => element['value'] == instId)['text'];
   }
 
   void _findBlood() {
