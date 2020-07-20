@@ -57,7 +57,7 @@ The goal is -
 
 ### Benefits
 
-The IBM Cloud service (Watson Assistant , HERE , Blockchain) can benefit below -
+The IBM Cloud service (Watson Assistant, Blockchain) can benefit below -
 
 #### Benefit to Donor
 
