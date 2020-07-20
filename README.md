@@ -241,7 +241,7 @@ With the application running in the simulator/emulator, you should be able to na
 
 1. **User can locate the blood bank**
 
-![Map1 Screen](/images/3-screen-map.png)
+![Map1 Screen](/images/map.PNG)
 
 
 ## License
