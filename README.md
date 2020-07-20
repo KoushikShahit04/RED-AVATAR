@@ -121,6 +121,15 @@ The IBM Cloud service (Watson Assistant , HERE , Blockchain) can benefit below -
 
 ![Cooperation architecture diagram](/images/blockChain-diagram.png)
 
+**Peer**
+1. Blood Banks
+1. Red Cross
+
+**Clients**
+1. All the Citizen of Country
+2. Hospital/Nursing Home
+
+
 ## Documents
 
 Trusted sources for Blood Donation crisis:
