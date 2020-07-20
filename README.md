@@ -119,11 +119,11 @@ The IBM Cloud service (Watson Assistant , HERE , Blockchain) can benefit below -
 
 ### The Block Chian network
 
-| **Peer**          | **Clients**          |
-| ------------------| ---------------------|
-| Blood Banks       | Citizen of Country   |
-| Red Cross         | Hospital             |
-| Center/State Govt | Other Health Care    |
+| **Peer**          | **Clients**                |
+| ------------------| ---------------------------|
+| Blood Banks       | All Citizen(Donor/Receiver)|
+| Red Cross         | Hospital                   |
+| Center/State Govt | Other Health Care          |
 
 ![Cooperation architecture diagram](/images/blockChain-diagram_old.png)
 
