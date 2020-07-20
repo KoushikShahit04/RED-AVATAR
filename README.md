@@ -1,4 +1,4 @@
-# Community collaboration in the context of pandemic (recently COVID-19) or post disaster (like cyclone, major earthquake)
+ Community collaboration in the context of pandemic (recently COVID-19) or post disaster (like cyclone, major earthquake)
 
 This solution starter was created by technologists from Infosys.
 
@@ -25,17 +25,17 @@ This solution starter was created by technologists from Infosys.
 
 ### What's the problem?
 
-In any pandemic (recently COVID) or post disaster (like cyclone, major earthquake), Blood become an essential and vital demand to fight the crisis.
+In any pandemic (recently COVID) or post disaster (like cyclone, major earthquake), reliable Blood supply becomes critical for saving human lives. More so as blood cannot be manufactured, only provided by volunteer donors.
 
-In normal time the blood deficit is common problem across global. India require approx. 12 million unit but available 9 million unit every year, and during crisis, the demand to supply needs become worse.
+Even in normal times the blood deficit is common problem across the globe. India alone requires approx. 12 million units but only 9 million units are available every year, and during crisis, the demand to supply gap worsens further.
 
-In the COVID-19 crisis for Plasma treatement or during the recent super cycle in WB, Odissa many people have suffered due to lack of Blood Donor or stock inforamtion due to often not sufficiently structured to enable rapid discovery of help needed.
+For example, for plasma treatment during the ongoing COVID-19 crisis or during the recent super cyclone in WB and Odisha, many people have suffered due to lack of information about donors or available blood stock. The information is not sufficiently structured or reliable to enable rapid discovery of help needed.
 
-What is needed is a solution that empowers citized to easily connect and provide this information for need of Blood.
+What is needed is a solution that empowers citizens to easily connect and access this information for need of Blood.
 
 ### How can technology help?
 
-The Mobile, Web, Blockchain network and cloud service can help in addressing the currently Blood donation challenges -
+An effcient collaboration based on Blockchain network  and cloud service powered the Mobile & Web interfaces can help in addressing the current Blood donation challenges -
 
 1. Lack of collaboration among blood banks
 2. Lack of Transparency among the Donors , Receivers & banks.
@@ -48,8 +48,8 @@ The goal is -
 
 1. To provide a mobile application for Blood Donor to donate & Receiver to find blood available in hospital in your nearest locality and guide them to the appropriate locations.
 2. Build a common and shared blood bank blockchian network which will be used by Blood bank , Hospital , Donor , Receiver , NGO , Red cross.
-3. Centralized Report for government to track the stock of the blood and analysis and focused blood donation schemes
-4. The increase the blood donation by different initiative and Donor incentivize.
+3. Centralized Report for government to track and analyze the blood stock and run focused blood donation schemes
+4. Increase blood donation through different initiatives and donor incentives.
 
 ### Demo video
 
