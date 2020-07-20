@@ -127,6 +127,8 @@ The IBM Cloud service (Watson Assistant, Blockchain) can benefit below -
 
 ![Cooperation architecture diagram](/images/blockChain-diagram_old.png)
 
+## Project roadmap
+![Cooperation architecture diagram](/images/RoadMap.png)
 
 ## Documents
 
