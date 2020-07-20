@@ -1,0 +1,22 @@
+{
+  "donorId": "D1234",
+  "donorName": "John Doe",
+  "bloodGroup": "A+",
+  "donorStatus": "ACTIVE",
+  "donorMobileNumber": "9876543210",
+  "donorEmail": "john.doe@gmail.com",
+  "donorCategory": "PLATINUM",
+  "rewardPoint": "80",
+  "donationRequest": {
+    "donationDate": "2020-07-19",
+    "donationCenter": "I1234",
+    "status": "REQUESTED"
+  },
+  "donorAwards": [
+    {
+      "awardName": "Platinum donor award",
+      "awardDate": "2020-07-10 00:00:00.000",
+      "awardedBy": "Naveen Pattanayak (CM Odisha)"
+    }
+  ]
+}
