@@ -7,8 +7,8 @@ const assistant = require("./lib/assistant.js");
 const port = process.env.PORT || 3000;
 
 // const cloudant = require("./lib/cloudant.js");
-const blaster_db = require("./lib/blaster_db.js");
-const blockchain_db = require("./lib/blockchain_db.js");
+const blaster_db = require("./lib/blaster_db");
+const blockchain_db = require("./lib/blockchain_db");
 
 const app = express();
 app.use(bodyParser.json());
