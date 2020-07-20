@@ -125,7 +125,7 @@ The IBM Cloud service (Watson Assistant , HERE , Blockchain) can benefit below -
 | Red Cross         | Hospital             |
 | Center/State Govt | Other Health Care    |
 
-![Cooperation architecture diagram](/images/blockChain-diagram.png)
+![Cooperation architecture diagram](/images/blockChain-diagram_old.png)
 
 
 ## Documents
