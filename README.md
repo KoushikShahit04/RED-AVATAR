@@ -53,7 +53,7 @@ The goal is -
 
 ### Demo video
 
-[![Watch the video](/images/demo-video-2.png)](https://youtu.be122/vOgCOoy_Bx0)
+[![Watch the video](/images/demo-video-2.png)](https://youtu.be/QXFmGNiJGek)
 
 ### Benefits
 
