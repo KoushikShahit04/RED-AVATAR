@@ -1,4 +1,4 @@
- Community collaboration in the context of pandemic (recently COVID-19) or post disaster (like cyclone, major earthquake)
+# Community collaboration in the context of pandemic (recently COVID-19) or post disaster (like cyclone, major earthquake)
 
 This solution starter was created by technologists from Infosys.
 
@@ -35,7 +35,7 @@ What is needed is a solution that empowers citizens to easily connect and access
 
 ### How can technology help?
 
-An effcient collaboration based on Blockchain network  and cloud service powered the Mobile & Web interfaces can help in addressing the current Blood donation challenges -
+An effcient collaboration based on Blockchain network and cloud service powered the Mobile & Web interfaces can help in addressing the current Blood donation challenges -
 
 1. Lack of collaboration among blood banks
 2. Lack of Transparency among the Donors , Receivers & banks.
@@ -119,15 +119,16 @@ The IBM Cloud service (Watson Assistant, Blockchain) can benefit below -
 
 ### The Block Chian network
 
-| **Peer**          | **Clients**                |
-| ------------------| ---------------------------|
-| Blood Banks       | All Citizen(Donor/Receiver)|
-| Red Cross         | Hospital                   |
-| Center/State Govt | Other Health Care          |
+| **Peer**          | **Clients**                 |
+| ----------------- | --------------------------- |
+| Blood Banks       | All Citizen(Donor/Receiver) |
+| Red Cross         | Hospital                    |
+| Center/State Govt | Other Health Care           |
 
 ![Cooperation architecture diagram](/images/blockChain-diagram_old.png)
 
 ## Project roadmap
+
 ![Cooperation architecture diagram](/images/RoadMap.png)
 
 ## Documents
@@ -220,11 +221,14 @@ To Set up Blockchain network on Kubernetes
 
 ## Live demo
 
-#### 1.The Blood Bank Web Application
+### 1.The Blood Bank Web Application
+
 You can find a running system to test at [RedAvatar Blood Bank Web App](https://blast-ui.eu-gb.mybluemix.net/)
 
-#### 2.The Mobile Application
+### 2.The Mobile Application
+
 With the application running in the simulator/emulator, you should be able to navigate through the various screens:
+
 1. **Donor Profile (Award and Incentives)**
 
 ![Intro Screen](/images/0-donor-profile.png)
@@ -244,7 +248,6 @@ With the application running in the simulator/emulator, you should be able to na
 1. **User can locate the blood bank**
 
 ![Map1 Screen](/images/map.PNG)
-
 
 ## License
 

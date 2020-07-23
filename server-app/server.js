@@ -23,7 +23,7 @@ const testConnections = () => {
   const status = {};
   return assistant
     .session()
-    .then((sessionid) => {
+    .then(() => {
       status["assistant"] = "ok";
       return status;
     })
@@ -32,10 +32,10 @@ const testConnections = () => {
       status["assistant"] = "failed";
       return status;
     })
-    .then((status) => {
-      return cloudant.info();
+    .then(() => {
+      return redavatar_db.info();
     })
-    .then((info) => {
+    .then(() => {
       status["cloudant"] = "ok";
       return status;
     })
@@ -144,6 +144,11 @@ app.post("/api/message", (req, res) => {
     .catch((err) => handleError(res, err));
 });
 
+/**
+ * @description Find a donor with donor id
+ * @param id the donorId of the donor to be fetched
+ * @returns The donor json if found
+ */
 app.get("/redavatar/donor/:id", (req, res) => {
   const donorId = req.params.id;
 
@@ -159,6 +164,11 @@ app.get("/redavatar/donor/:id", (req, res) => {
     .catch((err) => handleError(res, err));
 });
 
+/**
+ * @description update a donor json
+ * @param id - The donorId of the donor to be patched
+ * @returns The new revision of the donor
+ */
 app.patch("/redavatar/donor/:id", (req, res) => {
   console.log(req.body);
   let donor = req.body;
@@ -185,6 +195,11 @@ app.patch("/redavatar/donor/:id", (req, res) => {
     .catch((err) => handleError(res, err));
 });
 
+/**
+ * @description Find the required blood group from available donors
+ * @param group - The blood group to be searched
+ * @returns List of donors
+ */
 app.get("/redavatar/blood/:group", (req, res) => {
   console.log("Inside get blood api");
   if (!req.params.group) {
@@ -203,6 +218,11 @@ app.get("/redavatar/blood/:group", (req, res) => {
     .catch((err) => handleError(res, err));
 });
 
+/**
+ * @description Find the required blood from bloodbank
+ * @param group - The blood group to be searched
+ * @returns List of donors from blockchain
+ */
 app.get("/redavatar/blockchain/:group", (req, res) => {
   console.log("Searching blood in blockchain");
   if (!req.params.group) {
@@ -230,6 +250,11 @@ app.get("/redavatar/blockchain/:group", (req, res) => {
   //   .catch((err) => handleError(res, err));
 });
 
+/**
+ * @description Helper function to invoke chaincode with gateway
+ * @param {String} funcName
+ * @param  {...String} args
+ */
 async function invokeChaincode(funcName, ...args) {
   const gateway = new Gateway();
   const walletPath = path.join(process.cwd(), "wallet");
