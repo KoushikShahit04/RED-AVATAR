@@ -1,8 +1,8 @@
-import 'package:blaster/pages/chat.dart';
-import 'package:blaster/pages/donate.dart';
-import 'package:blaster/pages/search.dart';
+import 'package:redavatar/pages/chat.dart';
+import 'package:redavatar/pages/donate.dart';
+import 'package:redavatar/pages/search.dart';
 import 'package:flutter/material.dart';
-import 'package:blaster/pages/home.dart';
+import 'package:redavatar/pages/home.dart';
 
 void main() => runApp(MyApp());
 

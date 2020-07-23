@@ -1,5 +1,5 @@
-import 'package:blaster/helper/helper.dart';
-import 'package:blaster/model/enums.dart';
+import 'package:redavatar/helper/helper.dart';
+import 'package:redavatar/model/enums.dart';
 import 'package:intl/intl.dart';
 
 class DonationRequest {

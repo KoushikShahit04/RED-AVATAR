@@ -1,7 +1,7 @@
-import 'package:blaster/helper/helper.dart';
-import 'package:blaster/model/award.dart';
-import 'package:blaster/model/donation.request.dart';
-import 'package:blaster/model/enums.dart';
+import 'package:redavatar/helper/helper.dart';
+import 'package:redavatar/model/award.dart';
+import 'package:redavatar/model/donation.request.dart';
+import 'package:redavatar/model/enums.dart';
 
 class Donor {
   String _id;

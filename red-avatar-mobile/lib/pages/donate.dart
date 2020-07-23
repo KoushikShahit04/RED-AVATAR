@@ -2,9 +2,9 @@ import 'dart:convert';
 import 'dart:developer' as developer;
 import 'dart:io';
 
-import 'package:blaster/model/donation.request.dart';
-import 'package:blaster/model/donor.dart';
-import 'package:blaster/model/enums.dart';
+import 'package:redavatar/model/donation.request.dart';
+import 'package:redavatar/model/donor.dart';
+import 'package:redavatar/model/enums.dart';
 import 'package:datetime_picker_formfield/datetime_picker_formfield.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -59,19 +59,19 @@ class _DonatePageState extends State<DonatePage> {
     _donateBloodFormKey.currentState.save();
     developer.log('Updated Donor values: ' + donor.toJson().toString(),
         level: DiagnosticLevel.debug.index,
-        name: 'blaster.donate.category',
+        name: 'redavatar.donate.category',
         time: DateTime.now());
 
     // HttpClient httpClient = new HttpClient();
     // HttpClientRequest request = await httpClient
-    //     .patchUrl(Uri.parse(serverAppUrl + "/blaster/donor/" + _donor.donorId));
+    //     .patchUrl(Uri.parse(serverAppUrl + "/redavatar/donor/" + _donor.donorId));
     // request.headers.set('content-type', 'application/json');
     // request.add(utf8.encode(_donor.toJson().toString()));
     // HttpClientResponse response = await request.close();
     // // todo - you should check the response.statusCode
     // String reply = await response.transform(utf8.decoder).join();
     http
-        .patch(serverAppUrl + "/blaster/donor/" + donor.donorId,
+        .patch(serverAppUrl + "/redavatar/donor/" + donor.donorId,
             headers: {
               "Content-Type": "application/json",
               "Accept": "application/json"
@@ -80,7 +80,7 @@ class _DonatePageState extends State<DonatePage> {
         .then((http.Response response) => {
               developer.log("Resposne from server: " + response.body,
                   level: DiagnosticLevel.debug.index,
-                  name: 'blaster.donate.category',
+                  name: 'redavatar.donate.category',
                   time: DateTime.now()),
               donor.rev = json.decode(response.body)['rev'],
             });
@@ -198,13 +198,13 @@ class _DonatePageState extends State<DonatePage> {
   Future<Donor> _getDonorDetails(String donorId) async {
     HttpClient httpClient = new HttpClient();
     HttpClientRequest request = await httpClient
-        .getUrl(Uri.parse(serverAppUrl + "/blaster/donor/" + donorId));
+        .getUrl(Uri.parse(serverAppUrl + "/redavatar/donor/" + donorId));
     HttpClientResponse response = await request.close();
     // todo - you should check the response.statusCode
     String reply = await response.transform(utf8.decoder).join();
     developer.log("Donor details : " + reply,
         level: DiagnosticLevel.debug.index,
-        name: 'blaster.donate.category',
+        name: 'redavatar.donate.category',
         time: DateTime.now());
     httpClient.close();
 

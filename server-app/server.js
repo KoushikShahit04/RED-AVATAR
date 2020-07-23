@@ -7,11 +7,17 @@ const assistant = require("./lib/assistant.js");
 const port = process.env.PORT || 3000;
 
 // const cloudant = require("./lib/cloudant.js");
-const blaster_db = require("./lib/blaster_db");
-const blockchain_db = require("./lib/blockchain_db");
+const redavatar_db = require("./lib/redavatar_db");
+// const blockchain_db = require("./lib/blockchain_db");
+
+const path = require("path");
+const fs = require("fs");
 
 const app = express();
 app.use(bodyParser.json());
+const { Wallets, Gateway } = require("fabric-network");
+const ccpPath = path.resolve(__dirname, "connection-org1.json");
+let ccp = JSON.parse(fs.readFileSync(ccpPath, "utf8"));
 
 const testConnections = () => {
   const status = {};
@@ -45,6 +51,11 @@ const handleError = (res, err) => {
   return res.status(status).json(err);
 };
 
+/**
+ * Health check URL
+ *
+ * Return the status of cloudant and watson assistant connections.
+ */
 app.get("/", (req, res) => {
   testConnections().then((status) => res.json({ status: status }));
 });
@@ -66,7 +77,7 @@ app.get("/api/session", (req, res) => {
  *
  * We want to see if this was a request for resources/supplies, and if so
  * look up in the Cloudant DB whether any of the requested resources are
- * available. If so, we insert a list of the resouces found into the response
+ * available. If so, we insert a list of the resources found into the response
  * that will sent back to the client.
  *
  * We also modify the text response to match the above.
@@ -111,12 +122,12 @@ function post_process_assistant(result) {
 }
 
 /**
- * Post a messge to Watson Assistant
+ * Post a message to Watson Assistant
  *
  * The body must contain:
  *
  * - Message text
- * - sessionID (previsoulsy obtained by called /api/session)
+ * - sessionID (previously obtained by called /api/session)
  */
 app.post("/api/message", (req, res) => {
   const text = req.body.text || "";
@@ -133,37 +144,10 @@ app.post("/api/message", (req, res) => {
     .catch((err) => handleError(res, err));
 });
 
-/**
- * Get a list of resources
- *
- * The query string may contain the following qualifiers:
- *
- * - type
- * - name
- * - userID
- *
- * A list of resource objects will be returned (which can be an empty list)
- */
-// app.get("/api/resource", (req, res) => {
-//   const type = req.query.type;
-//   const name = req.query.name;
-//   const userID = req.query.userID;
-//   cloudant
-//     .find(type, name, userID)
-//     .then((data) => {
-//       if (data.statusCode != 200) {
-//         res.sendStatus(data.statusCode);
-//       } else {
-//         res.send(data.data);
-//       }
-//     })
-//     .catch((err) => handleError(res, err));
-// });
-
-app.get("/blaster/donor/:id", (req, res) => {
+app.get("/redavatar/donor/:id", (req, res) => {
   const donorId = req.params.id;
 
-  blaster_db
+  redavatar_db
     .find(donorId)
     .then((data) => {
       if (data.statusCode != 200) {
@@ -175,7 +159,7 @@ app.get("/blaster/donor/:id", (req, res) => {
     .catch((err) => handleError(res, err));
 });
 
-app.patch("/blaster/donor/:id", (req, res) => {
+app.patch("/redavatar/donor/:id", (req, res) => {
   console.log(req.body);
   let donor = req.body;
   if (!donor.donorId) {
@@ -188,7 +172,7 @@ app.patch("/blaster/donor/:id", (req, res) => {
       .status(422)
       .json({ errors: "_rev must be provided for updates" });
   }
-  blaster_db
+  redavatar_db
     .update(donor)
     .then((data) => {
       console.log("Data from update: " + data);
@@ -201,13 +185,13 @@ app.patch("/blaster/donor/:id", (req, res) => {
     .catch((err) => handleError(res, err));
 });
 
-app.get("/blaster/blood/:group", (req, res) => {
+app.get("/redavatar/blood/:group", (req, res) => {
   console.log("Inside get blood api");
   if (!req.params.group) {
     return res.status(422).json({ errors: "Blood group must be provided" });
   }
   const bloodGroup = req.params.group;
-  blaster_db
+  redavatar_db
     .findBlood(bloodGroup)
     .then((data) => {
       if (data.statusCode != 200) {
@@ -219,7 +203,7 @@ app.get("/blaster/blood/:group", (req, res) => {
     .catch((err) => handleError(res, err));
 });
 
-app.get("/blaster/blockchain/:group", (req, res) => {
+app.get("/redavatar/blockchain/:group", (req, res) => {
   console.log("Searching blood in blockchain");
   if (!req.params.group) {
     return res.status(422).json({ errors: "Blood group must be provided" });
@@ -227,125 +211,45 @@ app.get("/blaster/blockchain/:group", (req, res) => {
 
   const bloodGroup = req.params.group;
 
-  blockchain_db
-    .findBlood(bloodGroup)
-    .then((data) => {
-      if (data.statusCode != 200) {
-        res.sendStatus(data.statusCode);
-      } else {
-        res.send(data.data);
-      }
+  let selector = { bloodGroup: bloodGroup };
+
+  invokeChaincode("findDonors", JSON.stringify(selector))
+    .then((result) => {
+      res.send(result);
     })
     .catch((err) => handleError(res, err));
+  // blockchain_db
+  //   .findBlood(bloodGroup)
+  //   .then((data) => {
+  //     if (data.statusCode != 200) {
+  //       res.sendStatus(data.statusCode);
+  //     } else {
+  //       res.send(data.data);
+  //     }
+  //   })
+  //   .catch((err) => handleError(res, err));
 });
 
-/**
- * Create a new resource
- *
- * The body must contain:
- *
- * - type
- * - name
- * - contact
- * - userID
- *
- * The body may also contain:
- *
- * - description
- * - quantity (which will default to 1 if not included)
- *
- * The ID and rev of the resource will be returned if successful
- */
-let types = ["Food", "Other", "Help"];
-app.post("/api/resource", (req, res) => {
-  console.log(JSON.stringify(req.body));
-  if (!req.body.type) {
-    return res.status(422).json({ errors: "Type of item must be provided" });
-  }
-  if (!types.includes(req.body.type)) {
-    return res
-      .status(422)
-      .json({ errors: "Type of item must be one of " + types.toString() });
-  }
-  if (!req.body.name) {
-    return res.status(422).json({ errors: "Name of item must be provided" });
-  }
-  if (!req.body.contact) {
-    return res
-      .status(422)
-      .json({ errors: "A method of contact must be provided" });
-  }
-  const type = req.body.type;
-  const name = req.body.name;
-  const description = req.body.description || "";
-  const userID = req.body.userID || "";
-  const quantity = req.body.quantity || 1;
-  const location = req.body.location || "";
-  const contact = req.body.contact;
+async function invokeChaincode(funcName, ...args) {
+  const gateway = new Gateway();
+  const walletPath = path.join(process.cwd(), "wallet");
+  const wallet = await Wallets.newFileSystemWallet(walletPath);
 
-  cloudant
-    .create(type, name, description, quantity, location, contact, userID)
-    .then((data) => {
-      if (data.statusCode != 201) {
-        res.sendStatus(data.statusCode);
-      } else {
-        res.send(data.data);
-      }
-    })
-    .catch((err) => handleError(res, err));
-});
+  await gateway.connect(ccp, {
+    wallet,
+    identity: "admin",
+    discovery: { enabled: true, asLocalhost: true },
+  });
+  const network = await gateway.getNetwork("mychannel");
 
-/**
- * Update new resource
- *
- * The body may contain any of the valid attributes, with their new values. Attributes
- * not included will be left unmodified.
- *
- * The new rev of the resource will be returned if successful
- */
-
-app.patch("/api/resource/:id", (req, res) => {
-  const type = req.body.type || "";
-  const name = req.body.name || "";
-  const description = req.body.description || "";
-  const userID = req.body.userID || "";
-  const quantity = req.body.quantity || "";
-  const location = req.body.location || "";
-  const contact = req.body.contact || "";
-
-  cloudant
-    .update(
-      req.params.id,
-      type,
-      name,
-      description,
-      quantity,
-      location,
-      contact,
-      userID
-    )
-    .then((data) => {
-      if (data.statusCode != 200) {
-        res.sendStatus(data.statusCode);
-      } else {
-        res.send(data.data);
-      }
-    })
-    .catch((err) => handleError(res, err));
-});
-
-/**
- * Delete a resource
- */
-app.delete("/api/resource/:id", (req, res) => {
-  cloudant
-    .deleteById(req.params.id)
-    .then((statusCode) => res.sendStatus(statusCode))
-    .catch((err) => handleError(res, err));
-});
+  // Get the contract from the network.
+  const contract = network.getContract("bloodchain");
+  var result = await contract.submitTransaction(funcName, args);
+  gateway.disconnect();
+  return result.toString();
+}
 
 const server = app.listen(port, () => {
   const host = server.address().address;
-  const port = server.address().port;
-  console.log(`BlasterServer listening at http://${host}:${port}`);
+  console.log(`redavatarServer listening at http://${host}:${port}`);
 });

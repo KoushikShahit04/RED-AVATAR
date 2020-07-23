@@ -1,17 +1,18 @@
-module red-avatar-chaincode
+module github.com/KoushikShahit04/RED-AVATAR/red-avatar-chaincode
 
-go 1.12
+go 1.13
 
 require (
-	github.com/fsouza/go-dockerclient v1.6.5 // indirect
-	github.com/grpc-ecosystem/go-grpc-middleware v1.2.0 // indirect
-	github.com/hyperledger/fabric v1.4.7
-	github.com/hyperledger/fabric-amcl v0.0.0-20200424173818-327c9e2cf77a // indirect
-	github.com/hyperledger/fabric-chaincode-go v0.0.0-20200511190512-bcfeb58dd83a
-	github.com/hyperledger/fabric-protos-go v0.0.0-20200707132912-fee30f3ccd23
+	github.com/fsouza/go-dockerclient v1.6.0 // indirect
+	github.com/grpc-ecosystem/go-grpc-middleware v1.1.0 // indirect
+	github.com/hyperledger/fabric v1.4.4
+	github.com/hyperledger/fabric-amcl v0.0.0-20190902191507-f66264322317 // indirect
 	github.com/op/go-logging v0.0.0-20160315200505-970db520ece7 // indirect
-	github.com/pkg/errors v0.9.1 // indirect
-	github.com/spf13/viper v1.7.0 // indirect
+	github.com/spf13/viper v1.5.0 // indirect
 	github.com/sykesm/zap-logfmt v0.0.3 // indirect
-	go.uber.org/zap v1.15.0 // indirect
+	go.uber.org/zap v1.13.0 // indirect
+	golang.org/x/crypto v0.0.0-20191117063200-497ca9f6d64f // indirect
+	golang.org/x/net v0.0.0-20191116160921-f9c825593386 // indirect
+	google.golang.org/protobuf v1.25.0 // indirect
+	gopkg.in/yaml.v2 v2.2.5 // indirect
 )

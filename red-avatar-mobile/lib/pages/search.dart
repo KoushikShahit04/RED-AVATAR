@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'dart:developer' as developer;
 
-import 'package:blaster/model/blockchain.donor.dart';
-import 'package:blaster/model/donor.dart';
-import 'package:blaster/model/enums.dart';
+import 'package:redavatar/model/blockchain.donor.dart';
+import 'package:redavatar/model/donor.dart';
+import 'package:redavatar/model/enums.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart' as urlLauncher;
@@ -54,7 +54,7 @@ class _SearchPageState extends State<SearchPage> {
                   onChanged: (String newValue) {
                     developer.log("Selected Group: " + newValue,
                         level: DiagnosticLevel.debug.index,
-                        name: "blaster.search.category",
+                        name: "redavatar.search.category",
                         time: DateTime.now());
                     setState(() {
                       selectedBloodGroup = newValue;
@@ -168,7 +168,7 @@ class _SearchPageState extends State<SearchPage> {
 
   void _findBlood() {
     results = [];
-    http.get(serverAppUrl + "/blaster/blood/" + selectedBloodGroup,
+    http.get(serverAppUrl + "/redavatar/blood/" + selectedBloodGroup,
         headers: {"Accept": "application/json"}).then((http.Response response) {
       List<Donor> donors =
           List<Map<String, dynamic>>.from(json.decode(response.body))
@@ -193,7 +193,7 @@ class _SearchPageState extends State<SearchPage> {
       ));
     });
 
-    http.get(serverAppUrl + "/blaster/blockchain/" + selectedBloodGroup,
+    http.get(serverAppUrl + "/redavatar/blockchain/" + selectedBloodGroup,
         headers: {"Accept": "application/json"}).then((http.Response response) {
       List<BlockchainDonor> donors =
           List<Map<String, dynamic>>.from(json.decode(response.body))
