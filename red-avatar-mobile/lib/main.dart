@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
             primarySwatch: Colors.red,
             accentColor: Colors.red[200],
             textTheme: TextTheme(
-                bodyText1: TextStyle(fontSize: 20.0),
+                bodyText1: TextStyle(fontSize: 15.0),
                 bodyText2:
                     TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0))),
         home: NavApp());

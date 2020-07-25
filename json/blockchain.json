@@ -1,0 +1,34 @@
+{
+  "donorId": "D1234",
+  "donorName": "John Doe",
+  "bloodGroup": "A+",
+  "donorStatus": "ACTIVE",
+  "donorMobileNumber": "9876543210",
+  "donorEmail": "john.doe@gmail.com",
+  "donationDetails": [
+    {
+      "bagId": "B1234",
+      "donationDate": "2020-07-07",
+      "bagStatus": "COLLECTED",
+      "collectedInstitute": "I1234"
+    },
+    {
+      "bagId": "B1235",
+      "donationDate": "2020-04-15",
+      "bagStatus": "USED",
+      "collectedInstitute": "I1235"
+    },
+    {
+      "bagId": "B1238",
+      "donationDate": "2020-07-16",
+      "bagStatus": "APPROVED",
+      "collectedInstitute": "I1234"
+    },
+    {
+      "bagId": "B1238",
+      "donationDate": "2020-07-16",
+      "bagStatus": "REGISTERED",
+      "collectedInstitute": null
+    }
+  ]
+}
