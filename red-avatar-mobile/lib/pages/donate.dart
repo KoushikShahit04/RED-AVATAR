@@ -19,7 +19,7 @@ class _DonatePageState extends State<DonatePage> {
   String _donorId = "D1234";
   var donor = new Donor();
   var donationRequest = new DonationRequest();
-  String serverAppUrl = 'http://10.0.2.2:3000';
+  String serverAppUrl = 'http://10.0.2.2:8888';
   final _donateBloodFormKey = GlobalKey<FormState>();
   String _selectedBloodGroup = 'A+';
 
@@ -172,7 +172,7 @@ class _DonatePageState extends State<DonatePage> {
           ),
           RaisedButton(
             child: Text('Donate'),
-            color: Theme.of(context).primaryColor,
+            color: Theme.of(context).accentColor,
             onPressed: _donateBlood,
           )
         ],
@@ -208,6 +208,6 @@ class _DonatePageState extends State<DonatePage> {
         time: DateTime.now());
     httpClient.close();
 
-    return Donor.fromJson((jsonDecode(reply) as List<dynamic>).elementAt(0));
+    return Donor.fromJson(json.decode(reply));
   }
 }

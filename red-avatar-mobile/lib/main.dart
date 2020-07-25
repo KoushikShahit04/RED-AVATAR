@@ -11,9 +11,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
-            primarySwatch: Colors.blue,
+            primarySwatch: Colors.red,
+            accentColor: Colors.red[200],
             textTheme: TextTheme(
                 bodyText1: TextStyle(fontSize: 20.0),
                 bodyText2:

@@ -6,16 +6,12 @@ import java.util.concurrent.TimeoutException;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.type.CollectionType;
 import com.redavatar.serverconnector.model.BloodGroup;
-import com.redavatar.serverconnector.model.Donor;
+import com.redavatar.serverconnector.model.blockchain.Donor;
 
 import org.hyperledger.fabric.gateway.Contract;
 import org.hyperledger.fabric.gateway.ContractException;
-import org.hyperledger.fabric.gateway.Gateway;
-import org.hyperledger.fabric.gateway.Network;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +19,7 @@ import org.springframework.stereotype.Service;
 public class ChaincodeService {
 
   @Autowired
-  private Gateway.Builder gatewayBuilder;
+  private Contract contract;
   @Autowired
   private ObjectMapper mapper;
 
@@ -62,11 +58,7 @@ public class ChaincodeService {
 
   private String invokeChaincode(String funcName, String... args)
       throws ContractException, TimeoutException, InterruptedException {
-    try (Gateway gateway = this.gatewayBuilder.connect()) {
-      Network network = gateway.getNetwork("mychannel");
-      Contract contract = network.getContract("bloodchain");
-      byte[] byteResult = contract.submitTransaction(funcName, args);
-      return new String(byteResult, StandardCharsets.UTF_8);
-    }
+    byte[] byteResult = contract.submitTransaction(funcName, args);
+    return new String(byteResult, StandardCharsets.UTF_8);
   }
 }

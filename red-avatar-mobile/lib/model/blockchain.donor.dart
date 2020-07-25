@@ -3,8 +3,6 @@ import 'package:redavatar/model/donation.dart';
 import 'package:redavatar/model/enums.dart';
 
 class BlockchainDonor {
-  String _id;
-  String _rev;
   String donorId;
   String donorName;
   String bloodGroup;
@@ -15,15 +13,8 @@ class BlockchainDonor {
 
   BlockchainDonor();
 
-  String get rev => _rev;
-  set rev(String rev) => {this._rev = rev};
-
-  String get id => _id;
-
   BlockchainDonor.fromJson(Map<String, dynamic> json)
-      : _id = json['_id'],
-        _rev = json['_rev'],
-        donorId = json['donorId'],
+      : donorId = json['donorId'],
         donorName = json['donorName'],
         bloodGroup = json['bloodGroup'],
         donorStatus = enumFromString(json['donorStatus'], DonorStatus.values),
@@ -34,8 +25,6 @@ class BlockchainDonor {
             .toList();
 
   Map<String, dynamic> toJson() => {
-        '_id': _id,
-        '_rev': _rev,
         'donorId': donorId,
         'donorName': donorName,
         'bloodGroup': bloodGroup,

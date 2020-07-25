@@ -89,11 +89,11 @@ export class RequestComponent implements OnInit {
         formValue.collectedAt
       );
       this.http
-        .get("http://localhost:3000/redavatar/blockchain/" + formValue.donorId)
+        .get("http://localhost:8888/redavatar/blockchain/" + formValue.donorId)
         .subscribe((result: BlockchainDonor) => {
           result.donationDetails.push(newDonation);
           this.http
-            .post("http://localhost:3000/redavatar/blockchain/", result)
+            .post("http://localhost:8888/redavatar/blockchain/", result)
             .subscribe((result) => {
               console.log("Updated blockchain: " + result);
             });

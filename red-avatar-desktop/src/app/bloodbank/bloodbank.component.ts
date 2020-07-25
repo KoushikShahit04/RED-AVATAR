@@ -35,8 +35,9 @@ export class BloodbankComponent implements OnInit {
 
   ngOnInit(): void {
     this.selectedDonor = null;
+    this.donors = [];
     this.bloodGroupMap = new Map<string, number>();
-    this.http.get("http://localhost:3000/redavatar/blockchain/").subscribe(
+    this.http.get("http://localhost:8888/redavatar/blockchain").subscribe(
       (donors: BlockchainDonor[]) => {
         donors.forEach((donor) => {
           let donations = donor.donationDetails.filter(
@@ -79,7 +80,7 @@ export class BloodbankComponent implements OnInit {
   update() {
     this.selectedDonation.bagStatus = this.bagStatus.value;
     this.http
-      .post("http://localhost:3000/redavatar/blockchain", this.selectedDonor)
+      .post("http://localhost:8888/redavatar/blockchain", this.selectedDonor)
       .subscribe((result) => {
         console.log("Updated Blood bag status: " + JSON.stringify(result));
       });

@@ -14,7 +14,7 @@ class SearchPage extends StatefulWidget {
 }
 
 class _SearchPageState extends State<SearchPage> {
-  String serverAppUrl = 'http://10.0.2.2:3000';
+  String serverAppUrl = 'http://10.0.2.2:8888';
   List<SearchResult> results = [];
   List<String> bloodGroups = <String>[
     "A+",
@@ -70,7 +70,7 @@ class _SearchPageState extends State<SearchPage> {
               padding: EdgeInsets.all(10.0),
               child: RaisedButton(
                 child: Text('Search'),
-                color: Theme.of(context).primaryColor,
+                color: Theme.of(context).accentColor,
                 onPressed: _findBlood,
               ),
             )

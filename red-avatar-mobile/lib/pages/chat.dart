@@ -1,4 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'package:redavatar/model/blockchain.donor.dart';
+import 'package:redavatar/model/donation.dart';
 import 'package:watson_assistant_v2/watson_assistant_v2.dart';
 
 class ChatPage extends StatefulWidget {
@@ -10,6 +15,7 @@ class _ChatPageState extends State<ChatPage> with TickerProviderStateMixin {
   TextEditingController _controller = TextEditingController();
   List<Msg> _messages = <Msg>[];
   bool _isWriting = false;
+  String serverAppUrl = 'http://10.0.2.2:8888';
 
   WatsonAssistantV2Credential watsonCreds = WatsonAssistantV2Credential(
       apikey: "Wraq8se-deX1Q-LeeLgOC100l7YEZ63VAeaiINmcQ7QL",
@@ -73,7 +79,10 @@ class _ChatPageState extends State<ChatPage> with TickerProviderStateMixin {
             Container(
               margin: EdgeInsets.symmetric(horizontal: 3.0),
               child: IconButton(
-                icon: Icon(Icons.send),
+                icon: Icon(
+                  Icons.send,
+                  color: Theme.of(context).accentColor,
+                ),
                 onPressed:
                     _isWriting ? () => _submitMsg(_controller.text) : null,
               ),
@@ -108,16 +117,83 @@ class _ChatPageState extends State<ChatPage> with TickerProviderStateMixin {
     watsonAssistantResponse =
         await watsonAssistant.sendMessage(text, watsonAssistantContext);
 
-    Msg msg = Msg(
-        txt: watsonAssistantResponse.resultText,
-        animationController: AnimationController(
-            vsync: this, duration: Duration(milliseconds: 800)),
-        isRequest: false);
-    setState(() {
-      _messages.insert(0, msg);
-    });
-    msg.animationController.forward();
+    String responseText = watsonAssistantResponse.resultText;
+    if (responseText.contains("[")) {
+      var response = json.decode(responseText) as List<dynamic>;
+      List<String> bloodgroups = response.cast<String>().toList();
+      _findBlood(bloodgroups);
+    } else {
+      Msg msg = Msg(
+          txt: watsonAssistantResponse.resultText,
+          animationController: AnimationController(
+              vsync: this, duration: Duration(milliseconds: 800)),
+          isRequest: false);
+      setState(() {
+        _messages.insert(0, msg);
+      });
+      msg.animationController.forward();
+    }
+
     watsonAssistantContext = watsonAssistantResponse.context;
+  }
+
+  void _findBlood(List<String> bloodgroups) {
+    bloodgroups.forEach((group) {
+      Map<String, int> map = {};
+      List<Donation> donations = [];
+      var selector =
+          "{\"bloodGroup\": \"$group\", \"donationDetails\": {\"\$elemMatch\": {\"bagStatus\": \"APPROVED\"}}}";
+      http.post(serverAppUrl + "/redavatar/blockchain/selector",
+          body: "{\"selector\": $selector}",
+          headers: {
+            "Accept": "application/json"
+          }).then((http.Response response) {
+        List<BlockchainDonor> donors =
+            List<Map<String, dynamic>>.from(json.decode(response.body))
+                .map((Map<String, dynamic> e) => BlockchainDonor.fromJson(e))
+                .toList();
+        donors.forEach((donor) {
+          donations.addAll(donor.donationDetails);
+        });
+
+        donations.forEach((donation) {
+          String key = donation.collectedInstitute;
+          int count = map.containsKey(key) ? map.remove(key) : 0;
+          map.putIfAbsent(key, () => ++count);
+        });
+
+        map.keys.forEach((key) {
+          String text;
+          if (map[key] == 1) {
+            text = "There is ";
+          } else {
+            text = "There are ";
+          }
+          text += map[key].toString() +
+              " " +
+              group +
+              " blood bags at " +
+              _getInstituteName(key);
+          Msg msg = Msg(
+              txt: text,
+              animationController: AnimationController(
+                  vsync: this, duration: Duration(milliseconds: 800)),
+              isRequest: false);
+          setState(() {
+            _messages.insert(0, msg);
+          });
+          msg.animationController.forward();
+        });
+      });
+    });
+  }
+
+  String _getInstituteName(String instId) {
+    List<Map<String, String>> centers = [
+      {'value': 'I1234', 'text': 'Apollo Hospital'},
+      {'value': 'I1235', 'text': 'Kalinga Hospital'},
+    ];
+    return centers.firstWhere((element) => element['value'] == instId)['text'];
   }
 
   @override
@@ -149,11 +225,12 @@ class Msg extends StatelessWidget {
           Container(
             margin: EdgeInsets.symmetric(vertical: 8.0),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                color: Colors.green[100]),
+                borderRadius: _getBorderRadius(isRequest),
+                color: Colors.red[100]),
             child: Container(
               padding: EdgeInsets.all(10.0),
               child: Text(txt,
+                  softWrap: true,
                   style:
                       TextStyle(fontSize: 15.0, fontWeight: FontWeight.normal)),
             ),
@@ -161,5 +238,20 @@ class Msg extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  BorderRadius _getBorderRadius(bool isRequest) {
+    double radius = 15.0;
+    if (isRequest) {
+      return BorderRadius.only(
+          topLeft: Radius.circular(radius),
+          bottomLeft: Radius.circular(radius),
+          bottomRight: Radius.circular(radius));
+    } else {
+      return BorderRadius.only(
+          topRight: Radius.circular(radius),
+          bottomLeft: Radius.circular(radius),
+          bottomRight: Radius.circular(radius));
+    }
   }
 }

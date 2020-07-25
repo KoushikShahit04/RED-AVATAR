@@ -82,12 +82,12 @@ export class ViewRequestsComponent implements OnInit {
       this.showRequired = false;
       this.http
         .get(
-          "http://localhost:3000/redavatar/blockchain/donor/" +
+          "http://localhost:8888/redavatar/blockchain/donor/" +
             this.selectedDonor.donorId
         )
         .subscribe(
-          (result: string) => {
-            var blockDonor: BlockchainDonor = JSON.parse(result);
+          (result: BlockchainDonor) => {
+            var blockDonor: BlockchainDonor = result;
             this.updateDetails(blockDonor);
           },
           (err) => {
@@ -123,7 +123,7 @@ export class ViewRequestsComponent implements OnInit {
     });
     this.http
       .post(
-        "http://localhost:3000/redavatar/blockchain",
+        "http://localhost:8888/redavatar/blockchain",
         JSON.stringify(blockDonor),
         { headers: headers }
       )

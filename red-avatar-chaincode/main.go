@@ -40,6 +40,8 @@ func (cc *Chaincode) Invoke(stub shim.ChaincodeStubInterface) peer.Response {
 		return cc.getDonor(stub, params)
 	} else if fcn == "findDonors" {
 		return cc.findDonors(stub, params)
+	} else if fcn == "getAllDonors" {
+		return cc.getAllDonors(stub)
 	}
 
 	fmt.Println("Invoke did not find func: " + fcn) //error
@@ -75,6 +77,25 @@ func (cc *Chaincode) getDonor(stub shim.ChaincodeStubInterface, args []string) p
 	}
 	fmt.Printf("- getDonor result:\n%s\n", string(asBytes))
 	return shim.Success(asBytes)
+}
+
+func (cc *Chaincode) getAllDonors(stub shim.ChaincodeStubInterface) peer.Response {
+	startKey := "D0001"
+	endKey := "D9999"
+
+	resultsIterator, err := stub.GetStateByRange(startKey, endKey)
+	if err != nil {
+		return shim.Error(err.Error())
+	}
+	defer resultsIterator.Close()
+
+	// buffer is a JSON array containing QueryResults
+	buffer, err := constructQueryResponseFromIterator(resultsIterator)
+	if err != nil {
+		return shim.Error(err.Error())
+	}
+	fmt.Printf("- getAllDonors queryResult:\n%s\n", buffer.String())
+	return shim.Success(buffer.Bytes())
 }
 
 func (cc *Chaincode) findDonors(stub shim.ChaincodeStubInterface, args []string) peer.Response {
