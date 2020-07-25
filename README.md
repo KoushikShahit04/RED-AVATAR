@@ -219,6 +219,11 @@ To Set up Blockchain network on Kubernetes
 1. Connect the network using CLient SDK <https://github.com/IBM/blockchain-network-on-kubernetes#7-connect-the-network-using-client-sdk>.
 1. Deploy the chaincode onto the blockchain network.
 
+** Due to blockchain service not aviable for Hackathon, We used **IBM Blockchian VS code extention** for ours demo
+1. vvvvv
+1. vvvvv
+1. vvvv
+
 ## Live demo
 
 ### 1.The Blood Bank Web Application
