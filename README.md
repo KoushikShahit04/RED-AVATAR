@@ -1,6 +1,6 @@
 # Community collaboration in the context of pandemic (recently COVID-19) or post disaster (like cyclone, major earthquake)
 
-This solution starter was created by technologists from Infosys.
+This solution starter was created by technologists from Infosys Limited.
 
 ## Authors
 
@@ -23,7 +23,7 @@ This solution starter was created by technologists from Infosys.
 
 ## Overview
 
-### What's the problem?
+### What's the problem
 
 In any pandemic (recently COVID) or post disaster (like cyclone, major earthquake), reliable Blood supply becomes critical for saving human lives. More so as blood cannot be manufactured, only provided by volunteer donors.
 
@@ -33,9 +33,9 @@ For example, for plasma treatment during the ongoing COVID-19 crisis or during t
 
 What is needed is a solution that empowers citizens to easily connect and access this information for need of Blood.
 
-### How can technology help?
+### How can technology help
 
-An effcient collaboration based on Blockchain network and cloud service powered the Mobile & Web interfaces can help in addressing the current Blood donation challenges -
+An efficient collaboration based on Blockchain network and cloud service powered the Mobile & Web interfaces can help in addressing the current Blood donation challenges -
 
 1. Lack of collaboration among blood banks
 2. Lack of Transparency among the Donors , Receivers & banks.
@@ -166,7 +166,8 @@ Trusted sources for Blood Donation crisis:
 1. [Provision a CouchDB instance using Cloudant](#2-Provision-a-CouchDB-instance-using-Cloudant).
 1. [Run the Blood Bank Web application](#3-Run-the-Blood-Bank-Web-Application).
 1. [Run the mobile application](#4-run-the-mobile-application).
-1. [Provision Blockchain network using IKS](#5-provision-blockchain-network-using-iks).
+1. [Provision Blockchain network using IKS](#5-provision-blockchain-network-using-iks)
+1. [Run the chaincode on fabric network](#6-run-the-chaincode-on-fabric-network).
 
 ### 1. Set up an instance of Watson Assistant
 
@@ -187,13 +188,13 @@ Log into the IBM Cloud and provision a [CouchDB instance using Cloudant](https:/
 1. Next create a service credential that the CIR API Server can use to communicate with it. We have created **blaster-cloudant-creds** for our usecase.
 1. Once created, Select **view service credentials**, and then copy the credential, which will be used by API server in Step 4.
 
-### 3. Run the Blood Bank Web Application.
+### 3. Run the Blood Bank Web Application
 
 - To deploy to IBM Cloud:
   1. Log in to your IBM Cloud account using the IBM Cloud CLI: `ibmcloud login`.
   1. Target a Cloud Foundry org and space: `ibmcloud target --cf`.
   1. Create a Devops service <https://cloud.ibm.com/devops/toolchains?env_id=ibm:yp:jp-tok>.
-  1. Create a Toolchain application with BYOP facility.
+  1. Create a Tool chain application with BYOP facility.
   1. Add Github as the Code Repo,complete required authorization for IBM to connect to Git.
   1. Create a Build and Deploy stage with custom job to build Angular app.
   1. The server can be accessed using the URL <https://blast-ui.eu-gb.mybluemix.net>.
@@ -219,10 +220,18 @@ To Set up Blockchain network on Kubernetes
 1. Connect the network using CLient SDK <https://github.com/IBM/blockchain-network-on-kubernetes#7-connect-the-network-using-client-sdk>.
 1. Deploy the chaincode onto the blockchain network.
 
-** Due to blockchain service not aviable for Hackathon, We used **IBM Blockchian VS code extention** for ours demo
-1. vvvvv
-1. vvvvv
-1. vvvv
+### 6. Run the chaincode on fabric network
+
+Due to blockchain service not available to lite accounts, We used **IBM Blockchain VS code extension** to setup fabric environment in local machine for the demo.
+
+1. Download the extension for [VS Code](https://marketplace.visualstudio.com/items?itemName=IBMBlockchain.ibm-blockchain-platform).
+1. Restart the VS Code.
+1. The extension prerequisites page should open and make sure you have everything required.
+1. Follow the instructions [here](https://cloud.ibm.com/docs/blockchain?topic=blockchain-develop-vscode#develop-vscode-install) for any issues.
+1. Once the extension's prerequisites are successfully installed and activated, open the new extension view from left pane.
+1. Extension should automatically show the 1 Org Local Fabric environment under FABRIC ENVIRONMENTS.
+1. Click on the network to start it up.
+1. Create a new smart contract with instructions [here](https://cloud.ibm.com/docs/blockchain?topic=blockchain-develop-vscode#develop-vscode-creating-a-project).
 
 ## Live demo
 
@@ -236,23 +245,23 @@ With the application running in the simulator/emulator, you should be able to na
 
 1. **Donor Profile (Award and Incentives)**
 
-![Intro Screen](/images/0-donor-profile.png)
+   ![Intro Screen](/images/0-donor-profile.png)
 
-1. **Citizen can register to donate blood**
+1. **User can register to donate blood**
 
-![Donate Screen](/images/1-donor-registration.png)
+   ![Donate Screen](/images/1-donor-registration.png)
 
-1. **Citizen can find aviable blood stock in blood bank**
+1. **User can find available blood stock in blood bank**
 
-![Search Screen](/images/2-find-blood-avilable.png)
+   ![Search Screen](/images/2-find-blood-avilable.png)
 
-1. **User can use chatbot to blood related queries**
+1. **User can locate the blood bank on the map**
 
-![Chat Screen](/images/3-screen-chat.png)
+   ![Map1 Screen](/images/map.PNG)
 
-1. **User can locate the blood bank**
+1. **User can use chatbot for blood related queries**
 
-![Map1 Screen](/images/map.PNG)
+   ![Chat Screen](/images/3-screen-chat.png)
 
 ## License
 
