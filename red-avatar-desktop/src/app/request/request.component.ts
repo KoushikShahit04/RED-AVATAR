@@ -7,6 +7,7 @@ import { CloudantService } from "../cloudant.service";
 import { DonationRequestStatus, BagStatus, BloodGroup } from "../model/enums";
 import { BlockchainDonor } from "../model/blockchain.donor";
 import { Donation } from "../model/donation";
+import { HttpClient } from "@angular/common/http";
 
 @Component({
   selector: "app-request",
@@ -49,7 +50,8 @@ export class RequestComponent implements OnInit {
 
   constructor(
     private cloudantService: CloudantService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private http: HttpClient
   ) {
     this.cloudantService
       .getDocs(environment.BLASTER_DB)
@@ -86,23 +88,15 @@ export class RequestComponent implements OnInit {
         formValue.bagStatus,
         formValue.collectedAt
       );
-      this.cloudantService
-        .findBlockchainDonor(environment.BLOCKCHAIN_DB, formValue.donorId)
-        .subscribe((response: any) => {
-          if (response.docs && (response.docs as []).length > 0) {
-            let donor = response.docs[0] as BlockchainDonor;
-            donor.donationDetails.push(newDonation);
-            this.cloudantService
-              .updateDoc(
-                environment.BLOCKCHAIN_DB,
-                donor._id,
-                JSON.stringify(donor)
-              )
-              .subscribe((response: any) => {
-                console.log("Donation details added");
-                alert("Donation details added");
-              });
-          }
+      this.http
+        .get("http://localhost:3000/redavatar/blockchain/" + formValue.donorId)
+        .subscribe((result: BlockchainDonor) => {
+          result.donationDetails.push(newDonation);
+          this.http
+            .post("http://localhost:3000/redavatar/blockchain/", result)
+            .subscribe((result) => {
+              console.log("Updated blockchain: " + result);
+            });
         });
     }
   }

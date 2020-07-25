@@ -18,6 +18,7 @@ app.use(bodyParser.json());
 const { Wallets, Gateway } = require("fabric-network");
 const ccpPath = path.resolve(__dirname, "connection-org1.json");
 let ccp = JSON.parse(fs.readFileSync(ccpPath, "utf8"));
+const gateway = new Gateway();
 
 const testConnections = () => {
   const status = {};
@@ -50,6 +51,13 @@ const handleError = (res, err) => {
   const status = err.code !== undefined && err.code > 0 ? err.code : 500;
   return res.status(status).json(err);
 };
+
+app.all("/*", function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
+  res.header("Access-Control-Allow-Headers", "Content-Type");
+  next();
+});
 
 /**
  * Health check URL
@@ -238,16 +246,48 @@ app.get("/redavatar/blockchain/:group", (req, res) => {
       res.send(result);
     })
     .catch((err) => handleError(res, err));
-  // blockchain_db
-  //   .findBlood(bloodGroup)
-  //   .then((data) => {
-  //     if (data.statusCode != 200) {
-  //       res.sendStatus(data.statusCode);
-  //     } else {
-  //       res.send(data.data);
-  //     }
-  //   })
-  //   .catch((err) => handleError(res, err));
+});
+
+app.get("/redavatar/blockchain", (req, res) => {
+  console.log("Get all donors from blockchain");
+  invokeChaincode("getAllDonors")
+    .then((result) => {
+      res.send(result.toString());
+    })
+    .catch((err) => {
+      console.log(err);
+      handleError(res, err);
+    });
+});
+
+app.post("/redavatar/blockchain", (req, res) => {
+  console.log("Create donor in blockchain");
+  if (!req.body) {
+    return res.status(422).json({ errors: "Donor json data required in body" });
+  }
+  var key = req.body.donorId;
+  var value = JSON.stringify(req.body);
+  invokeChaincode("createDonor", key, value)
+    .then((result) => {
+      res.send(result.toString());
+    })
+    .catch((err) => handleError(res, err));
+});
+
+app.get("/redavatar/blockchain/donor/:donorId", (req, res) => {
+  console.log("Get donor from blockchain");
+  if (!req.params.donorId) {
+    return res.status(422).json({ errors: "Donor id required in parameters" });
+  }
+  invokeChaincode("getDonor", req.params.donorId)
+    .then((result) => {
+      if (result) {
+        res.send(result);
+      } else {
+        result.send(null);
+      }
+    })
+    .catch((err) => handleError(res, err));
 });
 
 /**
@@ -255,23 +295,31 @@ app.get("/redavatar/blockchain/:group", (req, res) => {
  * @param {String} funcName
  * @param  {...String} args
  */
-async function invokeChaincode(funcName, ...args) {
-  const gateway = new Gateway();
-  const walletPath = path.join(process.cwd(), "wallet");
-  const wallet = await Wallets.newFileSystemWallet(walletPath);
-
-  await gateway.connect(ccp, {
-    wallet,
-    identity: "admin",
-    discovery: { enabled: true, asLocalhost: true },
+function invokeChaincode(funcName, ...args) {
+  return new Promise((resolve, reject) => {
+    const walletPath = path.join(process.cwd(), "wallet");
+    Wallets.newFileSystemWallet(walletPath)
+      .then((wallet) => {
+        gateway
+          .connect(ccp, {
+            wallet,
+            identity: "admin",
+            discovery: { enabled: true, asLocalhost: true },
+          })
+          .then(() => {
+            const network = gateway.getNetwork("mychannel");
+            const contract = network.getContract("bloodchain");
+            contract
+              .submitTransaction(funcName, args)
+              .then((buffer) => {
+                resolve(buffer.toString());
+              })
+              .catch((err) => reject(err));
+          })
+          .catch((err) => reject(err));
+      })
+      .catch((err) => reject(err));
   });
-  const network = await gateway.getNetwork("mychannel");
-
-  // Get the contract from the network.
-  const contract = network.getContract("bloodchain");
-  var result = await contract.submitTransaction(funcName, args);
-  gateway.disconnect();
-  return result.toString();
 }
 
 const server = app.listen(port, () => {
