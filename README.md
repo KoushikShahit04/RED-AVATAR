@@ -65,7 +65,7 @@ The IBM Cloud service (Watson Assistant, Blockchain) can benefit below -
 2. Bring trust among the Blood Bank , Donor and Receiver.
 3. Block Chain provides immutable records – which means blood related transactions cannot be altered.
    1. Ensure that the patient gets safe blood by tracking the history of blood bag and expiry of blood bag.
-   1. Block donor with disease history to donate blood. 
+   1. Block donor with disease history to donate blood.
    1. Fraudulent activities can be eliminated.
    1. Unauthorized blood bags and spurious blood can be detected easily.
    1. Contamination can be traced to the source due to the immutable audit trail.
@@ -244,7 +244,7 @@ Due to blockchain service not available to lite accounts, We used **IBM Blockcha
 
 1. Open a terminal inside `server-connector` folder.
 1. Run command `mvn spring-boot:run`.
-1. Alternatively you can find the `DemoApplication` class inside `com.redavatar.serverconnector` package and run with context buttons VS code provides.
+1. Alternatively you can find the `RedavatarApplication` class inside `com.redavatar.serverconnector` package and run with context buttons VS code provides.
 
 ### 5. Run the Blood Bank Web Application
 

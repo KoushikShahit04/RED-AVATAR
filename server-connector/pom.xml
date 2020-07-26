@@ -32,6 +32,12 @@
 		</dependency>
 
 		<dependency>
+			<groupId>com.twilio.sdk</groupId>
+			<artifactId>twilio</artifactId>
+			<version>7.54.1</version>
+		</dependency>
+
+		<dependency>
 			<groupId>io.grpc</groupId>
 			<artifactId>grpc-core</artifactId>
 			<version>1.23.0</version>

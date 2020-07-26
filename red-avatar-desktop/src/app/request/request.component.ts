@@ -1,13 +1,13 @@
+import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
-import { Donor } from "../model/donor";
-import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { NgbModal, NgbModalRef } from "@ng-bootstrap/ng-bootstrap";
 import { environment } from "src/environments/environment";
-import { NgbModalRef, NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { CloudantService } from "../cloudant.service";
-import { DonationRequestStatus, BagStatus, BloodGroup } from "../model/enums";
 import { BlockchainDonor } from "../model/blockchain.donor";
 import { Donation } from "../model/donation";
-import { HttpClient } from "@angular/common/http";
+import { Donor } from "../model/donor";
+import { BagStatus, DonationRequestStatus } from "../model/enums";
 
 @Component({
   selector: "app-request",
