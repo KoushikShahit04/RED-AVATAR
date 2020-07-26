@@ -140,7 +140,7 @@ Trusted sources for Blood Donation crisis:
 - [Covid 19 blood shortage burden](https://health.economictimes.indiatimes.com/news/industry/covid-19-blood-shortage-adding-to-the-healthcare-burden/75461947)
 - [Pandemic leaves Delhi blood banks parched, hospitals rely on in-house donations](https://indianexpress.com/article/cities/delhi/delhi-coronavirus-updates-blood-banks-hospitals-6490864/)
 - [Assam will give preferential treatment in govt jobs and schemes to plasma donors](https://economictimes.indiatimes.com/news/politics-and-nation/assam-will-give-preferential-treatment-in-govt-jobs-and-schemes-to-plasma-donors/articleshow/77005450.cms)
-- [Maharashtra Government Warns People Of Possible Plasma Racket](https://www.ndtv.com/india-news/coronavirus-maharashtra-government-warns-people-of-possible-plasma-racket-2263536)
+- [Maharashtra Government Warns People Of Possible Plasma Racket](https://www.ndtv.com/india-news/coronavirus-maharashtra-government-warns-people-of-possible-plasma-racket-2263536) 
 - [Blood Sortage Data In India](https://en.wikipedia.org/wiki/Blood_donation_in_India)
 - [Blood banks waste 2.8 million units](https://timesofindia.indiatimes.com/city/mumbai/blood-banks-waste-2-8m-units-in-5-yrs/articleshow/58333394.cms)
 
@@ -153,7 +153,7 @@ Trusted sources for Blood Donation crisis:
 - [Making Programmatic Calls from Watson Assistant](https://cloud.ibm.com/docs/assistant?topic=assistant-dialog-webhooks)
 - [IBM Block chain using Hyperledger fabric](https://www.ibm.com/blockchain/hyperledger). For Demo using [VS Code Extension](https://marketplace.visualstudio.com/items?itemName=IBMBlockchain.ibm-blockchain-platform)
 - [IBM DEVOPS TOOLCHAIN](https://www.ibm.com/cloud/devops)
-- SMS Ansuman
+- [SMS via Twilio] (https://www.twilio.com/)
 
 ### Framework for Mobile App
 
@@ -180,6 +180,10 @@ Log in to IBM Cloud and provision a Watson Assistant instance.
 1. [Created an **Assistant**](https://cloud.ibm.com/docs/assistant?topic=assistant-assistant-add). We added **Find Blood** for ours usecase.
 1. [Add a dialog skill](https://cloud.ibm.com/docs/assistant?topic=assistant-skill-dialog-add) to the **Assistant**. We add **search_blood** for ours usecase..
 1. Note the **Assistant ID**, **API Key**, and **Assistant URL**. For **Assistant URL**, make note of the base URL/domain. You will need all three of these values in Step 4 below.
+1. Get the Flutter Watson libraries from [here](https://pub.dev/packages/flutter_ibm_watson).
+1. Use the above **Assistant ID**, **API Key**, and **Assistant URL** in Flutter Watson libraries to get the Intents and Entities.
+1. Pass the Intents an Entities attributes to Cloudant to fetch the appropriate responses.
+
 
 ### 2: Provision a CouchDB instance using Cloudant
 
@@ -278,7 +282,7 @@ Due to blockchain service not available to lite accounts, We used **IBM Blockcha
 
 ### 7. SMS Notification via Twilio
 - To set up SMS Notification via Twilio Service :
-  1. Create  a Twilio account [here](https://www.twilio.com/login 
+  1. Create  a Twilio account [here] (https://www.twilio.com/login)
   1. Register the verified numbers in Twilio.
   1. After registering you will get an API KEY.
   1. Use the Twilio SDK to configure the SMS services in Spring boot Project.
