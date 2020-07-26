@@ -59,6 +59,15 @@ The goal is -
 
 The IBM Cloud service (Watson Assistant, Blockchain) can benefit below -
 
+#### Block Chain benefits
+
+1. Bring Transparency in available Blood stock across Blood Banks, Red cross.
+2. Bring trust among the Blood Bank , Donor and Receiver.
+3. Block Chain provides immutable records – which means blood related transactions cannot be altered.
+   1. Fraudulent activities can be eliminated.
+   1. Unauthorized blood bags and spurious blood can be detected easily.
+   1. Contamination can be traced to the source due to the immutable audit trail.
+
 #### Benefit to Donor
 
 1. Unified blood donation history across blood banks for Donors.
@@ -81,15 +90,6 @@ The IBM Cloud service (Watson Assistant, Blockchain) can benefit below -
 1. Govt., NGOs can use the data for planning drives and reward/appreciation for donors.
 2. Contaminated blood can be traced to the originating blood bank. Regular offenders can be blacklisted.
 3. Reports can be used by Govt. for any corrective action and/or sanction.
-
-#### Block Chain benefits
-
-1. Bring Transparency in available Blood stock across Blood Banks, Red cross.
-2. Bring trust among the Blood Bank , Donor and Receiver.
-3. Block Chain provides immutable records – which means blood related transactions cannot be altered.
-    Fraudulent activities can be eliminated.
-    Unauthorized blood bags and spurious blood can be detected easily.
-    Contamination can be traced to the source due to the immutable audit trail.
 
 #### Affiliate benefits
 
