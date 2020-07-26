@@ -153,7 +153,7 @@ Trusted sources for Blood Donation crisis:
 - [Making Programmatic Calls from Watson Assistant](https://cloud.ibm.com/docs/assistant?topic=assistant-dialog-webhooks)
 - [IBM Block chain using Hyperledger fabric](https://www.ibm.com/blockchain/hyperledger). For Demo using [VS Code Extension](https://marketplace.visualstudio.com/items?itemName=IBMBlockchain.ibm-blockchain-platform)
 - [IBM DEVOPS TOOLCHAIN](https://www.ibm.com/cloud/devops)
-- [SMS via Twilio] (https://www.twilio.com/)
+- [SMS via Twilio](https://www.twilio.com/)
 
 ### Framework for Mobile App
 
@@ -169,7 +169,7 @@ Trusted sources for Blood Donation crisis:
 1. [Run the Spring boot java app](#4-Run-the-spring-boot-java-application)
 1. [Run the Blood Bank Web application](#5-Run-the-Blood-Bank-Web-Application).
 1. [Run the mobile application](#6-run-the-mobile-application).
-1. [SMS Notification via Twilio] (#7-sms-notification-via-twilio).
+1. [SMS Notification via Twilio](#7-sms-notification-via-twilio).
 
 ### 1. Set up an instance of Watson Assistant
 
