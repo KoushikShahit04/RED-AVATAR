@@ -153,7 +153,7 @@ Trusted sources for Blood Donation crisis:
 - [Making Programmatic Calls from Watson Assistant](https://cloud.ibm.com/docs/assistant?topic=assistant-dialog-webhooks)
 - [IBM Block chain using Hyperledger fabric](https://www.ibm.com/blockchain/hyperledger). For Demo using [VS Code Extension](https://marketplace.visualstudio.com/items?itemName=IBMBlockchain.ibm-blockchain-platform)
 - [IBM DEVOPS TOOLCHAIN](https://www.ibm.com/cloud/devops)
-- SMS 
+- SMS <Ansuman to edit>
 
 ### Framework for Mobile App
 
@@ -169,6 +169,7 @@ Trusted sources for Blood Donation crisis:
 1. [Run the Spring boot java app](#4-Run-the-spring-boot-java-application)
 1. [Run the Blood Bank Web application](#5-Run-the-Blood-Bank-Web-Application).
 1. [Run the mobile application](#6-run-the-mobile-application).
+1. SMS setup <Ansuman> (#6-setup-sms-notification).
 
 ### 1. Set up an instance of Watson Assistant
 
@@ -275,6 +276,8 @@ Due to blockchain service not available to lite accounts, We used **IBM Blockcha
   1. Alternatively you can navigate to the `main.dart` file and use th context buttons VS Code provides on the `main()` method.
   1. The app should start up in the emulator.
 
+### 6. Setup SMS Notification
+<Ansuman>
 
 ## Live demo
 
