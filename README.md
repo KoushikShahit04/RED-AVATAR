@@ -149,12 +149,11 @@ Trusted sources for Blood Donation crisis:
 ### IBM Cloud Services
 
 - [IBM Cloudant](https://cloud.ibm.com/catalog?search=cloudant#search_results) - The NoSQL database used
-- [Bot Asset Exchange](https://developer.ibm.com/code/exchanges/bots/)
 - [IBM Watson Assistant](https://www.ibm.com/cloud/watson-assistant/)
 - [Making Programmatic Calls from Watson Assistant](https://cloud.ibm.com/docs/assistant?topic=assistant-dialog-webhooks)
-- [Build a Chatbot For Your Mobile App](https://developer.ibm.com/technologies/mobile/patterns/building-a-chatbot-with-kubernetes-watson-assistant-and-elastic-search)
-- [IBM blockchain network on kubernetes](https://github.com/IBM/blockchain-network-on-kubernetes#2-setting-up-clis)
+- [IBM Block chain using Hyperledger fabric](https://www.ibm.com/blockchain/hyperledger). For Demo using [VS Code Extension](https://marketplace.visualstudio.com/items?itemName=IBMBlockchain.ibm-blockchain-platform)
 - [IBM DEVOPS TOOLCHAIN](https://www.ibm.com/cloud/devops)
+- SMS 
 
 ### Framework for Mobile App
 
