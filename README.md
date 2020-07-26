@@ -156,7 +156,7 @@ Trusted sources for Blood Donation crisis:
 
 ### Framework for Mobile App
 
-- Flutter
+- [Flutter](https://flutter.dev/)
 
 ## Getting started
 
@@ -164,10 +164,11 @@ Trusted sources for Blood Donation crisis:
 
 1. [Set up an instance of Watson Assistant](#1-set-up-an-instance-of-watson-assistant).
 1. [Provision a CouchDB instance using Cloudant](#2-Provision-a-CouchDB-instance-using-Cloudant).
-1. [Run the Blood Bank Web application](#3-Run-the-Blood-Bank-Web-Application).
-1. [Run the mobile application](#4-run-the-mobile-application).
-1. [Provision Blockchain network using IKS](#5-provision-blockchain-network-using-iks)
-1. [Run the chaincode on fabric network](#6-run-the-chaincode-on-fabric-network).
+1. [Run the chaincode on fabric network](#3-run-the-chaincode-on-fabric-network).
+1. [Run the Spring boot java app](#4-Run-the-spring-boot-java-application)
+1. [Run the Blood Bank Web application](#5-Run-the-Blood-Bank-Web-Application).
+1. [Run the mobile application](#6-run-the-mobile-application).
+1. [Provision Blockchain network using IKS](#7-provision-blockchain-network-using-iks)
 
 ### 1. Set up an instance of Watson Assistant
 
@@ -184,13 +185,69 @@ Log in to IBM Cloud and provision a Watson Assistant instance.
 Log into the IBM Cloud and provision a [CouchDB instance using Cloudant](https://www.ibm.com/cloud/cloudant).
 
 1. From the catalog, select Databases and then the Cloudant panel.
-1. Once selected, Click the blue **Create** button. We have created **blaster_cloudant** instance for our usecase.
-1. Next create a service credential that the CIR API Server can use to communicate with it. We have created **blaster-cloudant-creds** for our usecase.
+1. Once selected, Click the blue **Create** button. We have created **blaster_cloudant** instance for our use case.
+1. Next create a service credential that the CIR API Server can use to communicate with it. We have created **blaster-cloudant-creds** for our use case.
 1. Once created, Select **view service credentials**, and then copy the credential, which will be used by API server in Step 4.
 
-### 3. Run the Blood Bank Web Application
+### 3. Run the chaincode on fabric network
 
-- To deploy to IBM Cloud:
+Due to blockchain service not available to lite accounts, We used **IBM Blockchain Platform VS code extension** to setup fabric environment in local machine for the demo.
+
+- Setting up the environment in local
+
+  1. Download the extension for [VS Code](https://marketplace.visualstudio.com/items?itemName=IBMBlockchain.ibm-blockchain-platform).
+  1. Restart the VS Code.
+  1. The extension prerequisites page should open and make sure you have everything required.
+  1. Follow the instructions [here](https://cloud.ibm.com/docs/blockchain?topic=blockchain-develop-vscode#develop-vscode-install) for any issues.
+  1. Setup `go` programming environment with instructions from [here](https://golang.org/doc/install).
+  1. Setup GOPATH environment variable if not already done.
+  1. For IBM Blockchain Platform extension to work the chaincode should be inside your GOPATH.
+  1. Move the code from `red-avatar-chaincode` folder to a folder inside your GOPATH.
+  1. Open the folder you just created in VS Code.
+  1. Once the extension's prerequisites are successfully installed and activated, open the new extension view from left pane.
+  1. Extension should automatically show the 1 Org Local Fabric environment under FABRIC ENVIRONMENTS.
+  1. Click on the network to start it up.
+
+- Packaging the chaincode
+
+  1. Click on the `...` to the right of SMART CONTRACTS section and choose `Package open project`.
+  1. Enter name as `bloodchain` when prompted.
+  1. Enter a unique version number like E.g. `1.0`.
+  1. The newly created package should show up on the SMART CONTRACTS section.
+
+- Installing and instantiating the chaincode
+
+  1. Under the FABRIC ENVIRONMENTS section click on the `1 Org Local Fabric` to start up the environment if not already done.
+  1. Once the fabric environment is up and running, you can see the list of installed and instantiated chaincodes.
+  1. Click on `+ install` under `Smart Contracts > Installed` and choose the package you created in previous section.
+  1. Once the package is installed, click on `+ instantiate` under `Smart Contracts > Instantiated`, and select the package you just installed.
+  1. Once prompted for function name you want to call on instantiate, enter `Init`.
+  1. You can just hit enter for the arguments prompts as the function does not require any arguments.
+  1. Select `No` for private data and select `Default` for endorser policy.
+  1. The chaincode should get instantiated.
+
+- Debugging the chaincode
+
+  For debugging the chain code create a launch configuration in VS Code with below details.
+
+  ```json
+  {
+    "type": "fabric:go",
+    "request": "launch",
+    "name": "Debug Smart Contract"
+  }
+  ```
+
+### 4. Run the spring boot java application
+
+1. Open a terminal inside `server-connector` folder.
+1. Run command `mvn spring-boot:run`.
+1. Alternatively you can find the `DemoApplication` class inside `com.redavatar.serverconnector` package and run with context buttons VS code provides.
+
+### 5. Run the Blood Bank Web Application
+
+- To deploy to IBM Cloud.
+
   1. Log in to your IBM Cloud account using the IBM Cloud CLI: `ibmcloud login`.
   1. Target a Cloud Foundry org and space: `ibmcloud target --cf`.
   1. Create a Devops service <https://cloud.ibm.com/devops/toolchains?env_id=ibm:yp:jp-tok>.
@@ -199,39 +256,32 @@ Log into the IBM Cloud and provision a [CouchDB instance using Cloudant](https:/
   1. Create a Build and Deploy stage with custom job to build Angular app.
   1. The server can be accessed using the URL <https://blast-ui.eu-gb.mybluemix.net>.
 
-### 4. Run the mobile application
+- To run in local machine.
+  1. Make sure you have `Node` and `npm` installed. If not install them from [here](https://nodejs.org/en/download/)
+  1. Run command `npm install -g @angular/cli` in any terminal to install the angular cli.
+  1. Open a terminal inside `red-avatar-desktop` folder.
+  1. Run command `npm install` to get all the dependencies of the project.
+  1. Run command `ng serve` to start up the angular server.
+  1. Open a browser and navigate to `http://localhost:4200`.
 
-To run the mobile application (Android Emulator):
+### 6. Run the mobile application
 
-1. From a terminal:
-   1. Go to the `server-app` directory.
-   1. Install the dependencies: `npm install`.
-   1. Once the dependencies are installed successfully, start the server app with: `npm start`.
-   1. Start up the android emulator. for VSCode `Ctrl + Shift + P` and type Emulator, click emulator and then select your emulator.
-   1. Go to `red-avatar-mobile` directory. Run command `flutter run` to start up the app.
-   1. The app should start up in the emulator.
+- To run the mobile application (Android Emulator):
+  1. Install flutter from [here](https://flutter.dev/docs/get-started/install)
+  1. Make sure you have Android SDK and Virtual devices setup. If not, follow instruction [here](https://developer.android.com/studio/run/managing-avds)
+  1. Install the dependencies: `npm install`.
+  1. Start up the android emulator. for VSCode `Ctrl + Shift + P` and type Emulator, click emulator and then select your emulator.
+  1. Go to `red-avatar-mobile` directory. Run command `flutter run` to start up the app.
+  1. Alternatively you can navigate to the `main.dart` file and use th context buttons VS Code provides on the `main()` method.
+  1. The app should start up in the emulator.
 
-### 5. Provision Blockchain network using IKS
+### 7. Provision Blockchain network using IKS
 
-To Set up Blockchain network on Kubernetes
-
-1. Set up Kubernetes cluster on IBM Cloud <https://cloud.ibm.com/kubernetes/clusters>.
-1. Deploy Hyperledger Fabric Network into Kubernetes Cluster <https://github.com/IBM/blockchain-network-on-kubernetes#2-setting-up-clis>.
-1. Connect the network using CLient SDK <https://github.com/IBM/blockchain-network-on-kubernetes#7-connect-the-network-using-client-sdk>.
-1. Deploy the chaincode onto the blockchain network.
-
-### 6. Run the chaincode on fabric network
-
-Due to blockchain service not available to lite accounts, We used **IBM Blockchain VS code extension** to setup fabric environment in local machine for the demo.
-
-1. Download the extension for [VS Code](https://marketplace.visualstudio.com/items?itemName=IBMBlockchain.ibm-blockchain-platform).
-1. Restart the VS Code.
-1. The extension prerequisites page should open and make sure you have everything required.
-1. Follow the instructions [here](https://cloud.ibm.com/docs/blockchain?topic=blockchain-develop-vscode#develop-vscode-install) for any issues.
-1. Once the extension's prerequisites are successfully installed and activated, open the new extension view from left pane.
-1. Extension should automatically show the 1 Org Local Fabric environment under FABRIC ENVIRONMENTS.
-1. Click on the network to start it up.
-1. Create a new smart contract with instructions [here](https://cloud.ibm.com/docs/blockchain?topic=blockchain-develop-vscode#develop-vscode-creating-a-project).
+- To Set up Blockchain network on Kubernetes
+  1. Set up Kubernetes cluster on IBM Cloud <https://cloud.ibm.com/kubernetes/clusters>.
+  1. Deploy Hyperledger Fabric Network into Kubernetes Cluster <https://github.com/IBM/blockchain-network-on-kubernetes#2-setting-up-clis>.
+  1. Connect the network using CLient SDK <https://github.com/IBM/blockchain-network-on-kubernetes#7-connect-the-network-using-client-sdk>.
+  1. Deploy the chaincode onto the blockchain network.
 
 ## Live demo
 
