@@ -170,7 +170,6 @@ Trusted sources for Blood Donation crisis:
 1. [Run the Spring boot java app](#4-Run-the-spring-boot-java-application)
 1. [Run the Blood Bank Web application](#5-Run-the-Blood-Bank-Web-Application).
 1. [Run the mobile application](#6-run-the-mobile-application).
-1. [Provision Blockchain network using IKS](#7-provision-blockchain-network-using-iks)
 
 ### 1. Set up an instance of Watson Assistant
 
@@ -277,13 +276,6 @@ Due to blockchain service not available to lite accounts, We used **IBM Blockcha
   1. Alternatively you can navigate to the `main.dart` file and use th context buttons VS Code provides on the `main()` method.
   1. The app should start up in the emulator.
 
-### 7. Provision Blockchain network using IKS
-
-- To Set up Blockchain network on Kubernetes
-  1. Set up Kubernetes cluster on IBM Cloud <https://cloud.ibm.com/kubernetes/clusters>.
-  1. Deploy Hyperledger Fabric Network into Kubernetes Cluster <https://github.com/IBM/blockchain-network-on-kubernetes#2-setting-up-clis>.
-  1. Connect the network using CLient SDK <https://github.com/IBM/blockchain-network-on-kubernetes#7-connect-the-network-using-client-sdk>.
-  1. Deploy the chaincode onto the blockchain network.
 
 ## Live demo
 
