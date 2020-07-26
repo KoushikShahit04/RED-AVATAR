@@ -65,7 +65,7 @@ The IBM Cloud service (Watson Assistant, Blockchain) can benefit below -
 2. Bring trust among the Blood Bank , Donor and Receiver.
 3. Block Chain provides immutable records – which means blood related transactions cannot be altered.
    1. Ensure that the patient gets safe blood by tracking the history of blood bag and expiry of blood bag.
-   1. Block donor with disease history to donate blood. 
+   1. Block donor with disease history to donate blood.
    1. Fraudulent activities can be eliminated.
    1. Unauthorized blood bags and spurious blood can be detected easily.
    1. Contamination can be traced to the source due to the immutable audit trail.
@@ -149,12 +149,11 @@ Trusted sources for Blood Donation crisis:
 ### IBM Cloud Services
 
 - [IBM Cloudant](https://cloud.ibm.com/catalog?search=cloudant#search_results) - The NoSQL database used
-- [Bot Asset Exchange](https://developer.ibm.com/code/exchanges/bots/)
 - [IBM Watson Assistant](https://www.ibm.com/cloud/watson-assistant/)
 - [Making Programmatic Calls from Watson Assistant](https://cloud.ibm.com/docs/assistant?topic=assistant-dialog-webhooks)
-- [Build a Chatbot For Your Mobile App](https://developer.ibm.com/technologies/mobile/patterns/building-a-chatbot-with-kubernetes-watson-assistant-and-elastic-search)
-- [IBM blockchain network on kubernetes](https://github.com/IBM/blockchain-network-on-kubernetes#2-setting-up-clis)
+- [IBM Block chain using Hyperledger fabric](https://www.ibm.com/blockchain/hyperledger). For Demo using [VS Code Extension](https://marketplace.visualstudio.com/items?itemName=IBMBlockchain.ibm-blockchain-platform)
 - [IBM DEVOPS TOOLCHAIN](https://www.ibm.com/cloud/devops)
+- SMS Ansuman
 
 ### Framework for Mobile App
 
@@ -170,7 +169,7 @@ Trusted sources for Blood Donation crisis:
 1. [Run the Spring boot java app](#4-Run-the-spring-boot-java-application)
 1. [Run the Blood Bank Web application](#5-Run-the-Blood-Bank-Web-Application).
 1. [Run the mobile application](#6-run-the-mobile-application).
-1. [Provision Blockchain network using IKS](#7-provision-blockchain-network-using-iks)
+1. SMS Notification SetUp Ansuman (#6-setup-sms-notification).
 
 ### 1. Set up an instance of Watson Assistant
 
@@ -244,7 +243,7 @@ Due to blockchain service not available to lite accounts, We used **IBM Blockcha
 
 1. Open a terminal inside `server-connector` folder.
 1. Run command `mvn spring-boot:run`.
-1. Alternatively you can find the `DemoApplication` class inside `com.redavatar.serverconnector` package and run with context buttons VS code provides.
+1. Alternatively you can find the `RedavatarApplication` class inside `com.redavatar.serverconnector` package and run with context buttons VS code provides.
 
 ### 5. Run the Blood Bank Web Application
 
@@ -277,13 +276,8 @@ Due to blockchain service not available to lite accounts, We used **IBM Blockcha
   1. Alternatively you can navigate to the `main.dart` file and use th context buttons VS Code provides on the `main()` method.
   1. The app should start up in the emulator.
 
-### 7. Provision Blockchain network using IKS
-
-- To Set up Blockchain network on Kubernetes
-  1. Set up Kubernetes cluster on IBM Cloud <https://cloud.ibm.com/kubernetes/clusters>.
-  1. Deploy Hyperledger Fabric Network into Kubernetes Cluster <https://github.com/IBM/blockchain-network-on-kubernetes#2-setting-up-clis>.
-  1. Connect the network using CLient SDK <https://github.com/IBM/blockchain-network-on-kubernetes#7-connect-the-network-using-client-sdk>.
-  1. Deploy the chaincode onto the blockchain network.
+### 6. Setup SMS Notification
+<Ansuman>
 
 ## Live demo
 

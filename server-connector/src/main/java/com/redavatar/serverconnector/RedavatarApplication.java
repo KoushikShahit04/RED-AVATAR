@@ -14,6 +14,10 @@ import java.security.spec.InvalidKeySpecException;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.util.Base64;
 
+import javax.annotation.PostConstruct;
+
+import com.twilio.Twilio;
+
 import org.hyperledger.fabric.gateway.Contract;
 import org.hyperledger.fabric.gateway.Gateway;
 import org.hyperledger.fabric.gateway.Identity;
@@ -27,11 +31,19 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-public class DemoApplication {
+public class RedavatarApplication {
+
+	private static final String TWILIO_ACCOUNT_SID = "AC9a08c832bf73b2421b98241a55289b05";
+	private static final String TWILIO_AUTH_TOKEN = "1cf3482a94b5dd84b8fffb66d720cdfc";
 
 	public static void main(String[] args) {
 		System.setProperty(Config.SERVICE_DISCOVER_AS_LOCALHOST, "true");
-		SpringApplication.run(DemoApplication.class, args);
+		SpringApplication.run(RedavatarApplication.class, args);
+	}
+
+	@PostConstruct
+	public void init() {
+		Twilio.init(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
 	}
 
 	private PrivateKey getPrivateKey() throws NoSuchAlgorithmException, InvalidKeySpecException {

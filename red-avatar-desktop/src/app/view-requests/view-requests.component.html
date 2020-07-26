@@ -4,11 +4,7 @@
   <div class="row">
     <div class="col-2">
       <h1 class="text-center">
-        <img
-          src="../../assets/1200px-Apollo_Hospitals_Svg_Logo.svg.png"
-          width="150"
-          height="150"
-        />
+        <img src="../../assets/1200px-Apollo_Hospitals_Svg_Logo.svg.png" width="150" height="150" alt="" />
       </h1>
     </div>
     <div class="col-10">
@@ -16,11 +12,8 @@
         <div class="col-4">
           <div class="mt-4">
             <h4 class="tableHeaderFont">DONATION REQUESTS :</h4>
-            <table
-              class="table table-dark table-hover table-bordered"
-              id="donationsTable"
-              *ngIf="this.donors !== undefined"
-            >
+            <table class="table table-dark table-hover table-bordered" id="donationsTable"
+              *ngIf="this.donors !== undefined">
               <caption>
                 List of donations that need action
               </caption>
@@ -34,29 +27,20 @@
                 </tr>
               </thead>
               <tbody>
-                <tr
-                  *ngFor="
+                <tr *ngFor="
                     let donor of donors
                       | slice
                         : (page - 1) * pageSize
                         : (page - 1) * pageSize + pageSize
-                  "
-                  (click)="selectDonor(donor)"
-                >
+                  " (click)="selectDonor(donor)">
                   <td>{{ donor.donorName }}</td>
                   <td>{{ donor.bloodGroup }}</td>
                   <td>{{ donor.donationRequest.status }}</td>
                 </tr>
               </tbody>
             </table>
-            <ngb-pagination
-              [collectionSize]="noOfDonations"
-              [(page)]="page"
-              [maxSize]="5"
-              [rotate]="true"
-              [ellipses]="false"
-              [boundaryLinks]="true"
-            ></ngb-pagination>
+            <ngb-pagination [collectionSize]="noOfDonations" [(page)]="page" [maxSize]="5" [rotate]="true"
+              [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
           </div>
         </div>
         <div class="col-6 mt-4">
@@ -112,10 +96,7 @@
               </div>
               <div class="card-footer">
                 <div class="float-right">
-                  <button
-                    class="btn btn-success mr-2"
-                    (click)="open(collectModal)"
-                  >
+                  <button class="btn btn-success mr-2" (click)="open(collectModal)">
                     Collect
                   </button>
                   <button class="btn btn-warning" (click)="reject()">
@@ -133,12 +114,7 @@
   <ng-template #collectModal let-modal>
     <div class="modal-header">
       <h4 class="modal-title" id="modal-basic-title">Collect Blood</h4>
-      <button
-        type="button"
-        class="btn btn-danger"
-        aria-label="Close"
-        (click)="modal.dismiss('Cross click')"
-      >
+      <button type="button" class="btn btn-danger" aria-label="Close" (click)="modal.dismiss('Cross click')">
         <span aria-hidden="true">×</span>
       </button>
     </div>
