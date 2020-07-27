@@ -197,7 +197,7 @@ Log into the IBM Cloud and provision a [CouchDB instance using Cloudant](https:/
 
 ### 3. SMS Notification via Twilio
 - To set up SMS Notification via Twilio Service :
-  1. Create  a Twilio account [here] (https://www.twilio.com/login)
+  1. Create  a Twilio account [here](https://www.twilio.com/login)
   1. Register the verified numbers in Twilio.
   1. After registering you will get an API KEY, copy the credential, which will be used by API server in Step 5.
 
