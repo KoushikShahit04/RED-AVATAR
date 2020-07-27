@@ -166,11 +166,11 @@ Trusted sources for Blood Donation crisis:
 
 1. [Set up an instance of Watson Assistant](#1-set-up-an-instance-of-watson-assistant).
 1. [Provision a CouchDB instance using Cloudant](#2-Provision-a-CouchDB-instance-using-Cloudant).
-1. [Run the chaincode on fabric network](#3-run-the-chaincode-on-fabric-network).
-1. [Run the Spring boot java app](#4-Run-the-spring-boot-java-application)
-1. [Run the Blood Bank Web application](#5-Run-the-Blood-Bank-Web-Application).
-1. [Run the mobile application](#6-run-the-mobile-application).
-1. [SMS Notification via Twilio](#7-sms-notification-via-twilio).
+1. [SMS Notification via Twilio](#3-sms-notification-via-twilio).
+1. [Run the chaincode on fabric network](#4-run-the-chaincode-on-fabric-network).
+1. [Run the Spring boot java app](#5-Run-the-spring-boot-java-application)
+1. [Run the Blood Bank Web application](#6-Run-the-Blood-Bank-Web-Application).
+1. [Run the mobile application](#7-run-the-mobile-application).
 
 ### 1. Set up an instance of Watson Assistant
 
@@ -180,7 +180,7 @@ Log in to IBM Cloud and provision a Watson Assistant instance.
 1. Launch the Watson Assistant service.
 1. [Created an **Assistant**](https://cloud.ibm.com/docs/assistant?topic=assistant-assistant-add). We added **Find Blood** for ours usecase.
 1. [Add a dialog skill](https://cloud.ibm.com/docs/assistant?topic=assistant-skill-dialog-add) to the **Assistant**. We add **search_blood** for ours usecase..
-1. Note the **Assistant ID**, **API Key**, and **Assistant URL**. For **Assistant URL**, make note of the base URL/domain. You will need all three of these values in Step 4 below.
+1. Note the **Assistant ID**, **API Key**, and **Assistant URL**. For **Assistant URL**, make note of the base URL/domain.Ths values is used in Step 7 below.
 1. Get the Flutter Watson libraries from [here](https://pub.dev/packages/flutter_ibm_watson).
 1. Use the above **Assistant ID**, **API Key**, and **Assistant URL** in Flutter Watson libraries to get the Intents and Entities.
 1. Pass the Intents an Entities attributes to Cloudant to fetch the appropriate responses.
@@ -193,9 +193,15 @@ Log into the IBM Cloud and provision a [CouchDB instance using Cloudant](https:/
 1. From the catalog, select Databases and then the Cloudant panel.
 1. Once selected, Click the blue **Create** button. We have created **blaster_cloudant** instance for our use case.
 1. Next create a service credential that the CIR API Server can use to communicate with it. We have created **blaster-cloudant-creds** for our use case.
-1. Once created, Select **view service credentials**, and then copy the credential, which will be used by API server in Step 4.
+1. Once created, Select **view service credentials**, and then copy the credential, which will be used by API server in Step 5.
 
-### 3. Run the chaincode on fabric network
+### 3. SMS Notification via Twilio
+- To set up SMS Notification via Twilio Service :
+  1. Create  a Twilio account [here] (https://www.twilio.com/login)
+  1. Register the verified numbers in Twilio.
+  1. After registering you will get an API KEY, copy the credential, which will be used by API server in Step 5.
+
+### 4. Run the chaincode on fabric network
 
 Due to blockchain service not available to lite accounts, We used **IBM Blockchain Platform VS code extension** to setup fabric environment in local machine for the demo.
 
@@ -244,13 +250,13 @@ Due to blockchain service not available to lite accounts, We used **IBM Blockcha
   }
   ```
 
-### 4. Run the spring boot java application
+### 5. Run the spring boot java application
 
 1. Open a terminal inside `server-connector` folder.
 1. Run command `mvn spring-boot:run`.
 1. Alternatively you can find the `RedavatarApplication` class inside `com.redavatar.serverconnector` package and run with context buttons VS code provides.
 
-### 5. Run the Blood Bank Web Application
+### 6. Run the Blood Bank Web Application
 
 - To deploy to IBM Cloud.
 
@@ -270,7 +276,7 @@ Due to blockchain service not available to lite accounts, We used **IBM Blockcha
   1. Run command `ng serve` to start up the angular server.
   1. Open a browser and navigate to `http://localhost:4200`.
 
-### 6. Run the mobile application
+### 7. Run the mobile application
 
 - To run the mobile application (Android Emulator):
   1. Install flutter from [here](https://flutter.dev/docs/get-started/install)
@@ -280,14 +286,6 @@ Due to blockchain service not available to lite accounts, We used **IBM Blockcha
   1. Go to `red-avatar-mobile` directory. Run command `flutter run` to start up the app.
   1. Alternatively you can navigate to the `main.dart` file and use th context buttons VS Code provides on the `main()` method.
   1. The app should start up in the emulator.
-
-### 7. SMS Notification via Twilio
-- To set up SMS Notification via Twilio Service :
-  1. Create  a Twilio account [here] (https://www.twilio.com/login)
-  1. Register the verified numbers in Twilio.
-  1. After registering you will get an API KEY.
-  1. Use the Twilio SDK to configure the SMS services in Spring boot Project.
-  1. Create a SMS Service Component whcih will use the Twilio SDK to send SMS
 
 ## Live demo
 
