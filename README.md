@@ -119,6 +119,7 @@ The IBM Cloud service (Watson Assistant, Blockchain) can benefit below -
 3. Authorized Hospital or Blood Bank can obtain geolocation data to plot routes to collect (or drop off) supplies using HERE Location Services.
 4. All Hospital and Blood Bank will maintain the bloodstock, Donor, Receiver detail in block chain.
 5. Blood Bank & Hospital detail available across country.
+6. The Blood Bank can sent SMS notification to Donor for emergency blood needs.
 
 ### The Block Chian network
 
