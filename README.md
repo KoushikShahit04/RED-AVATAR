@@ -116,9 +116,9 @@ The IBM Cloud service (Watson Assistant, Blockchain) can benefit below -
 
 1. Blood Donor/Receiver use the mobile app for voluntary blood donation, receiver can finding donor, hospital for blood availability.
 2. User can ask questions to Watson Assistant and get answers on blood and voluntary donor availability questions.
-3. Authorized Hospital or Blood Bank can obtain geolocation data to plot routes to collect (or drop off) supplies using HERE Location Services.
-4. All Hospital and Blood Bank will maintain the bloodstock, Donor, Receiver detail in block chain.
-5. Blood Bank & Hospital detail available across country.
+3. Authorized Hospital or Blood Bank can obtain geolocation data to plot routes to collect (or drop off) supplies using Google map Location Services.
+4. All Hospital and Blood Bank will maintain the bloodstock, Donor detail in block chain.
+5. Donor registration, Donor profile , Blood Bank & Hospital detail available across country.
 6. The Blood Bank can sent SMS notification to Donor for emergency blood needs.
 
 ### The Block Chian network
