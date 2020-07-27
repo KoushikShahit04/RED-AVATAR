@@ -52,7 +52,7 @@ The goal is -
 3. Centralized Report for government to track and analyze the blood stock and run focused blood donation schemes
 4. Increase blood donation through different initiatives and donor incentives.
 
-### Demo video
+### Idea & Demo video
 
 [![Watch the video](/images/demo-video-2.png)](https://youtu.be/QXFmGNiJGek)
 
