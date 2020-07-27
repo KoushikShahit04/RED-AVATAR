@@ -152,7 +152,7 @@ Trusted sources for Blood Donation crisis:
 - [IBM Watson Assistant](https://www.ibm.com/cloud/watson-assistant/)
 - [Making Programmatic Calls from Watson Assistant](https://cloud.ibm.com/docs/assistant?topic=assistant-dialog-webhooks)
 - [IBM Block chain using Hyperledger fabric](https://www.ibm.com/blockchain/hyperledger). For Demo using [VS Code Extension](https://marketplace.visualstudio.com/items?itemName=IBMBlockchain.ibm-blockchain-platform)
-- [IBM DEVOPS TOOLCHAIN](https://www.ibm.com/cloud/devops)
+- [IBM DevOps ToolChain](https://www.ibm.com/cloud/devops)
 - [SMS via Twilio](https://www.twilio.com/)
 
 ### Framework for Mobile App
