@@ -102,7 +102,7 @@ The IBM Cloud service (Watson Assistant, Blockchain) can benefit below -
 
 ## How it works
 
-1. The Blood Donor, who want to Donate blood or want to register for blood donation open the User Mobile application and fills out the brief form and submit the detail. This information is stored in the database in the IBM Cloud. The Donor can fill the nearest Blood donation center where he want to donate the blood.
+1. The Blood Donor, who want to Donate blood or want to register for blood donation open the User Mobile application and fills out the brief form and submit the detail. This information is stored in the database in the IBM Cloud. The Donor can find the nearest Blood donation center where he want to donate the blood.
 
 2. The Blood Bank/Hospital can access the Donor detail and contact them for collecting the blood. After the testing of the blood completed the Blood bag detail and the Donor detail in stored in Blockchain network.
 
