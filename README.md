@@ -39,8 +39,9 @@ An efficient collaboration based on Blockchain network and cloud service powered
 
 1. Lack of collaboration among blood banks
 2. Lack of Transparency among the Donors , Receivers & banks.
-3. Lack of common shared IT network among the blood banks
-4. Lack of accessibility of data of blood stock
+3. Safe blood tranmission
+4. Lack of common shared IT network among the blood banks
+5. Lack of accessibility of data of blood stock
 
 ## The idea
 
