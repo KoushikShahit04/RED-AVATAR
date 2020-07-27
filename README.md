@@ -54,7 +54,7 @@ The goal is -
 
 ### Idea & Demo video
 
-[![Watch the video](/images/demo-video-2.png)](https://youtu.be/QXFmGNiJGek)
+[![Watch the video](/images/demo-video-2.png)](https://youtu.be/U7ISeYRMrmg)
 
 ### Benefits
 
